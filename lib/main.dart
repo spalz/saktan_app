@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -175,11 +176,6 @@ class AboutHealthChapters extends StatelessWidget {
                         ));
                   }),
             ),
-            //
-            // if (editorJSView != null)
-            //   editorJSView!
-            // else
-            //   const Text("Please wait..."),
           ],
         ),
       ),
@@ -209,7 +205,7 @@ class _AboutHealthDetailState extends State<AboutHealthDetail> {
     fetchTestData();
   }
 
-  void fetchTestData() async {
+  Future<void> fetchTestData() async {
     String data = await DefaultAssetBundle.of(context)
         .loadString("data/editorjsdatatest.json");
     String styles = await DefaultAssetBundle.of(context)
@@ -219,21 +215,23 @@ class _AboutHealthDetailState extends State<AboutHealthDetail> {
       editorJSView = EditorJSView(editorJSData: data, styles: styles);
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       _scrollToIndex(widget.initialIndex);
     });
   }
 
   void _scrollToIndex(int index) {
-    print("itemKey: $index");
-    if (_scrollController.isAttached) {
-      _scrollController.scrollTo(
-        index: index,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-        alignment: 0.0,
-      );
-    }
+    debugPrint("itemKey: $index");
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.isAttached) {
+        _scrollController.scrollTo(
+          index: index,
+          duration: const Duration(milliseconds: 800),
+          curve: Curves.fastEaseInToSlowEaseOut,
+          alignment: 0.0,
+        );
+      }
+    });
   }
 
   @override
@@ -242,40 +240,42 @@ class _AboutHealthDetailState extends State<AboutHealthDetail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Секс и сексуальность'),
-        iconTheme: IconThemeData(color: theme.primaryColor),
+        backgroundColor: theme.primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white), // add this line
+        titleTextStyle: const TextStyle(
+            fontFamily: "Montserrat",
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Colors.white),
       ),
       body: SelectionArea(
         child: ScrollablePositionedList.builder(
           itemCount: 9,
           itemScrollController: _scrollController,
           itemBuilder: (context, index) {
-            final GlobalKey itemKey = itemKeys[index] ?? GlobalKey();
+            final GlobalKey itemKey = GlobalKey();
             itemKeys[index] = itemKey;
             return StickyHeader(
+              key: itemKey,
               header: Container(
-                height: 50.0,
-                color: Colors.blueGrey[700],
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                height: 80.0,
+                color: theme.primaryColorLight,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: [
-                    Text(
-                      'Header #$index',
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const Spacer(),
-                    if (index < 8)
-                      IconButton(
-                        icon: const Icon(Icons.arrow_forward),
-                        onPressed: () {
-                          _scrollToIndex(index + 1);
-                        },
+                    Flexible(
+                      child: Text(
+                        '${index + 1}. Презервативы как метод тройной защиты',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.visible,
                       ),
+                    ),
                   ],
                 ),
               ),
               content: Container(
-                key: itemKey,
+                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 child: editorJSView ?? const Text("Please wait..."),
               ),
             );

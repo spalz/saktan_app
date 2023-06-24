@@ -43,19 +43,17 @@ class EditorJSViewState extends State<EditorJSView> {
         case 1:
           levelFontSize =
               FontSize(Theme.of(context).textTheme.headlineLarge!.fontSize!);
-          levelColor = Colors.red;
           levelHeight = 1.4;
           break;
         case 2:
           levelFontSize =
               FontSize(Theme.of(context).textTheme.headlineLarge!.fontSize!);
-          levelColor = Colors.green;
+          levelColor = const Color.fromRGBO(60, 105, 220, 1);
           levelHeight = 1.4;
           break;
         case 3:
           levelFontSize =
               FontSize(Theme.of(context).textTheme.headlineMedium!.fontSize!);
-          levelColor = Colors.brown;
           break;
         case 4:
           break;
@@ -84,6 +82,12 @@ class EditorJSViewState extends State<EditorJSView> {
                   fontSize: levelFontSize,
                   fontWeight:
                       Theme.of(context).textTheme.headlineLarge!.fontWeight),
+              "code": Style(
+                  backgroundColor: const Color.fromRGBO(197, 227, 255, 1),
+                  fontWeight: FontWeight.w600),
+              "mark": Style(
+                  backgroundColor: const Color.fromRGBO(218, 200, 239, 1),
+                  fontWeight: FontWeight.w600),
             },
           ));
           break;
@@ -93,8 +97,12 @@ class EditorJSViewState extends State<EditorJSView> {
             style: {
               "body": Style(
                   margin: Margins.only(left: 0, top: 0, right: 0, bottom: 15)),
-              "code": Style(backgroundColor: Colors.grey, color: Colors.white),
-              "mark": Style(backgroundColor: Colors.blue, color: Colors.white),
+              "code": Style(
+                  backgroundColor: const Color.fromRGBO(197, 227, 255, 1),
+                  fontWeight: FontWeight.w700),
+              "mark": Style(
+                  backgroundColor: const Color.fromRGBO(218, 200, 239, 1),
+                  fontWeight: FontWeight.w700),
             },
           ));
           break;
