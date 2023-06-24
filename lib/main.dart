@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 import './editorjs/widgets/view.dart';
@@ -167,8 +168,9 @@ class AboutHealthChapters extends StatelessWidget {
                           trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    const AboutHealthDetail()));
+                                builder: (context) => AboutHealthDetail(
+                                      initialIndex: index,
+                                    )));
                           },
                         ));
                   }),
@@ -186,18 +188,24 @@ class AboutHealthChapters extends StatelessWidget {
 }
 
 class AboutHealthDetail extends StatefulWidget {
-  const AboutHealthDetail({super.key});
+  final int initialIndex; // Добавлено поле для хранения индекса
+
+  const AboutHealthDetail({Key? key, required this.initialIndex})
+      : super(key: key);
 
   @override
   State<AboutHealthDetail> createState() => _AboutHealthDetailState();
 }
 
 class _AboutHealthDetailState extends State<AboutHealthDetail> {
+  late ItemScrollController _scrollController;
   EditorJSView? editorJSView;
+  Map<int, GlobalKey> itemKeys = {};
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ItemScrollController();
     fetchTestData();
   }
 
@@ -210,6 +218,22 @@ class _AboutHealthDetailState extends State<AboutHealthDetail> {
     setState(() {
       editorJSView = EditorJSView(editorJSData: data, styles: styles);
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToIndex(widget.initialIndex);
+    });
+  }
+
+  void _scrollToIndex(int index) {
+    print("itemKey: $index");
+    if (_scrollController.isAttached) {
+      _scrollController.scrollTo(
+        index: index,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+        alignment: 0.0,
+      );
+    }
   }
 
   @override
@@ -218,26 +242,45 @@ class _AboutHealthDetailState extends State<AboutHealthDetail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Секс и сексуальность'),
-        iconTheme: IconThemeData(color: theme.primaryColor), // add this line
+        iconTheme: IconThemeData(color: theme.primaryColor),
       ),
       body: SelectionArea(
-        child: ListView.builder(itemBuilder: (context, index) {
-          return StickyHeader(
-            header: Container(
-              height: 50.0,
-              color: Colors.blueGrey[700],
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Header #$index',
-                style: const TextStyle(color: Colors.white),
+        child: ScrollablePositionedList.builder(
+          itemCount: 9,
+          itemScrollController: _scrollController,
+          itemBuilder: (context, index) {
+            final GlobalKey itemKey = itemKeys[index] ?? GlobalKey();
+            itemKeys[index] = itemKey;
+            return StickyHeader(
+              header: Container(
+                height: 50.0,
+                color: Colors.blueGrey[700],
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Text(
+                      'Header #$index',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    const Spacer(),
+                    if (index < 8)
+                      IconButton(
+                        icon: const Icon(Icons.arrow_forward),
+                        onPressed: () {
+                          _scrollToIndex(index + 1);
+                        },
+                      ),
+                  ],
+                ),
               ),
-            ),
-            content: Container(
-              child: editorJSView ?? const Text("Please wait..."),
-            ),
-          );
-        }),
+              content: Container(
+                key: itemKey,
+                child: editorJSView ?? const Text("Please wait..."),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
