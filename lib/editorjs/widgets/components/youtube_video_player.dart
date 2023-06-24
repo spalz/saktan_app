@@ -27,12 +27,12 @@ class _YoutubeVideoPlayerState extends State<YoutubeVideoPlayer> {
 
     _controller = YoutubePlayerController.fromVideoId(
       videoId: videoId,
-      autoPlay: true,
-      // params: const YoutubePlayerParams(
-      //   mute: false,
-      //   showControls: true,
-      //   showFullscreenButton: false,
-      // ),
+      autoPlay: false,
+      params: const YoutubePlayerParams(
+        mute: false,
+        showControls: true,
+        showFullscreenButton: false,
+      ),
     );
   }
 
@@ -44,7 +44,7 @@ class _YoutubeVideoPlayerState extends State<YoutubeVideoPlayer> {
         YoutubePlayerScaffold(
           controller: _controller,
           aspectRatio: 16 / 9,
-          enableFullScreenOnVerticalDrag: false,
+          enableFullScreenOnVerticalDrag: true,
           builder: (context, player) {
             return player;
           },

@@ -2,6 +2,198 @@
   "time": 1687538171389,
   "blocks": [
     {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 1.</mark>",
+        "level": 1
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 3.</mark>",
+        "level": 1
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 2.</mark>",
+        "level": 2
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 2.</mark>",
+        "level": 2
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 3.</mark>",
+        "level": 3
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 3.</mark>",
+        "level": 3
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 4.</mark>",
+        "level": 4
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 4.</mark>",
+        "level": 4
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 5.</mark>",
+        "level": 5
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 5.</mark>",
+        "level": 5
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование 6.</mark>",
+        "level": 6
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Износ и попытка изнасилования 6.</mark>",
+        "level": 6
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 1",
+        "level": 1
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 1",
+        "level": 1
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 2",
+        "level": 2
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 2",
+        "level": 2
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 3",
+        "level": 3
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 3",
+        "level": 3
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 4",
+        "level": 4
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 4",
+        "level": 4
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 5",
+        "level": 5
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 5",
+        "level": 5
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование. 6",
+        "level": 6
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнас и попытка изнасилования или что то еще 6",
+        "level": 6
+      }
+    },
+    {
       "id": "R0NGDvkCD6",
       "type": "paragraph",
       "data": {
@@ -40,6 +232,36 @@
       }
     },
     {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование/попытка изнасилования.</mark> 5",
+        "level": 5
+      }
+    },
+    {
+      "id": "tYczngpLnU",
+      "type": "paragraph",
+      "data": {
+        "text": "<b><mark class=\"cdx-marker\">Интерсекс</mark></b> – это люди, рожденные с половыми признаками, которые не совпадают с типичным представлением мужского или женского тела. Всего встречается около 40 интерсекс-вариаций. Это различные сочетания хромосом, половых желез, наружных и внутренних органов репродуктивной системы, уровней гормонов и вторичных половых признаков."
+      }
+    },
+    {
+      "id": "upTVJAxfrI",
+      "type": "paragraph",
+      "data": {
+        "text": "Сексуальное насилие – это любые действия сексуального характера, производимые с человеком без его согласия, а также принуждение к сексуальным действиям с помощью манипуляции, психологического давления, запугивания, обмана и пр."
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "Изнасилование/попытка изнасилования. 5",
+        "level": 5
+      }
+    },
+    {
       "id": "tYczngpLnU",
       "type": "paragraph",
       "data": {
@@ -62,7 +284,7 @@
     },
     {
       "id": "nTxBSZHs9L",
-      "type": "Embed",
+      "type": "Embed-",
       "data": {
         "service": "youtube",
         "source": "https://www.youtube.com/watch?v=DOS6c4FRuI4",
@@ -83,7 +305,7 @@
       "id": "yj4Ox01kcj",
       "type": "Header",
       "data": {
-        "text": "К сексуальным домогательствам относятся следующие действия:",
+        "text": "К сексуальным домогательствам относятся следующие действия: 2",
         "level": 2
       }
     },
@@ -92,6 +314,32 @@
       "type": "List",
       "data": {
         "style": "unordered",
+        "items": [
+          "Прикосновение к различным частям вашего тела;",
+          "Когда ограничивают вашу свободу, загоняя в угол;",
+          "Когда вам отправляют сексуальные сообщения;",
+          "Когда вам отправляют сексуальные изображения (фото обнаженного тела, гениталий);",
+          "Когда вам показывают сексуальные жесты;",
+          "Когда вам делают сексуальные предложения или пускают о вас слухи сексуального характера:",
+          "Когда с вас пытаются снять одежду;",
+          "Когда другой человек снимает свою одежду в вашем присутствии;",
+          "Когда заставляют вас поцеловать, потрогать или совершить другое сексуальное действие;"
+        ]
+      }
+    },
+    {
+      "id": "yj4Ox01kcj",
+      "type": "Header",
+      "data": {
+        "text": "К сексуальным домогательствам относятся следующие действия: 2",
+        "level": 2
+      }
+    },
+    {
+      "id": "HZw3xYFsyO",
+      "type": "List",
+      "data": {
+        "style": "ordered",
         "items": [
           "Прикосновение к различным частям вашего тела;",
           "Когда ограничивают вашу свободу, загоняя в угол;",
@@ -116,7 +364,7 @@
       "id": "3UUqwmYXao",
       "type": "Header",
       "data": {
-        "text": "<mark class=\"cdx-marker\">Изнасилование/попытка изнасилования.</mark>",
+        "text": "<mark class=\"cdx-marker\">Изнасилование/попытка изнасилования.</mark> 3",
         "level": 3
       }
     },
@@ -125,6 +373,14 @@
       "type": "paragraph",
       "data": {
         "text": "<b></b>Изнасилование – это половой акт без согласия. Оно может включать введение полового органа в любую часть тела и/или введение любого предмета или части тела в генитальное или анальное отверстие."
+      }
+    },
+    {
+      "id": "3UUqwmYXao",
+      "type": "Header",
+      "data": {
+        "text": "<mark class=\"cdx-marker\">Изнасилование/попытка изнасилования.</mark> 4",
+        "level": 4
       }
     },
     {

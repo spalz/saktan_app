@@ -1,90 +1,199 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sticky_headers/sticky_headers/widget.dart';
 
 import './editorjs/widgets/view.dart';
+import 'theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  runApp(const SaktanApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SaktanApp extends StatelessWidget {
+  const SaktanApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Saktan',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: const Color.fromRGBO(60, 105, 220, 1),
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromRGBO(60, 105, 220, 1)),
-          appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.deepPurple,
-              titleSpacing: 20),
-          useMaterial3: true,
-          fontFamily: "Montserrat",
-          textTheme: const TextTheme(
-            displayLarge: TextStyle(
-              fontSize: 20.0,
-            ),
-            displayMedium: TextStyle(fontSize: 20.0),
-            displaySmall: TextStyle(fontSize: 20.0),
-            //
-            headlineLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
-            headlineMedium: TextStyle(
-              fontSize: 24,
-            ),
-            headlineSmall: TextStyle(
-              fontSize: 22,
-            ),
-            //
-            titleLarge:
-                TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal),
-            titleMedium: TextStyle(fontSize: 20.0),
-            titleSmall: TextStyle(fontSize: 20.0),
-            //
-            bodyLarge: TextStyle(
-              fontSize: 20.0,
-              color: Colors.cyan,
-            ),
-            bodyMedium: TextStyle(
-              fontSize: 18,
-            ),
-            bodySmall: TextStyle(
-              fontSize: 20.0,
-            ),
-            //
-            labelLarge: TextStyle(fontSize: 20.0),
-            labelMedium: TextStyle(fontSize: 20.0),
-            labelSmall: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey),
-          )),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: whiteTheme,
+      home: const AboutHealthScreen(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class AboutHealthScreen extends StatefulWidget {
+  const AboutHealthScreen({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<AboutHealthScreen> createState() => _AboutHealthScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  EditorJSView? editorJSView;
-
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+class _AboutHealthScreenState extends State<AboutHealthScreen> {
+  @override
+  void initState() {
+    super.initState();
+    initialization();
   }
+
+  void initialization() async {
+    // todo: uncommented it
+    // await Future.delayed(const Duration(seconds: 3));
+    FlutterNativeSplash.remove();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
+    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
+        width: 100,
+        alignment: Alignment.topLeft,
+        // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        semanticsLabel: 'Saktan');
+    return Scaffold(
+      appBar: AppBar(
+        title: saktanLogo,
+        centerTitle: false,
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        child: SizedBox(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.home),
+              Icon(Icons.search),
+              Icon(Icons.add),
+              Icon(Icons.favorite),
+              Icon(Icons.person),
+            ],
+          ),
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              'Справочник по репродуктивному и сексуальному здоровью',
+              style: theme.textTheme.bodyLarge,
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 0, bottom: 20),
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        tileColor: Colors.grey[200],
+                        focusColor: Colors.blue[200],
+                        splashColor: Colors.blue[200],
+                        minVerticalPadding: 22,
+                        leading: Image.asset(
+                          'assets/images/temp/health.png',
+                          width: 38,
+                        ),
+                        title: Text(
+                          "Секс и сексуальность",
+                          style: theme.textTheme.titleSmall,
+                        ),
+                        // trailing: const Icon(Icons.arrow_forward_ios),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const AboutHealthChapters()));
+                        },
+                      ));
+                }),
+          ),
+          //
+          // if (editorJSView != null)
+          //   editorJSView!
+          // else
+          //   const Text("Please wait..."),
+        ],
+      ),
+    );
+  }
+}
+
+class AboutHealthChapters extends StatelessWidget {
+  const AboutHealthChapters({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Выберите раздел'),
+        iconTheme: IconThemeData(color: theme.primaryColor), // add this line
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                  itemCount: 9,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          tileColor: Colors.grey[200],
+                          focusColor: Colors.blue[200],
+                          splashColor: Colors.blue[200],
+                          minVerticalPadding: 10,
+                          title: Text(
+                            "${index + 1}. Секс и сексуальность",
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const AboutHealthDetail()));
+                          },
+                        ));
+                  }),
+            ),
+            //
+            // if (editorJSView != null)
+            //   editorJSView!
+            // else
+            //   const Text("Please wait..."),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AboutHealthDetail extends StatefulWidget {
+  const AboutHealthDetail({super.key});
+
+  @override
+  State<AboutHealthDetail> createState() => _AboutHealthDetailState();
+}
+
+class _AboutHealthDetailState extends State<AboutHealthDetail> {
+  EditorJSView? editorJSView;
 
   @override
   void initState() {
@@ -105,131 +214,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
-    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
-        width: 100,
-        alignment: Alignment.topLeft,
-        // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        semanticsLabel: 'Saktan');
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: saktanLogo,
-        centerTitle: false,
+        title: const Text('Секс и сексуальность'),
+        iconTheme: IconThemeData(color: theme.primaryColor), // add this line
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: SelectionArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              //
-              //
-              if (editorJSView != null)
-                editorJSView!
-              else
-                const Text("Please wait..."),
-              //
-              //
-              Text.rich(
-                textAlign: TextAlign.left,
-                selectionColor: Colors.red,
-                TextSpan(
-                  children: [
-                    const TextSpan(
-                      text: "You have pushed the button this many times: ",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '$_counter',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
+      body: SelectionArea(
+        child: ListView.builder(itemBuilder: (context, index) {
+          return StickyHeader(
+            header: Container(
+              height: 50.0,
+              color: Colors.blueGrey[700],
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Header #$index',
+                style: const TextStyle(color: Colors.white),
               ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/1_c326f7c4a1.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/3_7adfa8b33b.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/4_9def2be50e.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/5_7f51acc7fd.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/6_55622603c8.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/6_55622603c8.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/7_301afb2913.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              CachedNetworkImage(
-                width: 300,
-                height: 300,
-                imageUrl:
-                    "https://admin.indigo.kg/uploads/8_1261efe342.jpg?format=webp&width=725&embed",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+            ),
+            content: Container(
+              child: editorJSView ?? const Text("Please wait..."),
+            ),
+          );
+        }),
       ),
     );
   }

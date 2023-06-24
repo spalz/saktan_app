@@ -34,18 +34,23 @@ class EditorJSViewState extends State<EditorJSView> {
     for (var element in dataObject.blocks!) {
       var levelFontSize =
           FontSize(Theme.of(context).textTheme.headlineSmall!.fontSize!);
-      var levelColor = Colors.blue;
+      var levelColor = Colors.black87;
+      var levelMarginTop = 15;
+      var levelMarginBottom = 10;
+      var levelHeight = 1.3;
 
       switch (element.data!.level) {
         case 1:
           levelFontSize =
               FontSize(Theme.of(context).textTheme.headlineLarge!.fontSize!);
           levelColor = Colors.red;
+          levelHeight = 1.4;
           break;
         case 2:
           levelFontSize =
               FontSize(Theme.of(context).textTheme.headlineLarge!.fontSize!);
           levelColor = Colors.green;
+          levelHeight = 1.4;
           break;
         case 3:
           levelFontSize =
@@ -53,13 +58,10 @@ class EditorJSViewState extends State<EditorJSView> {
           levelColor = Colors.brown;
           break;
         case 4:
-          levelColor = Colors.purple;
           break;
         case 5:
-          levelColor = Colors.orange;
           break;
         case 6:
-          levelColor = Colors.grey;
           break;
       }
 
@@ -69,9 +71,15 @@ class EditorJSViewState extends State<EditorJSView> {
             data: element.data!.text,
             style: {
               "body": Style(
+                  margin: Margins.only(
+                    left: 0,
+                    top: levelMarginTop.toDouble(),
+                    right: 0,
+                    bottom: levelMarginBottom.toDouble(),
+                  ),
+                  lineHeight: LineHeight(levelHeight.toDouble()),
                   fontFamily:
                       Theme.of(context).textTheme.headlineLarge!.fontFamily,
-                  margin: Margins.zero,
                   color: levelColor,
                   fontSize: levelFontSize,
                   fontWeight:
@@ -83,7 +91,8 @@ class EditorJSViewState extends State<EditorJSView> {
           items.add(Html(
             data: element.data!.text,
             style: {
-              "body": Style(margin: Margins.zero),
+              "body": Style(
+                  margin: Margins.only(left: 0, top: 0, right: 0, bottom: 15)),
               "code": Style(backgroundColor: Colors.grey, color: Colors.white),
               "mark": Style(backgroundColor: Colors.blue, color: Colors.white),
             },
@@ -97,22 +106,26 @@ class EditorJSViewState extends State<EditorJSView> {
           for (var element in element.data!.items!) {
             if (style == 'ordered') {
               bullet = counter.toString();
-              items.add(
-                Row(children: [
+              items.add(Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(children: [
                   Expanded(
                     child: Html(
-                      data: bullet + element,
+                      data: "$bullet" ". $element",
                       style: {
-                        "body": Style(margin: Margins.zero, color: Colors.red),
+                        "body": Style(margin: Margins.zero),
                       },
                     ),
                   )
                 ]),
-              );
+              ));
               counter++;
             } else {
-              items.add(
-                Row(
+              items.add(Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
                   children: <Widget>[
                     Expanded(
                       child: Html(
@@ -124,7 +137,7 @@ class EditorJSViewState extends State<EditorJSView> {
                     )
                   ],
                 ),
-              );
+              ));
             }
           }
           break;
@@ -134,7 +147,12 @@ class EditorJSViewState extends State<EditorJSView> {
               children: [Expanded(child: Divider(color: Colors.grey))]));
           break;
         case "image":
-          items.add(Image.network(globals.apiUrl + element.data!.file!.url!));
+          items.add(
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Image.network(globals.apiUrl + element.data!.file!.url!),
+            ),
+          );
           break;
         case "Embed":
           items.add(
