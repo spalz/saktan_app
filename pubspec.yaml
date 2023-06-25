@@ -45,6 +45,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   sticky_headers: ^0.3.0+2
   scrollable_positioned_list: ^0.3.8
+  flutter_launcher_icons: ^0.13.1
   # google_fonts: ^5.1.0
 
 dev_dependencies:
@@ -74,6 +75,7 @@ flutter:
     - assets/images/logo/
     - data/
     - assets/images/temp/
+    - assets/images/launcher/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -155,16 +157,16 @@ flutter_native_splash:
     # 640 pixels in diameter.
     # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
     # 768 pixels in diameter.
-    #image: assets/android12splash.png
+    image: assets/images/splash/android12_splash.png
 
     # Splash screen background color.
-    #color: "#42a5f5"
+    color: "#3C69DC"
 
     # App icon background color.
     #icon_background_color: "#111111"
 
     # The branding property allows you to specify an image used as branding in the splash screen.
-    #branding: assets/dart.png
+    # branding: assets/images/splash/branding.png
 
     # The image_dark, color_dark, icon_background_color_dark, and branding_dark set values that
     # apply when the device is in dark mode. If they are not specified, the app will use the
@@ -241,3 +243,29 @@ flutter_native_splash:
   #info_plist_files:
   #  - 'ios/Runner/Info-Debug.plist'
   #  - 'ios/Runner/Info-Release.plist'
+
+flutter_launcher_icons:
+  # flutter pub run flutter_launcher_icons
+  image_path: "assets/images/launcher/icon-1024x1024.png"
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
+  image_path_ios: "assets/images/launcher/icon-1024x1024.png"
+  #
+  android: true # can specify file name here e.g. "ic_launcher"
+  image_path_android: "assets/images/launcher/icon-1024x1024.png"
+  adaptive_icon_background: "#3C69DC" # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: "assets/images/launcher/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
+  background_color_ios: "#3C69DC"
+  web:
+    generate: true
+    image_path: "assets/images/launcher/icon-1024x1024.png"
+    background_color: "#3C69DC"
+    theme_color: "#3C69DC"
+  windows:
+    generate: true
+    image_path: "assets/images/launcher/icon-1024x1024.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/launcher/icon-1024x1024.png"

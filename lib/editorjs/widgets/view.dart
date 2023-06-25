@@ -83,6 +83,7 @@ class EditorJSViewState extends State<EditorJSView> {
                   fontWeight:
                       Theme.of(context).textTheme.headlineLarge!.fontWeight),
               "code": Style(
+                  fontFamily: "Montserrat",
                   backgroundColor: const Color.fromRGBO(197, 227, 255, 1),
                   fontWeight: FontWeight.w600),
               "mark": Style(
@@ -98,6 +99,7 @@ class EditorJSViewState extends State<EditorJSView> {
               "body": Style(
                   margin: Margins.only(left: 0, top: 0, right: 0, bottom: 15)),
               "code": Style(
+                  fontFamily: "Montserrat",
                   backgroundColor: const Color.fromRGBO(197, 227, 255, 1),
                   fontWeight: FontWeight.w700),
               "mark": Style(

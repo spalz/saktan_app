@@ -45,7 +45,7 @@ class _AboutHealthScreenState extends State<AboutHealthScreen> {
 
   void initialization() async {
     // todo: uncommented it
-    // await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 30));
     FlutterNativeSplash.remove();
   }
 
@@ -146,38 +146,32 @@ class AboutHealthChapters extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: ListView.builder(
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        child: ListTile(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          tileColor: Colors.grey[200],
-                          focusColor: Colors.blue[200],
-                          splashColor: Colors.blue[200],
-                          minVerticalPadding: 10,
-                          title: Text(
-                            "${index + 1}. Секс и сексуальность",
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                          trailing: const Icon(Icons.arrow_forward_ios),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => AboutHealthDetail(
-                                      initialIndex: index,
-                                    )));
-                          },
-                        ));
-                  }),
-            ),
-          ],
-        ),
+        child: ListView.builder(
+            itemCount: 9,
+            itemBuilder: (context, index) {
+              return Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    tileColor: Colors.grey[200],
+                    focusColor: Colors.blue[200],
+                    splashColor: Colors.blue[200],
+                    minVerticalPadding: 10,
+                    title: Text(
+                      "${index + 1}. Секс и сексуальность",
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AboutHealthDetail(
+                                initialIndex: index,
+                              )));
+                    },
+                  ));
+            }),
       ),
     );
   }
