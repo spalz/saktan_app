@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
+import 'package:saktan_app/screens/about_health/about_health_screen.dart';
+import 'package:saktan_app/screens/help/help_screen.dart';
+import 'package:saktan_app/screens/news/news_list.dart';
+import 'package:saktan_app/screens/on_boarding_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import './editorjs/widgets/view.dart';
 import 'theme/theme.dart';
 
 void main() {
@@ -14,8 +14,45 @@ void main() {
   runApp(const SaktanApp());
 }
 
-class SaktanApp extends StatelessWidget {
-  const SaktanApp({super.key});
+class SaktanApp extends StatefulWidget {
+  const SaktanApp({Key? key}) : super(key: key);
+
+  @override
+  _SaktanAppState createState() => _SaktanAppState();
+}
+
+class _SaktanAppState extends State<SaktanApp> {
+  bool _isFirstTime = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkFirstTime();
+  }
+
+  Future<void> checkFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+
+    setState(() {
+      print('isFirstTime: $isFirstTime');
+      _isFirstTime = isFirstTime;
+    });
+
+    if (!isFirstTime) {
+      // Не первый раз открытия приложения
+      navigateToAboutHealthScreen();
+    }
+  }
+
+  Future<void> navigateToAboutHealthScreen() async {
+    // Задержка для визуализации OnBoardingScreen перед переходом
+    await Future.delayed(const Duration(seconds: 2));
+
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const AboutHealthScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,259 +60,13 @@ class SaktanApp extends StatelessWidget {
       title: 'Saktan',
       debugShowCheckedModeBanner: false,
       theme: whiteTheme,
-      home: const AboutHealthScreen(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class AboutHealthScreen extends StatefulWidget {
-  const AboutHealthScreen({super.key, required this.title});
-  final String title;
-
-  @override
-  State<AboutHealthScreen> createState() => _AboutHealthScreenState();
-}
-
-class _AboutHealthScreenState extends State<AboutHealthScreen> {
-  @override
-  void initState() {
-    super.initState();
-    initialization();
-  }
-
-  void initialization() async {
-    // todo: uncommented it
-    await Future.delayed(const Duration(seconds: 30));
-    FlutterNativeSplash.remove();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
-    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
-        width: 100,
-        alignment: Alignment.topLeft,
-        // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        semanticsLabel: 'Saktan');
-    return Scaffold(
-      appBar: AppBar(
-        title: saktanLogo,
-        centerTitle: false,
-      ),
-      bottomNavigationBar: const BottomAppBar(
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(Icons.home),
-              Icon(Icons.search),
-              Icon(Icons.add),
-              Icon(Icons.favorite),
-              Icon(Icons.person),
-            ],
-          ),
-        ),
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            padding: const EdgeInsets.all(20),
-            child: Text(
-              'Справочник по репродуктивному и сексуальному здоровью',
-              style: theme.textTheme.bodyLarge,
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 0, bottom: 20),
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      child: ListTile(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        tileColor: Colors.grey[200],
-                        focusColor: Colors.blue[200],
-                        splashColor: Colors.blue[200],
-                        minVerticalPadding: 22,
-                        leading: Image.asset(
-                          'assets/images/temp/health.png',
-                          width: 38,
-                        ),
-                        title: Text(
-                          "Секс и сексуальность",
-                          style: theme.textTheme.titleSmall,
-                        ),
-                        // trailing: const Icon(Icons.arrow_forward_ios),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  const AboutHealthChapters()));
-                        },
-                      ));
-                }),
-          ),
-          //
-          // if (editorJSView != null)
-          //   editorJSView!
-          // else
-          //   const Text("Please wait..."),
-        ],
-      ),
-    );
-  }
-}
-
-class AboutHealthChapters extends StatelessWidget {
-  const AboutHealthChapters({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Выберите раздел'),
-        iconTheme: IconThemeData(color: theme.primaryColor), // add this line
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: ListView.builder(
-            itemCount: 9,
-            itemBuilder: (context, index) {
-              return Container(
-                  margin: const EdgeInsets.only(bottom: 10),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    tileColor: Colors.grey[200],
-                    focusColor: Colors.blue[200],
-                    splashColor: Colors.blue[200],
-                    minVerticalPadding: 10,
-                    title: Text(
-                      "${index + 1}. Секс и сексуальность",
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AboutHealthDetail(
-                                initialIndex: index,
-                              )));
-                    },
-                  ));
-            }),
-      ),
-    );
-  }
-}
-
-class AboutHealthDetail extends StatefulWidget {
-  final int initialIndex; // Добавлено поле для хранения индекса
-
-  const AboutHealthDetail({Key? key, required this.initialIndex})
-      : super(key: key);
-
-  @override
-  State<AboutHealthDetail> createState() => _AboutHealthDetailState();
-}
-
-class _AboutHealthDetailState extends State<AboutHealthDetail> {
-  late ItemScrollController _scrollController;
-  EditorJSView? editorJSView;
-  Map<int, GlobalKey> itemKeys = {};
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController = ItemScrollController();
-    fetchTestData();
-  }
-
-  Future<void> fetchTestData() async {
-    String data = await DefaultAssetBundle.of(context)
-        .loadString("data/editorjsdatatest.json");
-    String styles = await DefaultAssetBundle.of(context)
-        .loadString("data/editorjsstyles.json");
-
-    setState(() {
-      editorJSView = EditorJSView(editorJSData: data, styles: styles);
-    });
-
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      _scrollToIndex(widget.initialIndex);
-    });
-  }
-
-  void _scrollToIndex(int index) {
-    debugPrint("itemKey: $index");
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.isAttached) {
-        _scrollController.scrollTo(
-          index: index,
-          duration: const Duration(milliseconds: 800),
-          curve: Curves.fastEaseInToSlowEaseOut,
-          alignment: 0.0,
-        );
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Секс и сексуальность'),
-        backgroundColor: theme.primaryColor,
-        iconTheme: const IconThemeData(color: Colors.white), // add this line
-        titleTextStyle: const TextStyle(
-            fontFamily: "Montserrat",
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.white),
-      ),
-      body: SelectionArea(
-        child: ScrollablePositionedList.builder(
-          itemCount: 9,
-          itemScrollController: _scrollController,
-          itemBuilder: (context, index) {
-            final GlobalKey itemKey = GlobalKey();
-            itemKeys[index] = itemKey;
-            return StickyHeader(
-              key: itemKey,
-              header: Container(
-                height: 80.0,
-                color: theme.primaryColorLight,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        '${index + 1}. Презервативы как метод тройной защиты',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                        overflow: TextOverflow.visible,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              content: Container(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                child: editorJSView ?? const Text("Please wait..."),
-              ),
-            );
-          },
-        ),
-      ),
+      home: _isFirstTime ? const OnBoardingPage() : const AboutHealthScreen(),
+      initialRoute: "/",
+      routes: {
+        "/health": (final context) => const AboutHealthScreen(),
+        "/help": (final context) => const HelpScreen(),
+        "/news": (final context) => const NewsList(),
+      },
     );
   }
 }

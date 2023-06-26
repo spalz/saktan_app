@@ -9,10 +9,8 @@ import 'components/youtube_video_player.dart';
 
 class EditorJSView extends StatefulWidget {
   final String? editorJSData;
-  final String? styles;
 
-  const EditorJSView({Key? key, this.editorJSData, this.styles})
-      : super(key: key);
+  const EditorJSView({Key? key, this.editorJSData}) : super(key: key);
 
   @override
   EditorJSViewState createState() => EditorJSViewState();
