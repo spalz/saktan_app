@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:saktan_app/screens/about_health/about_health_screen.dart';
 import 'package:saktan_app/screens/help/help_screen.dart';
-import 'package:saktan_app/screens/news/news_list.dart';
+import 'package:saktan_app/screens/news/news_list_screen.dart';
 import 'package:saktan_app/screens/on_boarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

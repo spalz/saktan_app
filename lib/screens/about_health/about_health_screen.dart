@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:saktan_app/screens/help/help_screen.dart';
+import 'package:saktan_app/screens/news/news_list_screen.dart';
 
 import 'about_health_chapters_screen.dart';
 
@@ -39,7 +41,7 @@ class _AboutHealthScreenState extends State<AboutHealthScreen> {
         title: saktanLogo,
         centerTitle: false,
       ),
-      bottomNavigationBar: const BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         child: SizedBox(
           height: 60,
           child: Row(
@@ -48,22 +50,40 @@ class _AboutHealthScreenState extends State<AboutHealthScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.home),
-                  Text('О здоровье'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const AboutHealthScreen()));
+                    },
+                    child: const Icon(Icons.home),
+                  ),
+                  const Text('О здоровье'),
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.explore),
-                  Text('Помощь'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const HelpScreen()));
+                    },
+                    child: const Icon(Icons.explore),
+                  ),
+                  const Text('Помощь'),
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.person),
-                  Text('Новости'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const NewsList()));
+                    },
+                    child: const Icon(Icons.person),
+                  ),
+                  const Text('Новости'),
                 ],
               ),
             ],

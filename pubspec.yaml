@@ -47,6 +47,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   introduction_screen: ^3.1.9
   shared_preferences: ^2.1.2
+  modal_bottom_sheet: ^3.0.0-pre
+  maps_launcher: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -252,7 +254,7 @@ flutter_launcher_icons:
   #
   android: true # can specify file name here e.g. "ic_launcher"
   image_path_android: "assets/images/launcher/icon-1024x1024.png"
-  adaptive_icon_background: "#3C69DC" # only available for Android 8.0 devices and above
+  adaptive_icon_background: "assets/images/launcher/adaptive_icon_background.png" # only available for Android 8.0 devices and above
   adaptive_icon_foreground: "assets/images/launcher/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
   min_sdk_android: 21 # android min sdk min:16, default 21
   remove_alpha_ios: true
