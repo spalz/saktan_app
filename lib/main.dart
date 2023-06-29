@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:saktan_app/screens/guides/guides.dart';
-import 'package:saktan_app/screens/help/help.dart';
-import 'package:saktan_app/screens/news/news.dart';
-import 'package:saktan_app/screens/on_boarding_screen.dart';
+import 'package:saktan_app/generated/l10n.dart';
+//
+import 'package:saktan_app/pages/guides/guides.dart';
+import 'package:saktan_app/pages/help/help.dart';
+// import 'package:saktan_app/pages/news/news.dart';
+import 'package:saktan_app/pages/on_boarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'theme/theme.dart';
@@ -50,7 +53,7 @@ class _SaktanAppState extends State<SaktanApp> {
     await Future.delayed(const Duration(seconds: 2));
 
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const AboutHealthScreen()),
+      MaterialPageRoute(builder: (context) => const CategoriesPage()),
     );
   }
 
@@ -58,14 +61,21 @@ class _SaktanAppState extends State<SaktanApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Saktan',
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       theme: whiteTheme,
-      home: _isFirstTime ? const OnBoardingPage() : const AboutHealthScreen(),
+      home: _isFirstTime ? const OnBoardingPage() : const CategoriesPage(),
       initialRoute: "/",
       routes: {
-        "/health": (final context) => const AboutHealthScreen(),
+        "/health": (final context) => const CategoriesPage(),
         "/help": (final context) => const HelpScreen(),
-        "/news": (final context) => const NewsList(),
+        // "/news": (final context) => const NewsList(),
       },
     );
   }
