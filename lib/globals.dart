@@ -1,3 +1,4 @@
 library globals;
 
-String apiUrl = "https://admin.indigo.kg/api";
+String url = "https://admin.indigo.kg";
+String urlApi = "admin.indigo.kg";

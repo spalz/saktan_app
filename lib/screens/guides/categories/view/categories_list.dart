@@ -30,6 +30,8 @@ class _PostsListState extends State<PostsList> {
               return const Center(child: Text('no posts'));
             }
             return ListView.builder(
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, top: 0, bottom: 20),
               itemBuilder: (BuildContext context, int index) {
                 return index >= state.posts.length
                     ? const BottomLoader()

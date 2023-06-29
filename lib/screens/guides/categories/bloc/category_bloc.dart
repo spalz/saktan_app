@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:http/http.dart' as http;
-import 'package:saktan_app/globals.dart';
+import 'package:saktan_app/globals.dart' as global;
 import 'package:saktan_app/screens/guides/categories/categories.dart';
 import 'package:stream_transform/stream_transform.dart';
 
@@ -47,7 +47,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           ),
         );
       }
+
       final posts = await _fetchPosts(state.posts.length);
+
       posts.isEmpty
           ? emit(state.copyWith(hasReachedMax: true))
           : emit(
@@ -63,29 +65,43 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
-    final response = await httpClient.get(
-      Uri.https(
-        apiUrl,
-        '/saktan-guides',
-        <String, String>{'_start': '$startIndex', '_limit': '$_postLimit'},
-        //?pagination[start]=1&pagination[limit]=10
-      ),
-    );
-    if (response.statusCode == 200) {
-      final body = json.decode(response.body) as List;
-      return body.map((dynamic json) {
-        final map = json as Map<String, dynamic>;
-        return Post(
-          id: map['id'] as int,
-          slug: map['slug'] as String,
-          titleRu: map['title__ru'] as String,
-          titleKy: map['title__ky'] as String,
-          descriptionRu: map['description__ru'] as String,
-          descriptionKy: map['description__ky'] as String,
-          icon: map['icon'] as String,
-        );
-      }).toList();
+    try {
+      final response = await httpClient.get(
+        Uri.https(
+          global.urlApi,
+          'api/saktan-guides',
+          <String, String>{
+            'populate[icon][fields][0]': 'url',
+            'fields': 'title__ru',
+            // ignore: equal_keys_in_map
+            'fields': 'title__ky',
+            // ignore: equal_keys_in_map
+            'fields': 'icon',
+            'pagination[start]': '$startIndex',
+            'pagination[limit]': '$_postLimit',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final responseBody = json.decode(response.body) as Map<String, dynamic>;
+        final dataList = responseBody['data'] as List;
+        return dataList.map((dynamic json) {
+          final map = json as Map<String, dynamic>;
+          final iconMap = map['icon'] as Map<String, dynamic>;
+          return Post(
+            id: map['id'] as int,
+            slug: map['slug'] as String,
+            titleRu: map['title__ru'] as String,
+            titleKy: map['title__ky'] as String,
+            icon: '${global.url}${iconMap['url']}',
+          );
+        }).toList();
+      } else {}
+    } catch (error) {
+      throw Exception('Error fetching posts');
     }
-    throw Exception('error fetching posts');
+
+    throw Exception('Error fetching posts');
   }
 }

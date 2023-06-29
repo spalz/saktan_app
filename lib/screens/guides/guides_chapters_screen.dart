@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'about_health_detail_screen.dart';
+import 'guides_detail_screen.dart';
 
 class AboutHealthChapters extends StatelessWidget {
   final String slug;

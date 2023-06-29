@@ -1,3 +1,3 @@
-export 'about_health_chapters_screen.dart';
-export 'about_health_detail_screen.dart';
-export 'about_health_screen.dart';
+export 'guides_chapters_screen.dart';
+export 'guides_detail_screen.dart';
+export 'guides_screen.dart';

@@ -158,7 +158,7 @@ class EditorJSViewState extends State<EditorJSView> {
           items.add(
             Container(
               margin: const EdgeInsets.only(bottom: 10),
-              child: Image.network(globals.apiUrl + element.data!.file!.url!),
+              child: Image.network(globals.url + element.data!.file!.url!),
             ),
           );
           break;

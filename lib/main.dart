@@ -35,7 +35,7 @@ class _SaktanAppState extends State<SaktanApp> {
     bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
 
     setState(() {
-      print('isFirstTime: $isFirstTime');
+      // print('isFirstTime: $isFirstTime');
       _isFirstTime = isFirstTime;
     });
 

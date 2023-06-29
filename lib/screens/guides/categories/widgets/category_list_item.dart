@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saktan_app/screens/guides/categories/categories.dart';
 
-import '../../about_health_chapters_screen.dart';
+import '../../guides_chapters_screen.dart';
 
 class PostListItem extends StatelessWidget {
   const PostListItem({required this.post, super.key});
