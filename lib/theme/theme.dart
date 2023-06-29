@@ -43,7 +43,7 @@ final whiteTheme = ThemeData(
       color: Colors.black87,
     ),
     bodySmall: TextStyle(
-      fontSize: 20.0,
+      fontSize: 17,
       color: Colors.black87,
     ),
     //
