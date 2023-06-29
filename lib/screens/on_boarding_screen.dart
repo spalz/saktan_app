@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import 'about_health/about_health_screen.dart';
+import 'guides/guides.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -82,10 +82,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     const pageDecoration = PageDecoration(
-      imagePadding: EdgeInsets.zero,
-      titlePadding: EdgeInsets.only(top: 10, bottom: 10),
-      bodyPadding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      contentMargin: EdgeInsets.all(0),
+      imagePadding: EdgeInsets.only(top: 100),
+      titlePadding: EdgeInsets.fromLTRB(25, 30, 25, 15),
+      bodyPadding: EdgeInsets.fromLTRB(25, 0, 25, 0),
       pageColor: Colors.white,
+      safeArea: 0,
+      // bodyFlex: 0,
+      // imageFlex: 2,
     );
 
     return IntroductionScreen(
@@ -96,9 +100,9 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       infiniteAutoScroll: false,
       globalFooter: SizedBox(
         width: double.infinity,
-        height: 100,
+        height: 90,
         child: Container(
-          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 50),
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
           child: ElevatedButton(
             style: Theme.of(context).elevatedButtonTheme.style,
             child: const Text(
@@ -110,6 +114,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
+          useScrollView: false,
           titleWidget: _titleWidget(const Color.fromRGBO(60, 105, 220, 1),
               'Здоровье', ': ВИЧ, сексуальность, права'),
           bodyWidget: _bodyWidget(
@@ -118,6 +123,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           decoration: pageDecoration,
         ),
         PageViewModel(
+          useScrollView: false,
           titleWidget: _titleWidget(const Color.fromRGBO(60, 105, 220, 1),
               'Помощь', ': кризисные центры, ссылки'),
           bodyWidget: _bodyWidget(
@@ -126,6 +132,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           decoration: pageDecoration,
         ),
         PageViewModel(
+          useScrollView: false,
           titleWidget: _titleWidget(const Color.fromRGBO(170, 125, 220, 1),
               'Новости', ': события и не только'),
           bodyWidget: _bodyWidget(

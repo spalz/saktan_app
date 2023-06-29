@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class HelpUsefulLinksScreen extends StatefulWidget {
@@ -48,13 +49,18 @@ class _HelpUsefulLinksScreenState extends State<HelpUsefulLinksScreen> {
                   focusColor: Colors.blue[200],
                   splashColor: Colors.blue[200],
                   minVerticalPadding: 22,
-                  title: Text(
-                    "Сексуальное здоровье",
-                    style: theme.textTheme.titleSmall,
+                  title: const AutoSizeText(
+                    "Практическое руководство по реализации комплексных программ по ВИЧ",
+                    style: TextStyle(fontSize: 30),
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    wrapWords: false,
                   ),
                   subtitle: Text(
                     "ВОЗ",
-                    style: theme.textTheme.labelSmall,
+                    style: TextStyle(
+                        fontSize: theme.textTheme.labelSmall!.fontSize!,
+                        color: Colors.blue),
                   ),
                   // onTap: () {
                   //   launchUrl({})

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:saktan_app/screens/help/help_screen.dart';
-import 'package:saktan_app/screens/news/news_list_screen.dart';
+import 'package:saktan_app/screens/help/help.dart';
+import 'package:saktan_app/screens/news/news.dart';
 
 import 'about_health_chapters_screen.dart';
 
