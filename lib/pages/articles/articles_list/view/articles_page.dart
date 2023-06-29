@@ -1,7 +1,9 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart' as http;
 import 'package:saktan_app/globals.dart' as global;
 
 import '../models/article.dart';
@@ -24,49 +26,27 @@ class _ArticlesPageState extends State<ArticlesPage> {
   bool _isLoadMoreRunning = false;
   final List<Article> _posts = <Article>[];
   late ScrollController _controller;
-  late Dio _dio;
 
   @override
   void initState() {
     super.initState();
-    _controller = ScrollController()..addListener(_loadMore);
-    _dio =
-        Dio(BaseOptions(baseUrl: _baseUrl)); // Инициализация Dio с базовым URL
     _firstLoad();
+    _controller = ScrollController()..addListener(_loadMore);
   }
 
   @override
   void dispose() {
     _controller.removeListener(_loadMore);
-    _controller.dispose();
-    _dio.close();
+    _controller.dispose(); // Освобождаем ресурсы
     super.dispose();
   }
 
-  void _fetchArticles() {
-    setState(() {
-      if (_isFirstLoadRunning) {
-        _isFirstLoadRunning = false;
-      } else if (_isLoadMoreRunning) {
-        _isLoadMoreRunning = false;
-      }
-    });
+  void _fetchArticles() async {
+    try {
+      final res = await http.get(Uri.parse(
+          "${Uri.parse("$_baseUrl/api/articles?sort=published:desc&populate[image][fields][0]=url&fields[0]=slug&fields[1]=title&fields[2]=published&locale=ru&pagination[page]=$_page&pagination[pageSize]=$_limit")}"));
 
-    final url = "$_baseUrl/api/articles";
-    final params = {
-      'sort': 'published:desc',
-      'populate[image][fields][0]': 'url',
-      'fields[0]': 'slug',
-      'fields[1]': 'title',
-      'fields[2]': 'description',
-      'fields[3]': 'published',
-      'locale': 'ru',
-      'pagination[page]': _page.toString(),
-      'pagination[pageSize]': _limit.toString(),
-    };
-
-    _dio.get(url, queryParameters: params).then((response) {
-      final fetchedPosts = response.data['data'] as List<dynamic>;
+      final fetchedPosts = json.decode(res.body)['data'] as List<dynamic>;
 
       List<Article> addPosts = fetchedPosts.map((dynamic json) {
         final map = json as Map<String, dynamic>;
@@ -89,9 +69,17 @@ class _ArticlesPageState extends State<ArticlesPage> {
           _hasNextPage = false;
         });
       }
-    }).catchError((error) {
+    } catch (err) {
       if (kDebugMode) {
-        print('Something went wrong: $error');
+        print('Something went wrong!');
+      }
+    }
+
+    setState(() {
+      if (_isFirstLoadRunning) {
+        _isFirstLoadRunning = false;
+      } else if (_isLoadMoreRunning) {
+        _isLoadMoreRunning = false;
       }
     });
   }

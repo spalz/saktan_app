@@ -6,6 +6,7 @@ final class Article extends Equatable {
     required this.slug,
     required this.published,
     required this.title,
+    // required this.description,
     required this.image,
   });
 
@@ -13,8 +14,13 @@ final class Article extends Equatable {
   final String slug;
   final String published;
   final String title;
+  // final String description;
   final String image;
 
   @override
-  List<Object> get props => [id, slug, published, title, image];
+  List<Object> get props => [
+        id, slug, published, title,
+        // description,
+        image
+      ];
 }
