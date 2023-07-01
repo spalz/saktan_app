@@ -1,10 +1,5 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:http/http.dart' as http;
-import 'package:saktan_app/globals.dart' as global;
 import 'package:saktan_app/pages/articles/articles.dart';
 
 class ArticlesPage extends StatefulWidget {
@@ -15,8 +10,6 @@ class ArticlesPage extends StatefulWidget {
 }
 
 class _ArticlesPageState extends State<ArticlesPage> {
-  final _baseUrl = global.urlApi;
-
   int _page = 1;
   final int _limit = 10;
   bool _hasNextPage = true;
@@ -24,54 +17,12 @@ class _ArticlesPageState extends State<ArticlesPage> {
   bool _isLoadMoreRunning = false;
   List<Article> _posts = <Article>[];
 
-  Future<List<Article>> _fetchArticles() async {
-    try {
-      final res = await _getArticlesRequest(_page, _limit);
-      final fetchedPosts = json.decode(res.body)['data'] as List<dynamic>;
-      return fetchedPosts.map((dynamic json) {
-        final map = json as Map<String, dynamic>;
-        final imageMap = map['image'] as Map<String, dynamic>;
-        return Article(
-          id: map['id'] as int,
-          slug: map['slug'] as String,
-          published: map['published'] as String,
-          title: map['title'] as String,
-          description: map['description'] as String,
-          image: '${global.url}${imageMap['url']}',
-        );
-      }).toList();
-    } catch (err) {
-      if (kDebugMode) {
-        print('Something went wrong $err');
-      }
-      return [];
-    }
-  }
-
-  Future<http.Response> _getArticlesRequest(int page, int limit) {
-    final url = "${Uri.parse("$_baseUrl/api/articles")}";
-    final params = {
-      'sort': 'published:desc',
-      'filters[for_saktan][\$eq]': 'true',
-      'populate[image][fields][0]': 'url',
-      'fields[0]': 'slug',
-      'fields[1]': 'title',
-      'fields[2]': 'published',
-      'fields[3]': 'description',
-      'locale': 'ru',
-      'pagination[page]': page.toString(),
-      'pagination[pageSize]': limit.toString(),
-    };
-    final uri = Uri.parse(url).replace(queryParameters: params);
-    return http.get(uri);
-  }
-
   void _firstLoad() async {
     setState(() {
       _isFirstLoadRunning = true;
     });
 
-    final fetchedPosts = await _fetchArticles();
+    final fetchedPosts = await fetchArticlesList(_page, _limit);
     setState(() {
       _posts = fetchedPosts;
     });
@@ -91,7 +42,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
         _page += 1;
       });
 
-      final fetchedPosts = await _fetchArticles();
+      final fetchedPosts = await fetchArticlesList(_page, _limit);
       if (fetchedPosts.isNotEmpty) {
         setState(() {
           _posts.addAll(fetchedPosts);

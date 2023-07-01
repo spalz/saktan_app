@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 import '../../globals.dart' as globals;
 import '../model/editorjs_data.dart';
@@ -17,8 +18,8 @@ class EditorJSView extends StatefulWidget {
 }
 
 class EditorJSViewState extends State<EditorJSView> {
+  Future<void>? launched;
   late EditorJSData dataObject;
-  final List<Widget> items = <Widget>[];
 
   @override
   void initState() {
@@ -29,6 +30,8 @@ class EditorJSViewState extends State<EditorJSView> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> items = <Widget>[];
+    items.clear();
     for (var element in dataObject.blocks!) {
       var levelFontSize =
           FontSize(Theme.of(context).textTheme.headlineSmall!.fontSize!);
@@ -65,6 +68,12 @@ class EditorJSViewState extends State<EditorJSView> {
         case "Header":
           items.add(Html(
             data: element.data!.text,
+            extensions: [
+              TagExtension(
+                tagsToExtend: {"br"},
+                child: const SizedBox(height: 0),
+              ),
+            ],
             style: {
               "body": Style(
                   margin: Margins.only(
@@ -93,6 +102,12 @@ class EditorJSViewState extends State<EditorJSView> {
         case "paragraph":
           items.add(Html(
             data: element.data!.text,
+            extensions: [
+              TagExtension(
+                tagsToExtend: {"br"},
+                child: const SizedBox(height: 0),
+              ),
+            ],
             style: {
               "body": Style(
                   margin: Margins.only(left: 0, top: 0, right: 0, bottom: 15)),
@@ -109,6 +124,9 @@ class EditorJSViewState extends State<EditorJSView> {
                 textDecoration: TextDecoration.none,
               ),
             },
+            onLinkTap: (url, _, __) => setState(() {
+              launched = launchInBrowser(Uri.parse(url!));
+            }),
           ));
           break;
         case "List":
@@ -126,9 +144,23 @@ class EditorJSViewState extends State<EditorJSView> {
                   Expanded(
                     child: Html(
                       data: "$bullet" ". $element",
+                      extensions: [
+                        TagExtension(
+                          tagsToExtend: {"br"},
+                          child: const SizedBox(height: 0),
+                        ),
+                      ],
                       style: {
                         "body": Style(margin: Margins.zero),
+                        "a": Style(
+                          color: const Color.fromRGBO(60, 105, 220, 1),
+                          fontWeight: FontWeight.w700,
+                          textDecoration: TextDecoration.none,
+                        ),
                       },
+                      onLinkTap: (url, _, __) => setState(() {
+                        launched = launchInBrowser(Uri.parse(url!));
+                      }),
                     ),
                   )
                 ]),
@@ -143,9 +175,23 @@ class EditorJSViewState extends State<EditorJSView> {
                     Expanded(
                       child: Html(
                         data: bullet + element,
+                        extensions: [
+                          TagExtension(
+                            tagsToExtend: {"br"},
+                            child: const SizedBox(height: 0),
+                          ),
+                        ],
                         style: {
                           "body": Style(margin: Margins.zero),
+                          "a": Style(
+                            color: const Color.fromRGBO(60, 105, 220, 1),
+                            fontWeight: FontWeight.w700,
+                            textDecoration: TextDecoration.none,
+                          ),
                         },
+                        onLinkTap: (url, _, __) => setState(() {
+                          launched = launchInBrowser(Uri.parse(url!));
+                        }),
                       ),
                     )
                   ],

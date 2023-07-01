@@ -13,7 +13,7 @@ class UsefulLinksPage extends StatefulWidget {
 }
 
 class _UsefulLinksPageState extends State<UsefulLinksPage> {
-  bool _isFirstLoadRunning = false;
+  bool _isLoadRunning = false;
   List<UsefulLinksList> _links = <UsefulLinksList>[];
   Future<void>? launched;
 
@@ -28,7 +28,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
 
   void _firstLoad() async {
     setState(() {
-      _isFirstLoadRunning = true;
+      _isLoadRunning = true;
     });
 
     final fetchedLinks = await fetchUsefulLinks();
@@ -37,7 +37,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
     });
 
     setState(() {
-      _isFirstLoadRunning = false;
+      _isLoadRunning = false;
     });
   }
 
@@ -75,7 +75,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
         length: _links.length,
         child: Column(
           children: <Widget>[
-            if (_isFirstLoadRunning)
+            if (_isLoadRunning)
               const LinearProgressIndicator(
                 backgroundColor: Color.fromRGBO(222, 248, 242, 1),
                 valueColor: AlwaysStoppedAnimation<Color>(
@@ -103,7 +103,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
                       children: _links.map((link) {
                         return GridView.extent(
                             padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 20, bottom: 20),
+                                left: 20, right: 20, top: 20, bottom: 80),
                             maxCrossAxisExtent: 200,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,

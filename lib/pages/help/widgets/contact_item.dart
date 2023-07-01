@@ -28,14 +28,25 @@ class ContactItem extends StatelessWidget {
         minVerticalPadding: 15,
         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         horizontalTitleGap: 20,
-        subtitle: article.descriptionRu != null
-            ? Text(article.descriptionRu!,
-                style: TextStyle(
-                  fontSize: textTheme.labelSmall!.fontSize,
-                  fontWeight: FontWeight.w400,
-                  color: const Color.fromRGBO(51, 51, 51, 1),
-                ))
-            : null,
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (article.descriptionRu != null)
+              Text(article.descriptionRu!,
+                  style: TextStyle(
+                    fontSize: textTheme.labelSmall!.fontSize,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  )),
+            if (article.addressRu != null)
+              Text(article.addressRu,
+                  style: TextStyle(
+                    fontSize: textTheme.labelSmall!.fontSize,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey[700],
+                  ))
+          ],
+        ),
         trailing: trailing,
         onTap: () => showBarModalBottomSheet(
               context: context,
