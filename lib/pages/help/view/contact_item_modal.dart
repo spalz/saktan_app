@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:saktan_app/pages/help/help.dart';
@@ -47,6 +48,7 @@ class ContactItemModalState extends State<ContactItemModal> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Intl.getCurrentLocale();
     final textTheme = Theme.of(context).textTheme;
 
     List<String> coordinateParts = [];
@@ -70,7 +72,9 @@ class ContactItemModalState extends State<ContactItemModal> {
           leadingWidth: 0,
           centerTitle: false,
           title: Text(
-            _contact != null ? _contact!.titleRu : "Загрузка...",
+            _contact != null
+                ? getT(locale, _contact!.titleRu, _contact!.titleKy)
+                : "Загрузка...",
             maxLines: 2,
           ),
           backgroundColor: const Color.fromRGBO(240, 244, 255, 1),
@@ -108,10 +112,15 @@ class ContactItemModalState extends State<ContactItemModal> {
                                   'Помогает с',
                                   style: Theme.of(context).textTheme.labelSmall,
                                 ),
-                                subtitle: Text(_contact!.descriptionRu!),
+                                subtitle: Text(getT(
+                                    locale,
+                                    _contact!.descriptionRu,
+                                    _contact!.descriptionKy)),
                               ),
                             ),
+                          // ignore: unnecessary_null_comparison
                           if (_contact!.addressRu != null ||
+                              // ignore: unnecessary_null_comparison
                               _contact!.addressKy != null)
                             ListTile(
                               title: Text(
@@ -121,14 +130,16 @@ class ContactItemModalState extends State<ContactItemModal> {
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(_contact!.addressRu ?? ''),
+                                  Text(getT(locale, _contact!.addressRu,
+                                      _contact!.addressKy)),
                                   if (_contact!.addressCoordinates != null)
                                     GestureDetector(
                                       onTap: () {
                                         MapsLauncher.launchCoordinates(
                                           latitude,
                                           longitude,
-                                          _contact!.addressRu,
+                                          getT(locale, _contact!.addressRu,
+                                              _contact!.addressKy),
                                         );
                                       },
                                       child: const Text(

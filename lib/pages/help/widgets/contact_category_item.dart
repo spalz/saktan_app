@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 class ContactCategoryItem extends StatelessWidget {
   const ContactCategoryItem({
@@ -11,6 +13,7 @@ class ContactCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Intl.getCurrentLocale();
     final textTheme = Theme.of(context).textTheme;
     return Container(
         padding: const EdgeInsets.only(bottom: 10),
@@ -23,7 +26,7 @@ class ContactCategoryItem extends StatelessWidget {
           splashColor: Colors.blue[200],
           minVerticalPadding: 22,
           title: Text(
-            article.titleRu,
+            getT(locale, article.titleRu, article.titleKy),
             style: textTheme.titleSmall,
           ),
           subtitle: Padding(

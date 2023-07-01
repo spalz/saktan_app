@@ -50,3 +50,11 @@ Future<void> makeEmail(String email) async {
   );
   await launchUrl(launchUri);
 }
+
+String getT(String currentLocale, String? ru, String? ky) {
+  if (currentLocale == "ru") {
+    return ru ?? "";
+  } else {
+    return ky ?? "";
+  }
+}
