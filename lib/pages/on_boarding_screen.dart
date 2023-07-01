@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'guides/guides.dart';
 
@@ -25,6 +26,9 @@ class OnBoardingPageState extends State<OnBoardingPage> {
     // todo: uncommented it
     await Future.delayed(const Duration(seconds: 3));
     FlutterNativeSplash.remove();
+    // set false first time
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isFirstTime', false);
   }
 
   void _onIntroEnd(context) {

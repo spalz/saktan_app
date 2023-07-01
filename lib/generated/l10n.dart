@@ -59,6 +59,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Настройки en`
+  String get settings_title {
+    return Intl.message(
+      'Настройки en',
+      name: 'settings_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `О здоровье`
+  String get bottomNavigationBarGuides {
+    return Intl.message(
+      'О здоровье',
+      name: 'bottomNavigationBarGuides',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -22,7 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "bottomNavigationBarGuides":
+            MessageLookupByLibrary.simpleMessage("О здоровье"),
         "guide_title": MessageLookupByLibrary.simpleMessage(
-            "Справочник по репродуктивному и сексуальному здоровью EN")
+            "Справочник по репродуктивному и сексуальному здоровью EN"),
+        "settings_title": MessageLookupByLibrary.simpleMessage("Настройки en")
       };
 }

@@ -1,4 +1,4 @@
-import './EditorJSBlockFile.dart';
+import 'editorjs_block_file.dart';
 
 class EditorJSBlockData {
   final String? text;

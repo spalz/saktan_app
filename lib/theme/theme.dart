@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final whiteTheme = ThemeData(
+  highlightColor: Colors.transparent,
   primaryColor: const Color.fromRGBO(60, 105, 220, 1),
   scaffoldBackgroundColor: Colors.white,
   colorScheme:
@@ -18,6 +19,9 @@ final whiteTheme = ThemeData(
   ),
   useMaterial3: true,
   fontFamily: "Montserrat",
+  listTileTheme: const ListTileThemeData(
+    tileColor: Colors.transparent,
+  ),
   textTheme: const TextTheme(
     displayLarge: TextStyle(
       fontSize: 20.0,

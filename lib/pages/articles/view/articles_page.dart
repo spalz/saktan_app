@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:saktan_app/globals.dart' as global;
-import 'package:saktan_app/pages/articles/articles_list/articles_list.dart';
+import 'package:saktan_app/pages/articles/articles.dart';
 
 class ArticlesPage extends StatefulWidget {
   const ArticlesPage({Key? key}) : super(key: key);
@@ -125,22 +125,24 @@ class _ArticlesPageState extends State<ArticlesPage> {
 
   @override
   Widget build(BuildContext context) {
-    const String saktanLogoSvg = 'assets/images/logo/indigo.svg';
-    final Widget saktanLogo = SvgPicture.asset(
-      saktanLogoSvg,
+    const String indigoLogoSvg = 'assets/images/logo/indigo.svg';
+    final Widget indigoLogo = SvgPicture.asset(
+      indigoLogoSvg,
       width: 100,
       alignment: Alignment.topLeft,
-      semanticsLabel: 'Saktan',
+      semanticsLabel: 'Indigo',
     );
     return Scaffold(
       appBar: AppBar(
-        title: saktanLogo,
+        titleSpacing: 23,
+        leading: Container(),
+        leadingWidth: 0,
+        title: indigoLogo,
         centerTitle: false,
+        scrolledUnderElevation: 1,
       ),
       body: _isFirstLoadRunning
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? const ArticleListTtemSkeleton()
           : Column(
               children: [
                 Expanded(
@@ -153,14 +155,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
                   ),
                 ),
 
-                // when the _loadMore function is running
-                // if (_isLoadMoreRunning)
-                //   const Padding(
-                //     padding: EdgeInsets.only(top: 10, bottom: 40),
-                //     child: Center(
-                //       child: CircularProgressIndicator(),
-                //     ),
-                //   ),
+                // if (_isLoadMoreRunning) const ArticleListTtemSkeleton(),
               ],
             ),
     );

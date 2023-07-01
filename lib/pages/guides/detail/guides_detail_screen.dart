@@ -44,7 +44,6 @@ class _AboutHealthDetailScreenState extends State<AboutHealthDetailScreen> {
   }
 
   void _scrollToIndex(int index) {
-    debugPrint("itemKey: $index");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.isAttached) {
         _scrollController.scrollTo(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,7 +18,8 @@ void main() {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   WidgetsFlutterBinding.ensureInitialized();
-  // Step 3
+
+  // disable landscape mode
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -27,61 +29,86 @@ void main() {
 class SaktanApp extends StatefulWidget {
   const SaktanApp({Key? key}) : super(key: key);
 
+  static void setLocale(BuildContext context, Locale newLocale) async {
+    _SaktanAppState? state = context.findAncestorStateOfType<_SaktanAppState>();
+
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setString('languageCode', newLocale.languageCode);
+    prefs.setString('countryCode', "");
+
+    // ignore: invalid_use_of_protected_member
+    state?.setState(() {
+      state._locale = newLocale;
+    });
+  }
+
   @override
+  // ignore: library_private_types_in_public_api
   _SaktanAppState createState() => _SaktanAppState();
 }
 
 class _SaktanAppState extends State<SaktanApp> {
   bool _isFirstTime = false;
+  Locale _locale = const Locale('ar', 'tn');
 
   @override
   void initState() {
     super.initState();
+    _fetchLocale().then((locale) {
+      setState(() {
+        _locale = locale;
+      });
+    });
     checkFirstTime();
+  }
+
+  /*
+  To get local from SharedPreferences if exists
+   */
+  Future<Locale> _fetchLocale() async {
+    var prefs = await SharedPreferences.getInstance();
+
+    String languageCode = prefs.getString('languageCode') ?? 'ar';
+    String countryCode = prefs.getString('countryCode') ?? 'tn';
+
+    return Locale(languageCode, countryCode);
   }
 
   Future<void> checkFirstTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
 
+    if (kDebugMode) {
+      print("isFirstTime: $isFirstTime");
+    }
+
     setState(() {
-      // print('isFirstTime: $isFirstTime');
       _isFirstTime = isFirstTime;
     });
-
-    if (!isFirstTime) {
-      // Не первый раз открытия приложения
-      navigateToAboutHealthScreen();
-    }
-  }
-
-  Future<void> navigateToAboutHealthScreen() async {
-    // Задержка для визуализации OnBoardingScreen перед переходом
-    await Future.delayed(const Duration(seconds: 2));
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const CategoriesPage()),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Saktan',
+      locale: _locale,
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      supportedLocales: const [
+        Locale('ru', ''),
+        Locale('ky', ''),
+      ],
       debugShowCheckedModeBanner: false,
       theme: whiteTheme,
       home: _isFirstTime ? const OnBoardingPage() : const CategoriesPage(),
       initialRoute: "/",
       routes: {
         "/health": (final context) => const CategoriesPage(),
-        "/help": (final context) => const HelpScreen(),
+        "/help": (final context) => const ContactCategoryPage(),
         // "/news": (final context) => const NewsList(),
       },
     );

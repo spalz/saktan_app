@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 import '../../globals.dart' as globals;
-import '../model/EditorJSData.dart';
+import '../model/editorjs_data.dart';
 import 'components/youtube_video_player.dart';
 
 class EditorJSView extends StatefulWidget {
@@ -103,6 +103,11 @@ class EditorJSViewState extends State<EditorJSView> {
               "mark": Style(
                   backgroundColor: const Color.fromRGBO(218, 200, 239, 1),
                   fontWeight: FontWeight.w700),
+              "a": Style(
+                color: const Color.fromRGBO(60, 105, 220, 1),
+                fontWeight: FontWeight.w700,
+                textDecoration: TextDecoration.none,
+              ),
             },
           ));
           break;
@@ -158,7 +163,8 @@ class EditorJSViewState extends State<EditorJSView> {
           items.add(
             Container(
               margin: const EdgeInsets.only(bottom: 10),
-              child: Image.network(globals.url + element.data!.file!.url!),
+              child: Image.network(
+                  '${globals.url}${element.data!.file!.url!}?format=webp&width=800&embed'),
             ),
           );
           break;

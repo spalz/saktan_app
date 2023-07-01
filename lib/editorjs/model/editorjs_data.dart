@@ -1,4 +1,4 @@
-import './EditorJSBlock.dart';
+import 'editorjs_block.dart';
 
 class EditorJSData {
   final int? time;

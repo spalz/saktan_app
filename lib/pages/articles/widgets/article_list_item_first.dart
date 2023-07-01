@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:saktan_app/pages/articles/articles_list/articles_list.dart';
+import 'package:saktan_app/pages/articles/articles.dart';
 
 class ArticleListItemFirst extends StatelessWidget {
   const ArticleListItemFirst({
@@ -16,7 +16,7 @@ class ArticleListItemFirst extends StatelessWidget {
     final publishedDate = DateTime.parse(article.published);
     final formattedDate = DateFormat('dd MMM yyyy').format(publishedDate);
     return Card(
-      margin: const EdgeInsets.only(bottom: 25),
+      margin: const EdgeInsets.only(bottom: 0),
       elevation: 0,
       color: Colors.transparent,
       shape: RoundedRectangleBorder(
@@ -24,7 +24,14 @@ class ArticleListItemFirst extends StatelessWidget {
         side: BorderSide.none,
       ),
       child: InkWell(
-        onTap: () {},
+        highlightColor: Colors.transparent,
+        splashColor: const Color.fromRGBO(247, 239, 255, 1),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ArticleDetailPage(
+                    slug: article.slug,
+                  )));
+        },
         child: Padding(
           padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
           child: Column(
@@ -57,7 +64,7 @@ class ArticleListItemFirst extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: textTheme.titleLarge!.fontFamily,
                   fontSize: textTheme.titleLarge!.fontSize,
-                  fontWeight: textTheme.titleLarge!.fontWeight,
+                  fontWeight: FontWeight.w900,
                   height: 1.4,
                 ),
               ),
@@ -73,6 +80,7 @@ class ArticleListItemFirst extends StatelessWidget {
                 formattedDate,
                 style: textTheme.labelSmall,
               ),
+              const SizedBox(height: 8),
             ],
           ),
         ),

@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
-import 'package:saktan_app/pages/articles/articles_list/view/articles_page.dart';
+import 'package:saktan_app/generated/l10n.dart';
+import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/pages/guides/categories/categories.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/pages/settings/view/settings_page.dart';
 
 class CategoriesPage extends StatefulWidget {
   const CategoriesPage({super.key});
@@ -39,6 +41,16 @@ class _CategoriesPageState extends State<CategoriesPage> {
       appBar: AppBar(
         title: saktanLogo,
         centerTitle: false,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Open shopping cart',
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const SettingsPage()));
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(
@@ -56,7 +68,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                     },
                     child: const Icon(Icons.home),
                   ),
-                  const Text('О здоровье'),
+                  Text(S.of(context).bottomNavigationBarGuides),
                 ],
               ),
               Column(
@@ -65,7 +77,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const HelpScreen()));
+                          builder: (context) => const ContactCategoryPage()));
                     },
                     child: const Icon(Icons.explore),
                   ),

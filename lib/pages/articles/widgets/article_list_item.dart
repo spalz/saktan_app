@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:saktan_app/pages/articles/articles_list/articles_list.dart';
+import 'package:saktan_app/pages/articles/articles.dart';
 
 class ArticleListItem extends StatelessWidget {
   const ArticleListItem({
@@ -16,7 +16,6 @@ class ArticleListItem extends StatelessWidget {
     final publishedDate = DateTime.parse(article.published);
     final formattedDate = DateFormat('dd MMM yyyy').format(publishedDate);
     return Card(
-      margin: const EdgeInsets.only(bottom: 14),
       elevation: 0,
       color: Colors.transparent,
       shape: RoundedRectangleBorder(
@@ -24,9 +23,17 @@ class ArticleListItem extends StatelessWidget {
         side: BorderSide.none,
       ),
       child: InkWell(
-        onTap: () {},
+        highlightColor: Colors.transparent,
+        splashColor: const Color.fromRGBO(247, 239, 255, 1),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ArticleDetailPage(
+                    slug: article.slug,
+                  )));
+        },
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding:
+              const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -36,13 +43,14 @@ class ArticleListItem extends StatelessWidget {
                 height: 90,
                 child: Container(
                   decoration: BoxDecoration(
+                    color: Colors.grey[100],
                     border: Border.all(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade200,
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                     child: Image.network(
                       '${article.image}?format=webp&width=250&embed',
                       fit: BoxFit.fitHeight,

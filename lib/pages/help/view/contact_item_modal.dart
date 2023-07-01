@@ -3,14 +3,17 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HelpContactItemModal extends StatefulWidget {
-  const HelpContactItemModal({super.key});
+class ContactItemModal extends StatefulWidget {
+  final int id;
+  const ContactItemModal({super.key, required this.id});
 
   @override
-  State<HelpContactItemModal> createState() => HelpContactItemModalState();
+  State<ContactItemModal> createState() => ContactItemModalState();
 }
 
-class HelpContactItemModalState extends State<HelpContactItemModal> {
+class ContactItemModalState extends State<ContactItemModal> {
+  late final int id = widget.id;
+
   @override
   void initState() {
     super.initState();

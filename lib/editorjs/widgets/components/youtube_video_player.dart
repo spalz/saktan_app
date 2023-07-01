@@ -12,10 +12,10 @@ class YoutubeVideoPlayer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _YoutubeVideoPlayerState createState() => _YoutubeVideoPlayerState();
+  YoutubeVideoPlayerState createState() => YoutubeVideoPlayerState();
 }
 
-class _YoutubeVideoPlayerState extends State<YoutubeVideoPlayer> {
+class YoutubeVideoPlayerState extends State<YoutubeVideoPlayer> {
   late YoutubePlayerController _controller;
 
   @override
