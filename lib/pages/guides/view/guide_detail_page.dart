@@ -39,7 +39,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
       print("scrolling to ${widget.chapterIndex}");
-      // _scrollToIndex(widget.chapterIndex);
+      _scrollToIndex(widget.chapterIndex);
     });
   }
 

@@ -19,19 +19,24 @@ class GuidesListPageState extends State<GuidesListPage> {
   void _firstLoad() async {
     await Future.delayed(const Duration(seconds: 3));
     FlutterNativeSplash.remove();
-    //
-    setState(() {
-      _isLoadRunning = false;
-    });
+    if (mounted) {
+      setState(() {
+        _isLoadRunning = false;
+      });
+    }
 
     final fetchedGuidesList = await fetchGuidesList();
-    setState(() {
-      _categories = fetchedGuidesList;
-    });
+    if (mounted) {
+      setState(() {
+        _categories = fetchedGuidesList;
+      });
+    }
 
-    setState(() {
-      _isLoadRunning = false;
-    });
+    if (mounted) {
+      setState(() {
+        _isLoadRunning = false;
+      });
+    }
   }
 
   @override
