@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:saktan_app/editorjs/widgets/view.dart';
+import 'package:saktan_app/pages/guides/guides.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
-class AboutHealthDetailScreen extends StatefulWidget {
-  final int initialIndex; //поле для хранения индекса
-  final String slug; //поле для хранения индекса
+class GuideDetailPage extends StatefulWidget {
+  final int chapterIndex;
+  final GuideDetail guide;
 
-  const AboutHealthDetailScreen(
-      {Key? key, required this.initialIndex, required this.slug})
+  const GuideDetailPage(
+      {Key? key, required this.chapterIndex, required this.guide})
       : super(key: key);
 
   @override
-  State<AboutHealthDetailScreen> createState() =>
-      _AboutHealthDetailScreenState();
+  State<GuideDetailPage> createState() => _GuideDetailPageState();
 }
 
-class _AboutHealthDetailScreenState extends State<AboutHealthDetailScreen> {
+class _GuideDetailPageState extends State<GuideDetailPage> {
   late ItemScrollController _scrollController;
   EditorJSView? editorJSView;
   Map<int, GlobalKey> itemKeys = {};
@@ -38,7 +38,8 @@ class _AboutHealthDetailScreenState extends State<AboutHealthDetailScreen> {
     });
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      _scrollToIndex(widget.initialIndex);
+      print("scrolling to ${widget.chapterIndex}");
+      // _scrollToIndex(widget.chapterIndex);
     });
   }
 

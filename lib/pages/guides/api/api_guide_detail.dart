@@ -10,7 +10,7 @@ Future<GuideDetail> fetchGuideDetail(int id) async {
 
     final map = fetchedCategories as Map<String, dynamic>;
 
-    final guideChapters = map['phones'] as List<dynamic>;
+    final guideChapters = map['chapters'] as List<dynamic>;
     final List<Chapter> chapters = guideChapters.map((dynamic linkJson) {
       final chapterMap = linkJson as Map<String, dynamic>;
       return Chapter(
@@ -29,7 +29,7 @@ Future<GuideDetail> fetchGuideDetail(int id) async {
       titleRu: map['title__ru'] as String,
       titleKy: map['title__ky'] as String,
       descriptionRu: map['description__ru'] as String,
-      descriptionKy: map['address__ky'] as String,
+      descriptionKy: map['description__ky'] as String,
       chapters: chapters,
     );
   } catch (err) {
