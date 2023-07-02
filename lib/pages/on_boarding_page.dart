@@ -2,9 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:saktan_app/pages/guides/guides.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'guides/guides.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -33,7 +32,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const CategoriesPage()),
+      MaterialPageRoute(builder: (_) => const GuidesListPage()),
     );
   }
 

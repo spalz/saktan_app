@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:saktan_app/editorjs/widgets/view.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
-
-import '../../../editorjs/widgets/view.dart';
 
 class AboutHealthDetailScreen extends StatefulWidget {
   final int initialIndex; //поле для хранения индекса

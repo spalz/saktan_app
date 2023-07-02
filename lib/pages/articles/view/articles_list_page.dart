@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
 
-class ArticlesPage extends StatefulWidget {
-  const ArticlesPage({Key? key}) : super(key: key);
+class ArticlesListPage extends StatefulWidget {
+  const ArticlesListPage({Key? key}) : super(key: key);
 
   @override
-  State<ArticlesPage> createState() => _ArticlesPageState();
+  State<ArticlesListPage> createState() => _ArticlesListPageState();
 }
 
-class _ArticlesPageState extends State<ArticlesPage> {
+class _ArticlesListPageState extends State<ArticlesListPage> {
   int _page = 1;
   final int _limit = 10;
   bool _hasNextPage = true;
@@ -28,7 +28,11 @@ class _ArticlesPageState extends State<ArticlesPage> {
     });
 
     setState(() {
-      _isFirstLoadRunning = false;
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          _isFirstLoadRunning = false;
+        });
+      });
     });
   }
 
@@ -98,6 +102,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
               children: [
                 Expanded(
                   child: ListView.builder(
+                    padding: const EdgeInsets.only(bottom: 60),
                     controller: _controller,
                     itemCount: _posts.length,
                     itemBuilder: (_, index) => index == 0
@@ -105,8 +110,6 @@ class _ArticlesPageState extends State<ArticlesPage> {
                         : ArticleListItem(article: _posts[index]),
                   ),
                 ),
-
-                // if (_isLoadMoreRunning) const ArticleListTtemSkeleton(),
               ],
             ),
     );

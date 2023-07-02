@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:saktan_app/pages/guides/guides.dart';
 
-import '../detail/guides_detail_screen.dart';
+class ChaptersListPage extends StatelessWidget {
+  final int id;
 
-class AboutHealthChapters extends StatelessWidget {
-  final String slug;
-
-  const AboutHealthChapters({super.key, required this.slug});
+  const ChaptersListPage({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {

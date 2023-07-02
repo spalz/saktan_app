@@ -112,6 +112,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                           const SizedBox(height: 10),
                           Text(_post!.description),
                           EditorJSView(editorJSData: _post!.bodyRu),
+                          const SizedBox(height: 80),
                         ],
                       )
                     : const SizedBox(),

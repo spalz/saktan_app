@@ -4,11 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:saktan_app/generated/l10n.dart';
-//
+// import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
-import 'package:saktan_app/pages/help/help.dart';
-// import 'package:saktan_app/pages/news/news.dart';
-import 'package:saktan_app/pages/on_boarding_screen.dart';
+// import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/pages/on_boarding_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'theme/theme.dart';
@@ -104,13 +103,13 @@ class _SaktanAppState extends State<SaktanApp> {
       ],
       debugShowCheckedModeBanner: false,
       theme: whiteTheme,
-      home: _isFirstTime ? const OnBoardingPage() : const CategoriesPage(),
+      home: _isFirstTime ? const OnBoardingPage() : const GuidesListPage(),
       initialRoute: "/",
-      routes: {
-        "/health": (final context) => const CategoriesPage(),
-        "/help": (final context) => const ContactCategoryPage(),
-        // "/news": (final context) => const NewsList(),
-      },
+      // routes: {
+      //   "/health": (final context) => const GuidesListPage(),
+      //   "/help": (final context) => const ContactCategoryPage(),
+      //   "/news": (final context) => const ArticlesListPage(),
+      // },
     );
   }
 }
