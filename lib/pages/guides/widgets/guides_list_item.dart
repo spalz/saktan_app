@@ -36,7 +36,9 @@ class GuidesListItem extends StatelessWidget {
           dense: true,
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ChaptersListPage(id: guide.id)));
+                builder: (context) => ChaptersListPage(
+                    id: guide.id,
+                    title: getT(locale, guide.titleRu, guide.titleKy))));
           },
         ));
   }

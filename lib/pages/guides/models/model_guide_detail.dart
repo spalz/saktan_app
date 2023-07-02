@@ -5,6 +5,7 @@ class GuideDetail extends Equatable {
     required this.id,
     required this.slug,
     required this.published,
+    required this.image,
     required this.titleRu,
     required this.titleKy,
     required this.descriptionRu,
@@ -15,6 +16,7 @@ class GuideDetail extends Equatable {
   final int id;
   final String slug;
   final String published;
+  final String image;
   final String titleRu;
   final String titleKy;
   final String descriptionRu;

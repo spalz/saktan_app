@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:intl/intl.dart';
 import 'package:saktan_app/editorjs/widgets/view.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
+import 'package:saktan_app/utils/utils.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class GuideDetailPage extends StatefulWidget {
   final int chapterIndex;
@@ -21,6 +22,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
   late ItemScrollController _scrollController;
   EditorJSView? editorJSView;
   Map<int, GlobalKey> itemKeys = {};
+  late final GuideDetail _guide = widget.guide;
 
   @override
   void initState() {
@@ -58,10 +60,11 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Intl.getCurrentLocale();
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Секс и сексуальность'),
+        title: Text(getT(locale, _guide.titleRu, _guide.titleKy)),
         backgroundColor: theme.primaryColor,
         iconTheme: const IconThemeData(color: Colors.white), // add this line
         titleTextStyle: const TextStyle(
@@ -72,7 +75,7 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
       ),
       body: SelectionArea(
         child: ScrollablePositionedList.builder(
-          itemCount: 10,
+          itemCount: _guide.chapters.length + 1,
           itemScrollController: _scrollController,
           itemBuilder: (context, index) {
             final GlobalKey itemKey = GlobalKey();
@@ -84,51 +87,38 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    const Text(
-                      'title',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    AspectRatio(
+                      aspectRatio: 1.0,
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.grey[100],
+                            border: Border.all(
+                              color: Colors.grey.shade200,
+                            ),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.network(
+                              '${_guide.image}?format=webp&width=800&embed',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 10),
                     editorJSView ?? const Text("Please wait..."),
                   ],
                 ),
               );
             }
 
-            return StickyHeader(
-              key: itemKey,
-              header: Container(
-                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                color: Colors.white,
-                child: Container(
-                  height: 80.0,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: theme.primaryColorLight,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.all(15),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          '$index. Презервативы как метод тройной защиты',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                          overflow: TextOverflow.visible,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              content: Container(
-                padding: const EdgeInsets.only(
-                    top: 20, left: 20, right: 20, bottom: 20),
-                child: editorJSView ?? const Text("Please wait..."),
-              ),
-            );
+            return GuidesDetailChaptersListItem(
+                itemKey: itemKey,
+                index: index,
+                chapter: _guide.chapters[index - 1]);
           },
         ),
       ),

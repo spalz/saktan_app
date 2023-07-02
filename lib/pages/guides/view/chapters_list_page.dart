@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
-import 'package:saktan_app/utils/utils.dart';
 
 class ChaptersListPage extends StatefulWidget {
   final int id;
+  final String title;
 
-  const ChaptersListPage({Key? key, required this.id}) : super(key: key);
+  const ChaptersListPage({Key? key, required this.id, required this.title})
+      : super(key: key);
 
   @override
   State<ChaptersListPage> createState() => ChaptersListPageState();
@@ -17,6 +18,7 @@ class ChaptersListPageState extends State<ChaptersListPage> {
   GuideDetail? _guide;
 
   late final int id = widget.id;
+  late final String title = widget.title;
 
   void _firstLoad() async {
     try {
@@ -52,9 +54,7 @@ class ChaptersListPageState extends State<ChaptersListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _guide != null
-              ? getT(locale, _guide!.titleRu, _guide!.titleKy)
-              : "Загрузка...",
+          title,
         ),
         backgroundColor: theme.primaryColor,
         iconTheme: const IconThemeData(color: Colors.white), // add this line

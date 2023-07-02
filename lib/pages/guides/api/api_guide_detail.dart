@@ -22,10 +22,12 @@ Future<GuideDetail> fetchGuideDetail(int id) async {
       );
     }).toList();
 
+    final imageMap = map['image'] as Map<String, dynamic>;
     return GuideDetail(
       id: map['id'] as int,
       slug: map['slug'] as String,
       published: map['published'] as String,
+      image: '$baseUrl${imageMap['url']}',
       titleRu: map['title__ru'] as String,
       titleKy: map['title__ky'] as String,
       descriptionRu: map['description__ru'] as String,

@@ -38,14 +38,14 @@ class GuidesChaptersListItem extends StatelessWidget {
           splashColor: Colors.blue[200],
           minVerticalPadding: 10,
           title: Text(
-            "${index + 1}. ${getT(locale, chapter.titleRu, chapter.titleKy)}",
+            "$index. ${getT(locale, chapter.titleRu, chapter.titleKy)}",
             style: theme.textTheme.bodyMedium,
           ),
           trailing: trailing,
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => GuideDetailPage(
-                      chapterIndex: index + 1,
+                      chapterIndex: index,
                       guide: guide,
                     )));
           },
