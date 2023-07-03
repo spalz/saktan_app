@@ -39,7 +39,7 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  '$index. ${getT(locale, chapter.titleRu, chapter.titleKy)}',
+                  getT(locale, chapter.titleRu, chapter.titleKy),
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   overflow: TextOverflow.visible,
                 ),

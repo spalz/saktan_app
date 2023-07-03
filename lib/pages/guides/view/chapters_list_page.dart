@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
+import 'package:saktan_app/utils/app_bar.dart';
 
 class ChaptersListPage extends StatefulWidget {
   final int id;
@@ -27,10 +27,12 @@ class ChaptersListPageState extends State<ChaptersListPage> {
       });
 
       final fetchedPost = await fetchGuideDetail(id);
-      setState(() {
-        _guide = fetchedPost;
-        _isLoadRunning = false;
-      });
+      if (mounted) {
+        setState(() {
+          _guide = fetchedPost;
+          _isLoadRunning = false;
+        });
+      }
     } catch (err) {
       // Handle the error, show an error message, etc.
     }
@@ -49,20 +51,14 @@ class ChaptersListPageState extends State<ChaptersListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final locale = Intl.getCurrentLocale();
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          title,
-        ),
+      appBar: CustomAppBar(
+        title: title,
         backgroundColor: theme.primaryColor,
-        iconTheme: const IconThemeData(color: Colors.white), // add this line
-        titleTextStyle: const TextStyle(
-            fontFamily: "Montserrat",
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
+        actionsIconTheme: Colors.white,
+        settings: false,
       ),
       body: Container(
         padding:

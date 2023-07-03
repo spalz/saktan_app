@@ -22,10 +22,58 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "bottomNavigationBarGuides":
-            MessageLookupByLibrary.simpleMessage("О здоровье"),
-        "guide_title": MessageLookupByLibrary.simpleMessage(
+        "contactItemModalLabelAddress":
+            MessageLookupByLibrary.simpleMessage("Адрес"),
+        "contactItemModalLabelContacts":
+            MessageLookupByLibrary.simpleMessage("Контакты"),
+        "contactItemModalLabelDescription":
+            MessageLookupByLibrary.simpleMessage("Помогает с"),
+        "contactItemModalLabelOpenMap":
+            MessageLookupByLibrary.simpleMessage("Открыть карту"),
+        "helpCategoriesTitle": MessageLookupByLibrary.simpleMessage("Контакты"),
+        "helpDidntFindHelp":
+            MessageLookupByLibrary.simpleMessage("Запросить помощь"),
+        "helpDidntFindTitle":
+            MessageLookupByLibrary.simpleMessage("Не нашли что что искали?"),
+        "helpDidntFindUsefulllinks":
+            MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
+        "navigationArticles": MessageLookupByLibrary.simpleMessage("Новости"),
+        "navigationGuides": MessageLookupByLibrary.simpleMessage("О здоровье"),
+        "navigationHelp": MessageLookupByLibrary.simpleMessage("Помощь"),
+        "onBoardingButtonToBegin":
+            MessageLookupByLibrary.simpleMessage("Начать"),
+        "onBoardingOneDesc": MessageLookupByLibrary.simpleMessage(
+            "Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере."),
+        "onBoardingOneTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Здоровье"),
+        "onBoardingOneTtitlePart2":
+            MessageLookupByLibrary.simpleMessage(": ВИЧ, сексуальность, права"),
+        "onBoardingThreeDesc": MessageLookupByLibrary.simpleMessage(
+            "Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений."),
+        "onBoardingThreeTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Новости"),
+        "onBoardingThreeTtitlePart2":
+            MessageLookupByLibrary.simpleMessage(": события и не только"),
+        "onBoardingTwoDesc": MessageLookupByLibrary.simpleMessage(
+            "В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки."),
+        "onBoardingTwoTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Помощь"),
+        "onBoardingTwoTtitlePart2":
+            MessageLookupByLibrary.simpleMessage(": кризисные центры, ссылки"),
+        "settingsAbout": MessageLookupByLibrary.simpleMessage("О приложении"),
+        "settingsAboutApp":
+            MessageLookupByLibrary.simpleMessage("О приложении"),
+        "settingsLangTitle": MessageLookupByLibrary.simpleMessage("Язык"),
+        "settingsLangTitleKy":
+            MessageLookupByLibrary.simpleMessage("Кыргызский"),
+        "settingsLangTitleRu": MessageLookupByLibrary.simpleMessage("Русский"),
+        "settingsPrivacyPolice":
+            MessageLookupByLibrary.simpleMessage("Пользовательское соглашение"),
+        "titleLoading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
+        "usefullLinksTitle":
+            MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
+        "guideTitle": MessageLookupByLibrary.simpleMessage(
             "Справочник по репродуктивному и сексуальному здоровью"),
-        "settings_title": MessageLookupByLibrary.simpleMessage("Настройки")
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки")
       };
 }

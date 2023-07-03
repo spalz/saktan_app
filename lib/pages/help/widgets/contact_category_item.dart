@@ -38,7 +38,9 @@ class ContactCategoryItem extends StatelessWidget {
           // trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ContactsListPage(slug: article.slug)));
+                builder: (context) => ContactsListPage(
+                    slug: article.slug,
+                    title: getT(locale, article.titleRu, article.titleKy))));
           },
         ));
   }

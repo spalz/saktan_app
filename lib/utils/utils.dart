@@ -1,6 +1,8 @@
 import 'package:saktan_app/globals.dart' as global;
 import 'package:url_launcher/url_launcher.dart';
 
+export 'app_bar.dart';
+
 final baseUrl = global.urlApi;
 
 String cleanPhoneNumber(String phoneNumber) {

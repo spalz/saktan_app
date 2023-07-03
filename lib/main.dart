@@ -7,8 +7,8 @@ import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/pages/main_navigation_screen.dart';
 import 'package:saktan_app/pages/on_boarding_page.dart';
-import 'package:saktan_app/pages/settings/view/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'theme/theme.dart';
@@ -104,13 +104,12 @@ class _SaktanAppState extends State<SaktanApp> {
       ],
       debugShowCheckedModeBanner: false,
       theme: whiteTheme,
-      home: _isFirstTime ? const OnBoardingPage() : const GuidesListPage(),
+      home: _isFirstTime ? const OnBoardingPage() : const MainNavigationPage(),
       initialRoute: "/",
       routes: {
-        "/health": (final context) => const GuidesListPage(),
-        "/help": (final context) => const ContactCategoryPage(),
-        "/news": (final context) => const ArticlesListPage(),
-        "/settings": (final context) => const SettingsPage(),
+        "/guides": (final context) => const GuidesListPage(),
+        "/help": (final context) => const ContactCategoriesPage(),
+        "/articles": (final context) => const ArticlesListPage(),
       },
     );
   }

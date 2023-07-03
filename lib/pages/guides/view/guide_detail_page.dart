@@ -40,7 +40,6 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
     });
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      print("scrolling to ${widget.chapterIndex}");
       _scrollToIndex(widget.chapterIndex);
     });
   }
@@ -63,62 +62,60 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
     final locale = Intl.getCurrentLocale();
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(getT(locale, _guide.titleRu, _guide.titleKy)),
+      appBar: CustomAppBar(
+        title: getT(locale, _guide.titleRu, _guide.titleKy),
         backgroundColor: theme.primaryColor,
-        iconTheme: const IconThemeData(color: Colors.white), // add this line
-        titleTextStyle: const TextStyle(
-            fontFamily: "Montserrat",
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
+        actionsIconTheme: Colors.white,
+        centerTitle: true,
+        settings: false,
       ),
       body: SelectionArea(
         child: ScrollablePositionedList.builder(
-          itemCount: _guide.chapters.length + 1,
+          itemCount: _guide.chapters.length,
           itemScrollController: _scrollController,
           itemBuilder: (context, index) {
             final GlobalKey itemKey = GlobalKey();
             itemKeys[index] = itemKey;
 
-            if (index == 0) {
-              // Render the title widget for the first item
-              return Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    AspectRatio(
-                      aspectRatio: 1.0,
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey[100],
-                            border: Border.all(
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.network(
-                              '${_guide.image}?format=webp&width=800&embed',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    editorJSView ?? const Text("Please wait..."),
-                  ],
-                ),
-              );
-            }
+            // if (index == 0) {
+            //   // Render the title widget for the first item
+            //   return Container(
+            //     padding: const EdgeInsets.all(20),
+            //     child: Column(
+            //       children: [
+            //         AspectRatio(
+            //           aspectRatio: 1.0,
+            //           child: SizedBox(
+            //             width: double.infinity,
+            //             child: Container(
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 color: Colors.grey[100],
+            //                 border: Border.all(
+            //                   color: Colors.grey.shade200,
+            //                 ),
+            //               ),
+            //               child: ClipRRect(
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 child: Image.network(
+            //                   '${_guide.image}?format=webp&width=800&embed',
+            //                   fit: BoxFit.cover,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         editorJSView ?? const Text("Please wait..."),
+            //       ],
+            //     ),
+            //   );
+            // }
 
             return GuidesDetailChaptersListItem(
                 itemKey: itemKey,
                 index: index,
-                chapter: _guide.chapters[index - 1]);
+                chapter: _guide.chapters[index]);
           },
         ),
       ),

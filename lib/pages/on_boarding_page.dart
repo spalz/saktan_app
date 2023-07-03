@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:saktan_app/pages/guides/guides.dart';
+import 'package:saktan_app/generated/l10n.dart';
+import 'package:saktan_app/pages/main_navigation_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -32,7 +33,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const GuidesListPage()),
+      MaterialPageRoute(builder: (_) => const MainNavigationPage()),
     );
   }
 
@@ -108,8 +109,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
           child: ElevatedButton(
             style: Theme.of(context).elevatedButtonTheme.style,
-            child: const Text(
-              'Начать',
+            child: Text(
+              S.of(context).onBoardingButtonToBegin,
             ),
             onPressed: () => _onIntroEnd(context),
           ),
@@ -118,28 +119,31 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       pages: [
         PageViewModel(
           useScrollView: false,
-          titleWidget: _titleWidget(const Color.fromRGBO(60, 105, 220, 1),
-              'Здоровье', ': ВИЧ, сексуальность, права'),
-          bodyWidget: _bodyWidget(
-              "Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере."),
+          titleWidget: _titleWidget(
+              const Color.fromRGBO(60, 105, 220, 1),
+              S.of(context).onBoardingOneTtitlePart1,
+              S.of(context).onBoardingOneTtitlePart2),
+          bodyWidget: _bodyWidget(S.of(context).onBoardingOneDesc),
           image: _buildImage('image_01.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           useScrollView: false,
-          titleWidget: _titleWidget(const Color.fromRGBO(60, 105, 220, 1),
-              'Помощь', ': кризисные центры, ссылки'),
-          bodyWidget: _bodyWidget(
-              "В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки."),
+          titleWidget: _titleWidget(
+              const Color.fromRGBO(60, 105, 220, 1),
+              S.of(context).onBoardingTwoTtitlePart1,
+              S.of(context).onBoardingTwoTtitlePart2),
+          bodyWidget: _bodyWidget(S.of(context).onBoardingTwoDesc),
           image: _buildImage('image_02.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           useScrollView: false,
-          titleWidget: _titleWidget(const Color.fromRGBO(170, 125, 220, 1),
-              'Новости', ': события и не только'),
-          bodyWidget: _bodyWidget(
-              "Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений."),
+          titleWidget: _titleWidget(
+              const Color.fromRGBO(170, 125, 220, 1),
+              S.of(context).onBoardingThreeTtitlePart1,
+              S.of(context).onBoardingThreeTtitlePart2),
+          bodyWidget: _bodyWidget(S.of(context).onBoardingThreeDesc),
           image: _buildImage('image_03.png'),
           decoration: pageDecoration,
         ),

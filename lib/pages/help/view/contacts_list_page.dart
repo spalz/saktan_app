@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 class ContactsListPage extends StatefulWidget {
   final String slug;
-  const ContactsListPage({Key? key, required this.slug}) : super(key: key);
+  final String title;
+  const ContactsListPage({Key? key, required this.slug, required this.title})
+      : super(key: key);
 
   @override
   State<ContactsListPage> createState() => ContacstPageState();
@@ -44,17 +46,15 @@ class ContacstPageState extends State<ContactsListPage> {
 
   @override
   Widget build(BuildContext context) {
-    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
-    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
-        width: 100, alignment: Alignment.topLeft, semanticsLabel: 'Saktan');
+    final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 23,
-        leading: Container(),
-        leadingWidth: 0,
-        title: saktanLogo,
-        centerTitle: false,
-        scrolledUnderElevation: 1,
+      appBar: CustomAppBar(
+        title: widget.title,
+        centerTitle: true,
+        backgroundColor: theme.primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
+        actionsIconTheme: Colors.white,
+        settings: false,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -72,8 +72,9 @@ class ContacstPageState extends State<ContactsListPage> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _contacts.length,
-                      itemBuilder: (_, index) =>
-                          ContactItem(article: _contacts[index]),
+                      itemBuilder: (_, index) => ContactItem(
+                        article: _contacts[index],
+                      ),
                     ),
                   ],
                 ),

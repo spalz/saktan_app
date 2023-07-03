@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
-import 'package:saktan_app/pages/settings/view/view.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 class GuidesListPage extends StatefulWidget {
   const GuidesListPage({Key? key}) : super(key: key);
@@ -17,23 +16,13 @@ class GuidesListPageState extends State<GuidesListPage> {
   List<GuidesList> _categories = <GuidesList>[];
 
   void _firstLoad() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     FlutterNativeSplash.remove();
-    if (mounted) {
-      setState(() {
-        _isLoadRunning = false;
-      });
-    }
-
+    //
     final fetchedGuidesList = await fetchGuidesList();
     if (mounted) {
       setState(() {
         _categories = fetchedGuidesList;
-      });
-    }
-
-    if (mounted) {
-      setState(() {
         _isLoadRunning = false;
       });
     }
@@ -53,37 +42,8 @@ class GuidesListPageState extends State<GuidesListPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
-    const String settingsIconSvg = 'assets/images/icons/action_settings.svg';
-    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
-        width: 100,
-        alignment: Alignment.topLeft,
-        // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        semanticsLabel: 'Saktan');
-    final Widget settingsIcon = SvgPicture.asset(settingsIconSvg, width: 28);
     return Scaffold(
-      appBar: AppBar(
-          titleSpacing: 23,
-          leading: Container(),
-          leadingWidth: 0,
-          title: saktanLogo,
-          centerTitle: false,
-          scrolledUnderElevation: 1,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      settings: const RouteSettings(name: '/settings'),
-                      builder: (context) => const SettingsPage()));
-                },
-                icon: Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: settingsIcon,
-                )),
-          ],
-          actionsIconTheme: IconThemeData(
-            color: theme.primaryColor,
-          )),
+      appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -104,7 +64,7 @@ class GuidesListPageState extends State<GuidesListPage> {
                       color: Colors.white,
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Text(
-                        S.of(context).guide_title,
+                        S.of(context).guideTitle,
                         style: theme.textTheme.bodyLarge,
                       ),
                     ),

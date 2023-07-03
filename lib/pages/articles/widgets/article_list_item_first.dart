@@ -30,6 +30,7 @@ class ArticleListItemFirst extends StatelessWidget {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => ArticleDetailPage(
                     slug: article.slug,
+                    title: article.title,
                   )));
         },
         child: Padding(

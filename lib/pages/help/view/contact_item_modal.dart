@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
 
 class ContactItemModal extends StatefulWidget {
   final int id;
-  const ContactItemModal({Key? key, required this.id}) : super(key: key);
+  final String title;
+  const ContactItemModal({Key? key, required this.id, required this.title})
+      : super(key: key);
 
   @override
   State<ContactItemModal> createState() => ContactItemModalState();
@@ -72,9 +75,7 @@ class ContactItemModalState extends State<ContactItemModal> {
           leadingWidth: 0,
           centerTitle: false,
           title: Text(
-            _contact != null
-                ? getT(locale, _contact!.titleRu, _contact!.titleKy)
-                : "Загрузка...",
+            widget.title,
             maxLines: 2,
           ),
           backgroundColor: const Color.fromRGBO(240, 244, 255, 1),
@@ -109,7 +110,9 @@ class ContactItemModalState extends State<ContactItemModal> {
                                   const EdgeInsets.symmetric(vertical: 8.0),
                               child: ListTile(
                                 title: Text(
-                                  'Помогает с',
+                                  S
+                                      .of(context)
+                                      .contactItemModalLabelDescription,
                                   style: Theme.of(context).textTheme.labelSmall,
                                 ),
                                 subtitle: Text(getT(
@@ -124,7 +127,7 @@ class ContactItemModalState extends State<ContactItemModal> {
                               _contact!.addressKy != null)
                             ListTile(
                               title: Text(
-                                'Адрес',
+                                S.of(context).contactItemModalLabelAddress,
                                 style: Theme.of(context).textTheme.labelSmall,
                               ),
                               subtitle: Column(
@@ -142,9 +145,11 @@ class ContactItemModalState extends State<ContactItemModal> {
                                               _contact!.addressKy),
                                         );
                                       },
-                                      child: const Text(
-                                        'Открыть карту',
-                                        style: TextStyle(
+                                      child: Text(
+                                        S
+                                            .of(context)
+                                            .contactItemModalLabelOpenMap,
+                                        style: const TextStyle(
                                           color:
                                               Color.fromRGBO(60, 105, 220, 1),
                                           fontWeight: FontWeight.w600,
@@ -156,7 +161,7 @@ class ContactItemModalState extends State<ContactItemModal> {
                             ),
                           ListTile(
                             title: Text(
-                              'Контакты',
+                              S.of(context).contactItemModalLabelContacts,
                               style: Theme.of(context).textTheme.labelSmall,
                             ),
                             subtitle: Column(

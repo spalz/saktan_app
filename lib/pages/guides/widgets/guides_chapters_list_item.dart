@@ -38,7 +38,7 @@ class GuidesChaptersListItem extends StatelessWidget {
           splashColor: Colors.blue[200],
           minVerticalPadding: 10,
           title: Text(
-            "$index. ${getT(locale, chapter.titleRu, chapter.titleKy)}",
+            getT(locale, chapter.titleRu, chapter.titleKy),
             style: theme.textTheme.bodyMedium,
           ),
           trailing: trailing,

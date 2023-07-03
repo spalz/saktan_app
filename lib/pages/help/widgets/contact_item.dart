@@ -42,7 +42,7 @@ class ContactItem extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: Colors.black87,
                   )),
-            if (article.addressRu != null)
+            if (article.addressRu.isNotEmpty)
               Text(getT(locale, article.addressRu, article.addressKy),
                   style: TextStyle(
                     fontSize: textTheme.labelSmall!.fontSize,
@@ -54,7 +54,9 @@ class ContactItem extends StatelessWidget {
         trailing: trailing,
         onTap: () => showBarModalBottomSheet(
               context: context,
-              builder: (context) => ContactItemModal(id: article.id),
+              builder: (context) => ContactItemModal(
+                  id: article.id,
+                  title: getT(locale, article.titleRu, article.titleKy)),
             ));
   }
 }

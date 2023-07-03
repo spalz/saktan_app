@@ -2,7 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/utils/app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UsefulLinksPage extends StatefulWidget {
@@ -60,16 +62,13 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Полезные ссылки'),
+      appBar: CustomAppBar(
+        title: S.of(context).usefullLinksTitle,
+        centerTitle: true,
         backgroundColor: theme.primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),
-        titleTextStyle: const TextStyle(
-          fontFamily: "Montserrat",
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          color: Colors.white,
-        ),
+        actionsIconTheme: Colors.white,
+        settings: false,
       ),
       body: DefaultTabController(
         length: _links.length,

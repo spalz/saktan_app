@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:saktan_app/editorjs/editorjs.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
+import 'package:saktan_app/utils/app_bar.dart';
 
 class ArticleDetailPage extends StatefulWidget {
   final String slug;
-  const ArticleDetailPage({Key? key, required this.slug}) : super(key: key);
+  final String title;
+  const ArticleDetailPage({Key? key, required this.slug, required this.title})
+      : super(key: key);
 
   @override
   State<ArticleDetailPage> createState() => _ArticleDetailPageState();
@@ -48,22 +51,13 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
+        title: widget.title,
+        centerTitle: true,
         backgroundColor: const Color.fromRGBO(170, 125, 220, 1),
-        iconTheme: const IconThemeData(color: Colors.white), // add this line
-        titleSpacing: 10,
-        title: _post != null
-            ? Text(
-                _post!.title,
-              )
-            : const Text("Загрузка..."),
-        // centerTitle: false,
-        scrolledUnderElevation: 1,
-        titleTextStyle: const TextStyle(
-            fontFamily: "Montserrat",
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
+        actionsIconTheme: Colors.white,
+        settings: false,
       ),
       body: SingleChildScrollView(
         child: Container(

@@ -2,8 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:saktan_app/generated/l10n.dart';
-
-import '../../../main.dart';
+import 'package:saktan_app/main.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -32,27 +31,27 @@ class SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).settings_title),
+        title: Text(S.of(context).settingsTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           ListTile(
-            title: const Text('О приложении'),
+            title: Text(S.of(context).settingsAbout),
             onTap: () {
               // Обработка нажатия на ссылку "О приложении"
               // Здесь можно добавить соответствующую логику
             },
           ),
           ListTile(
-            title: const Text('Пользовательское соглашение'),
+            title: Text(S.of(context).settingsPrivacyPolice),
             onTap: () {
               // Обработка нажатия на ссылку "Пользовательское соглашение"
               // Здесь можно добавить соответствующую логику
             },
           ),
           ListTile(
-            title: const Text('Язык'),
+            title: Text(S.of(context).settingsLangTitle),
             trailing: DropdownButton<String>(
               value: _currentLanguage,
               onChanged: (String? newValue) {
@@ -60,14 +59,14 @@ class SettingsPageState extends State<SettingsPage> {
                   _changeLanguage(newValue);
                 }
               },
-              items: const [
+              items: [
                 DropdownMenuItem(
                   value: 'ru',
-                  child: Text('Русский'),
+                  child: Text(S.of(context).settingsLangTitleRu),
                 ),
                 DropdownMenuItem(
                   value: 'ky',
-                  child: Text('Кыргызский'),
+                  child: Text(S.of(context).settingsLangTitleKy),
                 ),
               ],
             ),

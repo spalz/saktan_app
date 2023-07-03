@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
+import 'package:saktan_app/utils/utils.dart';
 
-class ContactCategoryPage extends StatefulWidget {
-  const ContactCategoryPage({Key? key}) : super(key: key);
+class ContactCategoriesPage extends StatefulWidget {
+  const ContactCategoriesPage({Key? key}) : super(key: key);
 
   @override
-  State<ContactCategoryPage> createState() => ContacsCategoriesPageState();
+  State<ContactCategoriesPage> createState() => ContacsCategoriesPageState();
 }
 
-class ContacsCategoriesPageState extends State<ContactCategoryPage> {
-  bool _isFirstLoadRunning = false;
+class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
+  bool _isLoadRunning = false;
   List<ContactCategoryList> _categories = <ContactCategoryList>[];
 
   void _firstLoad() async {
     setState(() {
-      _isFirstLoadRunning = false;
+      _isLoadRunning = false;
     });
 
     final fetchedContactsCategories = await fetchContactsCategories();
-    setState(() {
-      _categories = fetchedContactsCategories;
-    });
+    if (mounted) {
+      // Check if the widget is still mounted
+      setState(() {
+        _categories = fetchedContactsCategories;
+      });
+    }
 
-    setState(() {
-      _isFirstLoadRunning = false;
-    });
+    if (mounted) {
+      // Check if the widget is still mounted
+      Future.delayed(const Duration(seconds: 1), () {
+        if (mounted) {
+          // Check if the widget is still mounted
+          setState(() {
+            _isLoadRunning = false;
+          });
+        }
+      });
+    }
   }
 
   @override
@@ -42,25 +54,12 @@ class ContacsCategoriesPageState extends State<ContactCategoryPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    const String saktanLogoSvg = 'assets/images/logo/saktan.svg';
-    final Widget saktanLogo = SvgPicture.asset(saktanLogoSvg,
-        width: 100,
-        alignment: Alignment.topLeft,
-        // colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        semanticsLabel: 'Saktan');
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 23,
-        leading: Container(),
-        leadingWidth: 0,
-        title: saktanLogo,
-        centerTitle: false,
-        scrolledUnderElevation: 1,
-      ),
+      appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: _isFirstLoadRunning
+          child: _isLoadRunning
               ? const ContactCategorySkeleton()
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +72,7 @@ class ContacsCategoriesPageState extends State<ContactCategoryPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Контакты',
+                            S.of(context).helpCategoriesTitle,
                             textAlign: TextAlign.left,
                             style: theme.textTheme.titleLarge,
                           ),
@@ -95,7 +94,7 @@ class ContacsCategoriesPageState extends State<ContactCategoryPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Не нашли что что искали?',
+                            S.of(context).helpDidntFindTitle,
                             style: theme.textTheme.titleLarge,
                           ),
                           ListTile(
@@ -107,7 +106,7 @@ class ContacsCategoriesPageState extends State<ContactCategoryPage> {
                             splashColor: Colors.blue[200],
                             minVerticalPadding: 22,
                             title: Text(
-                              "Полезные ссылки",
+                              S.of(context).helpDidntFindUsefulllinks,
                               style: theme.textTheme.titleSmall,
                             ),
                             // trailing: const Icon(Icons.arrow_forward_ios),
@@ -126,7 +125,7 @@ class ContacsCategoriesPageState extends State<ContactCategoryPage> {
                             splashColor: Colors.blue[200],
                             minVerticalPadding: 22,
                             title: Text(
-                              "Запросить помощь",
+                              S.of(context).helpDidntFindHelp,
                               style: theme.textTheme.titleSmall,
                             ),
                             // trailing: const Icon(Icons.arrow_forward_ios),

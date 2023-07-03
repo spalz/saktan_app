@@ -51,30 +51,310 @@ class S {
   }
 
   /// `Справочник по репродуктивному и сексуальному здоровью EN`
-  String get guide_title {
+  String get guideTitle {
     return Intl.message(
       'Справочник по репродуктивному и сексуальному здоровью EN',
-      name: 'guide_title',
+      name: 'guideTitle',
       desc: '',
       args: [],
     );
   }
 
   /// `Настройки en`
-  String get settings_title {
+  String get settingsTitle {
     return Intl.message(
       'Настройки en',
-      name: 'settings_title',
+      name: 'settingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Здоровье`
+  String get onBoardingOneTtitlePart1 {
+    return Intl.message(
+      'Здоровье',
+      name: 'onBoardingOneTtitlePart1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `: ВИЧ, сексуальность, права`
+  String get onBoardingOneTtitlePart2 {
+    return Intl.message(
+      ': ВИЧ, сексуальность, права',
+      name: 'onBoardingOneTtitlePart2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере.`
+  String get onBoardingOneDesc {
+    return Intl.message(
+      'Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере.',
+      name: 'onBoardingOneDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Помощь`
+  String get onBoardingTwoTtitlePart1 {
+    return Intl.message(
+      'Помощь',
+      name: 'onBoardingTwoTtitlePart1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `: кризисные центры, ссылки`
+  String get onBoardingTwoTtitlePart2 {
+    return Intl.message(
+      ': кризисные центры, ссылки',
+      name: 'onBoardingTwoTtitlePart2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки.`
+  String get onBoardingTwoDesc {
+    return Intl.message(
+      'В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки.',
+      name: 'onBoardingTwoDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Новости`
+  String get onBoardingThreeTtitlePart1 {
+    return Intl.message(
+      'Новости',
+      name: 'onBoardingThreeTtitlePart1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `: события и не только`
+  String get onBoardingThreeTtitlePart2 {
+    return Intl.message(
+      ': события и не только',
+      name: 'onBoardingThreeTtitlePart2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений.`
+  String get onBoardingThreeDesc {
+    return Intl.message(
+      'Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений.',
+      name: 'onBoardingThreeDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Начать`
+  String get onBoardingButtonToBegin {
+    return Intl.message(
+      'Начать',
+      name: 'onBoardingButtonToBegin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `О приложении`
+  String get settingsAbout {
+    return Intl.message(
+      'О приложении',
+      name: 'settingsAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `О приложении`
+  String get settingsAboutApp {
+    return Intl.message(
+      'О приложении',
+      name: 'settingsAboutApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пользовательское соглашение`
+  String get settingsPrivacyPolice {
+    return Intl.message(
+      'Пользовательское соглашение',
+      name: 'settingsPrivacyPolice',
       desc: '',
       args: [],
     );
   }
 
   /// `О здоровье`
-  String get bottomNavigationBarGuides {
+  String get navigationGuides {
     return Intl.message(
       'О здоровье',
-      name: 'bottomNavigationBarGuides',
+      name: 'navigationGuides',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Помощь`
+  String get navigationHelp {
+    return Intl.message(
+      'Помощь',
+      name: 'navigationHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Новости`
+  String get navigationArticles {
+    return Intl.message(
+      'Новости',
+      name: 'navigationArticles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Контакты`
+  String get helpCategoriesTitle {
+    return Intl.message(
+      'Контакты',
+      name: 'helpCategoriesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Не нашли что что искали?`
+  String get helpDidntFindTitle {
+    return Intl.message(
+      'Не нашли что что искали?',
+      name: 'helpDidntFindTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Полезные ссылки`
+  String get helpDidntFindUsefulllinks {
+    return Intl.message(
+      'Полезные ссылки',
+      name: 'helpDidntFindUsefulllinks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Запросить помощь`
+  String get helpDidntFindHelp {
+    return Intl.message(
+      'Запросить помощь',
+      name: 'helpDidntFindHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Полезные ссылки`
+  String get usefullLinksTitle {
+    return Intl.message(
+      'Полезные ссылки',
+      name: 'usefullLinksTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Язык`
+  String get settingsLangTitle {
+    return Intl.message(
+      'Язык',
+      name: 'settingsLangTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Русский`
+  String get settingsLangTitleRu {
+    return Intl.message(
+      'Русский',
+      name: 'settingsLangTitleRu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Кыргызский`
+  String get settingsLangTitleKy {
+    return Intl.message(
+      'Кыргызский',
+      name: 'settingsLangTitleKy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Загрузка...`
+  String get titleLoading {
+    return Intl.message(
+      'Загрузка...',
+      name: 'titleLoading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Помогает с`
+  String get contactItemModalLabelDescription {
+    return Intl.message(
+      'Помогает с',
+      name: 'contactItemModalLabelDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Адрес`
+  String get contactItemModalLabelAddress {
+    return Intl.message(
+      'Адрес',
+      name: 'contactItemModalLabelAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Открыть карту`
+  String get contactItemModalLabelOpenMap {
+    return Intl.message(
+      'Открыть карту',
+      name: 'contactItemModalLabelOpenMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Контакты`
+  String get contactItemModalLabelContacts {
+    return Intl.message(
+      'Контакты',
+      name: 'contactItemModalLabelContacts',
       desc: '',
       args: [],
     );

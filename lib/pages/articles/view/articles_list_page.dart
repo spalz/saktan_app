@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 class ArticlesListPage extends StatefulWidget {
   const ArticlesListPage({Key? key}) : super(key: key);
@@ -23,17 +23,24 @@ class _ArticlesListPageState extends State<ArticlesListPage> {
     });
 
     final fetchedPosts = await fetchArticlesList(_page, _limit);
-    setState(() {
-      _posts = fetchedPosts;
-    });
-
-    setState(() {
-      Future.delayed(const Duration(seconds: 1), () {
-        setState(() {
-          _isFirstLoadRunning = false;
-        });
+    if (mounted) {
+      // Check if the widget is still mounted
+      setState(() {
+        _posts = fetchedPosts;
       });
-    });
+    }
+
+    if (mounted) {
+      // Check if the widget is still mounted
+      Future.delayed(const Duration(seconds: 1), () {
+        if (mounted) {
+          // Check if the widget is still mounted
+          setState(() {
+            _isFirstLoadRunning = false;
+          });
+        }
+      });
+    }
   }
 
   void _loadMore() async {
@@ -80,22 +87,8 @@ class _ArticlesListPageState extends State<ArticlesListPage> {
 
   @override
   Widget build(BuildContext context) {
-    const String indigoLogoSvg = 'assets/images/logo/indigo.svg';
-    final Widget indigoLogo = SvgPicture.asset(
-      indigoLogoSvg,
-      width: 100,
-      alignment: Alignment.topLeft,
-      semanticsLabel: 'Indigo',
-    );
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 23,
-        leading: Container(),
-        leadingWidth: 0,
-        title: indigoLogo,
-        centerTitle: false,
-        scrolledUnderElevation: 1,
-      ),
+      appBar: const CustomAppBar(logo: "indigo", centerTitle: false),
       body: _isFirstLoadRunning
           ? const ArticleListTtemSkeleton()
           : Column(
