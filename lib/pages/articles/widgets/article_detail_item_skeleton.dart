@@ -28,7 +28,7 @@ class ArticleDetailTtemSkeleton extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
-                    color: Colors.grey[300], // Add skeleton color here
+                    color: Colors.grey[200], // Add skeleton color here
                   ),
                 ),
               ),
@@ -37,13 +37,13 @@ class ArticleDetailTtemSkeleton extends StatelessWidget {
             Container(
               height: textTheme.titleLarge!.fontSize,
               width: double.infinity,
-              color: Colors.grey[300], // Add skeleton color here
+              color: Colors.grey[200], // Add skeleton color here
             ),
             const SizedBox(height: 10),
             Container(
               height: textTheme.bodySmall!.fontSize!,
               width: double.infinity,
-              color: Colors.grey[300], // Add skeleton color here
+              color: Colors.grey[200], // Add skeleton color here
             ),
           ],
         ),

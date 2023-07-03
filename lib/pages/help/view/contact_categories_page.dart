@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class ContactCategoriesPage extends StatefulWidget {
   const ContactCategoriesPage({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class ContactCategoriesPage extends StatefulWidget {
 
 class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
   bool _isLoadRunning = false;
+  Future<void>? launched;
   List<ContactCategoryList> _categories = <ContactCategoryList>[];
 
   void _firstLoad() async {
@@ -54,6 +57,17 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    final textTheme = Theme.of(context).textTheme;
+
+    const String trailingUsefullinksSvg =
+        'assets/images/icons/leading_usefull_links.svg';
+    final Widget trailingUsefullinks = SvgPicture.asset(trailingUsefullinksSvg,
+        width: 32, alignment: Alignment.topLeft);
+
+    const String trailingHelpSvg = 'assets/images/icons/leading_help.svg';
+    final Widget trailingHelp = SvgPicture.asset(trailingHelpSvg,
+        width: 32, alignment: Alignment.topLeft);
+
     return Scaffold(
       appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
       body: SingleChildScrollView(
@@ -93,46 +107,28 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            S.of(context).helpDidntFindTitle,
-                            style: theme.textTheme.titleLarge,
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Text(
+                              S.of(context).helpDidntFindTitle,
+                              style: theme.textTheme.titleLarge,
+                            ),
                           ),
-                          ListTile(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            tileColor: Colors.grey[200],
-                            focusColor: Colors.blue[200],
-                            splashColor: Colors.blue[200],
-                            minVerticalPadding: 22,
-                            title: Text(
-                              S.of(context).helpDidntFindUsefulllinks,
-                              style: theme.textTheme.titleSmall,
-                            ),
-                            // trailing: const Icon(Icons.arrow_forward_ios),
+                          GlobalCard(
+                            trailing: trailingUsefullinks,
+                            title: S.of(context).helpDidntFindUsefulllinks,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       const UsefulLinksPage()));
                             },
                           ),
-                          ListTile(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            tileColor: Colors.grey[200],
-                            focusColor: Colors.blue[200],
-                            splashColor: Colors.blue[200],
-                            minVerticalPadding: 22,
-                            title: Text(
-                              S.of(context).helpDidntFindHelp,
-                              style: theme.textTheme.titleSmall,
-                            ),
-                            // trailing: const Icon(Icons.arrow_forward_ios),
+                          GlobalCard(
+                            trailing: trailingHelp,
+                            title: S.of(context).helpDidntFindHelp,
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      const UsefulLinksPage()));
+                              launchInBrowser(
+                                  Uri.parse("https://indigo.kg/helps"));
                             },
                           ),
                         ],

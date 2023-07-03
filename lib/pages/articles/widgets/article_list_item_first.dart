@@ -19,10 +19,6 @@ class ArticleListItemFirst extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 0),
       elevation: 0,
       color: Colors.transparent,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(0),
-        side: BorderSide.none,
-      ),
       child: InkWell(
         highlightColor: Colors.transparent,
         splashColor: const Color.fromRGBO(247, 239, 255, 1),
@@ -47,9 +43,6 @@ class ArticleListItemFirst extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.grey[100],
-                        border: Border.all(
-                          color: Colors.grey.shade100,
-                        ),
                       ),
                       child: Image.network(
                         '${article.image}?format=webp&width=800&embed',

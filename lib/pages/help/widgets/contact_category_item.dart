@@ -21,9 +21,9 @@ class ContactCategoryItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          tileColor: Colors.grey[200],
-          focusColor: Colors.blue[200],
-          splashColor: Colors.blue[200],
+          tileColor: Colors.grey[100],
+          focusColor: Colors.blue[100],
+          splashColor: Colors.blue[100],
           minVerticalPadding: 22,
           title: Text(
             getT(locale, article.titleRu, article.titleKy),
@@ -31,10 +31,12 @@ class ContactCategoryItem extends StatelessWidget {
           ),
           subtitle: Padding(
               padding: const EdgeInsets.only(top: 5),
-              child: Text(
-                article.descriptionRu,
-                style: textTheme.labelSmall,
-              )),
+              child: Text(article.descriptionRu,
+                  style: TextStyle(
+                    fontSize: textTheme.labelSmall!.fontSize,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey[700],
+                  ))),
           // trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(

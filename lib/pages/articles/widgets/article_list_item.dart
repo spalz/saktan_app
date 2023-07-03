@@ -34,24 +34,20 @@ class ArticleListItem extends StatelessWidget {
         },
         child: Padding(
           padding:
-              const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
+              const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                padding: const EdgeInsets.all(0),
+              SizedBox(
                 width: 90,
                 height: 90,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.grey[100],
-                    border: Border.all(
-                      color: Colors.grey.shade200,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(14),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(14),
                     child: Image.network(
                       '${article.image}?format=webp&width=250&embed',
                       fit: BoxFit.fitHeight,
@@ -66,15 +62,17 @@ class ArticleListItem extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: textTheme.titleSmall!.fontFamily,
                         fontSize: 16,
-                        fontWeight: textTheme.titleSmall!.fontWeight,
+                        fontWeight: FontWeight.w600,
                         height: 1.4,
                       )),
                   subtitle: Padding(
                       padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        formattedDate,
-                        style: textTheme.labelSmall,
-                      )),
+                      child: Text(formattedDate,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey[600],
+                          ))),
                   dense: true,
                 ),
               ),

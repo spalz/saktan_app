@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
@@ -21,13 +22,25 @@ class GuidesListItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          tileColor: Colors.grey[200],
-          focusColor: Colors.blue[200],
-          splashColor: Colors.blue[200],
+          tileColor: Colors.grey[100],
+          focusColor: Colors.blue[100],
+          splashColor: Colors.blue[100],
           minVerticalPadding: 22,
-          leading: Image.network(
-            guide.icon,
+          leading: CachedNetworkImage(
             width: 38,
+            height: 38,
+            placeholder: (BuildContext context, String url) => Container(
+                width: 320,
+                height: 240,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
+                )),
+            fadeOutDuration: const Duration(milliseconds: 300),
+            fadeInDuration: const Duration(milliseconds: 300),
+            imageUrl: guide.icon,
           ),
           title: Text(
             getT(locale, guide.titleRu, guide.titleKy),

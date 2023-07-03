@@ -60,18 +60,18 @@ class ChaptersListPageState extends State<ChaptersListPage> {
         actionsIconTheme: Colors.white,
         settings: false,
       ),
-      body: Container(
-        padding:
-            const EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 20),
-        child: ListView.builder(
-            itemCount: _guide?.chapters.length ?? 0,
-            itemBuilder: (context, index) {
-              return GuidesChaptersListItem(
-                  chapter: _guide!.chapters[index],
-                  index: index,
-                  guide: _guide!);
-            }),
-      ),
+      body: _isLoadRunning
+          ? const GuidesChaptersListSkeleton()
+          : ListView.builder(
+              padding: const EdgeInsets.only(
+                  top: 30, left: 20, right: 20, bottom: 80),
+              itemCount: _guide?.chapters.length ?? 0,
+              itemBuilder: (context, index) {
+                return GuidesChaptersListItem(
+                    chapter: _guide!.chapters[index],
+                    index: index,
+                    guide: _guide!);
+              }),
     );
   }
 }

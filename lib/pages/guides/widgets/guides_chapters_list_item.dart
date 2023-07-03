@@ -37,10 +37,11 @@ class GuidesChaptersListItem extends StatelessWidget {
           focusColor: Colors.blue[200],
           splashColor: Colors.blue[200],
           minVerticalPadding: 10,
-          title: Text(
-            getT(locale, chapter.titleRu, chapter.titleKy),
-            style: theme.textTheme.bodyMedium,
-          ),
+          title: Text(getT(locale, chapter.titleRu, chapter.titleKy),
+              style: TextStyle(
+                fontSize: theme.textTheme.bodyMedium!.fontSize,
+                fontWeight: FontWeight.w600,
+              )),
           trailing: trailing,
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(

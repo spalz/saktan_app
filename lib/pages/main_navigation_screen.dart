@@ -6,7 +6,7 @@ import 'package:saktan_app/pages/guides/view/guides_list_page.dart';
 import 'package:saktan_app/pages/help/view/contact_categories_page.dart';
 
 class MainNavigationPage extends StatefulWidget {
-  const MainNavigationPage({super.key});
+  const MainNavigationPage({Key? key}) : super(key: key);
 
   @override
   State<MainNavigationPage> createState() => _MainNavigationPageState();
@@ -67,68 +67,154 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     const String navigationArticlesSvg =
         'assets/images/icons/navigation_articles.svg';
 
-    final Widget navigationGuides = SvgPicture.asset(
-      navigationGuidesSvg,
-      width: 28,
-      colorFilter: ColorFilter.mode(
-        _currentIndex == 0 ? Colors.black : Colors.black54,
-        BlendMode.srcIn,
-      ),
+    final Widget navigationGuides = Column(
+      children: [
+        SvgPicture.asset(
+          navigationGuidesSvg,
+          width: 30,
+          colorFilter: ColorFilter.mode(
+            _currentIndex == 0
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            BlendMode.srcIn,
+          ),
+        ),
+        Text(
+          S.of(context).navigationGuides,
+          style: TextStyle(
+            color: _currentIndex == 0
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
-    final Widget navigationHelp = SvgPicture.asset(
-      navigationHelpSvg,
-      width: 28,
-      colorFilter: ColorFilter.mode(
-        _currentIndex == 1 ? Colors.black : Colors.black54,
-        BlendMode.srcIn,
-      ),
+    final Widget navigationHelp = Column(
+      children: [
+        SvgPicture.asset(
+          navigationHelpSvg,
+          width: 30,
+          colorFilter: ColorFilter.mode(
+            _currentIndex == 1
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            BlendMode.srcIn,
+          ),
+        ),
+        Text(
+          S.of(context).navigationHelp,
+          style: TextStyle(
+            color: _currentIndex == 1
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
-    final Widget navigationArticles = SvgPicture.asset(
-      navigationArticlesSvg,
-      width: 28,
-      colorFilter: ColorFilter.mode(
-        _currentIndex == 2 ? Colors.black : Colors.black54,
-        BlendMode.srcIn,
-      ),
+    final Widget navigationArticles = Column(
+      children: [
+        SvgPicture.asset(
+          navigationArticlesSvg,
+          width: 30,
+          colorFilter: ColorFilter.mode(
+            _currentIndex == 2
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            BlendMode.srcIn,
+          ),
+        ),
+        Text(
+          S.of(context).navigationArticles,
+          style: TextStyle(
+            color: _currentIndex == 2
+                ? Theme.of(context).primaryColor
+                : Colors.black87,
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
 
     return Scaffold(
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: screens,
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black.withOpacity(0.7),
-          selectedFontSize: 15,
-          unselectedFontSize: 15,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          currentIndex: _currentIndex,
-          elevation: 0,
-          // onTap: onTap,
-          onTap: _onTabTapped,
-          items: [
-            BottomNavigationBarItem(
-              icon: navigationGuides,
-              activeIcon: navigationGuides,
-              label: S.of(context).navigationGuides,
-            ),
-            BottomNavigationBarItem(
-              icon: navigationHelp,
-              activeIcon: navigationHelp,
-              label: S.of(context).navigationHelp,
-            ),
-            BottomNavigationBarItem(
-              icon: navigationArticles,
-              activeIcon: navigationArticles,
-              label: S.of(context).navigationArticles,
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: screens,
+      ),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(199, 199, 199, 0.1),
+              blurRadius: 8,
+              offset: Offset(0, -2),
             ),
           ],
-        ));
+        ),
+        child: BottomAppBar(
+          padding: const EdgeInsets.only(top: 8),
+          color: Colors.white,
+          elevation: 0,
+          child: SizedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 110,
+                  child: IconButton(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                    style: const ButtonStyle(
+                      splashFactory: NoSplash.splashFactory,
+                    ),
+                    icon: navigationGuides,
+                    splashRadius: 5,
+                    onPressed: () {
+                      _onTabTapped(0);
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: 110,
+                  child: IconButton(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                    style: const ButtonStyle(
+                      splashFactory: NoSplash.splashFactory,
+                    ),
+                    icon: navigationHelp,
+                    splashRadius: 5,
+                    onPressed: () {
+                      _onTabTapped(1);
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: 110,
+                  child: IconButton(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                    style: const ButtonStyle(
+                      splashFactory: NoSplash.splashFactory,
+                    ),
+                    icon: navigationArticles,
+                    onPressed: () {
+                      _onTabTapped(2);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -137,11 +223,12 @@ class CachedScreen extends StatefulWidget {
   final int currentIndex;
   final Widget child;
 
-  const CachedScreen(
-      {super.key,
-      required this.screenIndex,
-      required this.currentIndex,
-      required this.child});
+  const CachedScreen({
+    Key? key,
+    required this.screenIndex,
+    required this.currentIndex,
+    required this.child,
+  }) : super(key: key);
 
   @override
   _CachedScreenState createState() => _CachedScreenState();

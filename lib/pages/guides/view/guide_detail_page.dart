@@ -72,45 +72,12 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
       ),
       body: SelectionArea(
         child: ScrollablePositionedList.builder(
+          padding: const EdgeInsets.only(top: 10, bottom: 80),
           itemCount: _guide.chapters.length,
           itemScrollController: _scrollController,
           itemBuilder: (context, index) {
             final GlobalKey itemKey = GlobalKey();
             itemKeys[index] = itemKey;
-
-            // if (index == 0) {
-            //   // Render the title widget for the first item
-            //   return Container(
-            //     padding: const EdgeInsets.all(20),
-            //     child: Column(
-            //       children: [
-            //         AspectRatio(
-            //           aspectRatio: 1.0,
-            //           child: SizedBox(
-            //             width: double.infinity,
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(20),
-            //                 color: Colors.grey[100],
-            //                 border: Border.all(
-            //                   color: Colors.grey.shade200,
-            //                 ),
-            //               ),
-            //               child: ClipRRect(
-            //                 borderRadius: BorderRadius.circular(20),
-            //                 child: Image.network(
-            //                   '${_guide.image}?format=webp&width=800&embed',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //         editorJSView ?? const Text("Please wait..."),
-            //       ],
-            //     ),
-            //   );
-            // }
 
             return GuidesDetailChaptersListItem(
                 itemKey: itemKey,

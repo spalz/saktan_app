@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `Не нашли что что искали?`
+  /// `Не нашли то что искали?`
   String get helpDidntFindTitle {
     return Intl.message(
-      'Не нашли что что искали?',
+      'Не нашли то что искали?',
       name: 'helpDidntFindTitle',
       desc: '',
       args: [],
@@ -260,10 +260,10 @@ class S {
     );
   }
 
-  /// `Запросить помощь`
+  /// `Получение помощи`
   String get helpDidntFindHelp {
     return Intl.message(
-      'Запросить помощь',
+      'Получение помощи',
       name: 'helpDidntFindHelp',
       desc: '',
       args: [],

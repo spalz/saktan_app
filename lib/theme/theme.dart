@@ -36,7 +36,7 @@ final whiteTheme = ThemeData(
     //
     titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
     titleMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
-    titleSmall: TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
+    titleSmall: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
     //
     bodyLarge: TextStyle(
       fontSize: 18,

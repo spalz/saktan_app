@@ -40,7 +40,9 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   getT(locale, chapter.titleRu, chapter.titleKy),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: theme.textTheme.titleSmall!.fontWeight,
+                      fontSize: theme.textTheme.titleSmall!.fontSize),
                   overflow: TextOverflow.visible,
                 ),
               ),
