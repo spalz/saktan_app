@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/articles/view/articles_list_page.dart';
 import 'package:saktan_app/pages/guides/view/guides_list_page.dart';
 import 'package:saktan_app/pages/help/view/contact_categories_page.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({Key? key}) : super(key: key);
@@ -61,23 +61,14 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
       ),
     ];
 
-    const String navigationGuidesSvg =
-        'assets/images/icons/navigation_guides.svg';
-    const String navigationHelpSvg = 'assets/images/icons/navigation_help.svg';
-    const String navigationArticlesSvg =
-        'assets/images/icons/navigation_articles.svg';
-
     final Widget navigationGuides = Column(
       children: [
-        SvgPicture.asset(
-          navigationGuidesSvg,
-          width: 30,
-          colorFilter: ColorFilter.mode(
-            _currentIndex == 0
-                ? Theme.of(context).primaryColor
-                : Colors.black87,
-            BlendMode.srcIn,
-          ),
+        Icon(
+          SaktanIcons.navigationguides,
+          size: 28,
+          color: _currentIndex == 0
+              ? Theme.of(context).primaryColor
+              : Colors.black87,
         ),
         Text(
           S.of(context).navigationGuides,
@@ -93,15 +84,12 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     );
     final Widget navigationHelp = Column(
       children: [
-        SvgPicture.asset(
-          navigationHelpSvg,
-          width: 30,
-          colorFilter: ColorFilter.mode(
-            _currentIndex == 1
-                ? Theme.of(context).primaryColor
-                : Colors.black87,
-            BlendMode.srcIn,
-          ),
+        Icon(
+          SaktanIcons.navigationhelp,
+          size: 28,
+          color: _currentIndex == 1
+              ? Theme.of(context).primaryColor
+              : Colors.black87,
         ),
         Text(
           S.of(context).navigationHelp,
@@ -117,15 +105,12 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     );
     final Widget navigationArticles = Column(
       children: [
-        SvgPicture.asset(
-          navigationArticlesSvg,
-          width: 30,
-          colorFilter: ColorFilter.mode(
-            _currentIndex == 2
-                ? Theme.of(context).primaryColor
-                : Colors.black87,
-            BlendMode.srcIn,
-          ),
+        Icon(
+          SaktanIcons.navigationarticles,
+          size: 28,
+          color: _currentIndex == 2
+              ? Theme.of(context).primaryColor
+              : Colors.black87,
         ),
         Text(
           S.of(context).navigationArticles,

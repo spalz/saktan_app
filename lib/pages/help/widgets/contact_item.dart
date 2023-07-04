@@ -53,6 +53,10 @@ class ContactItem extends StatelessWidget {
         ),
         trailing: trailing,
         onTap: () => showBarModalBottomSheet(
+              expand: false,
+              elevation: 0,
+              clipBehavior: Clip.antiAlias,
+              // barrierColor: Colors.transparent,
               context: context,
               builder: (context) => ContactItemModal(
                   id: article.id,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/pages/settings/settings.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -89,9 +90,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         settings: const RouteSettings(name: '/settings'),
                         builder: (context) => const SettingsPage()));
                   },
-                  icon: Padding(
-                    padding: const EdgeInsets.only(right: 12),
-                    child: settingsIcon,
+                  icon: const Padding(
+                    padding: EdgeInsets.only(right: 12),
+                    child: Icon(
+                      SaktanIcons.settings,
+                      size: 30,
+                    ),
                   )),
             ]
           : [],

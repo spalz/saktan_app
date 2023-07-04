@@ -30,11 +30,11 @@ final whiteTheme = ThemeData(
     displaySmall: TextStyle(fontSize: 20.0),
     //
     headlineLarge:
-        TextStyle(fontSize: 26, fontWeight: FontWeight.w800, height: 1.2),
-    headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-    headlineSmall: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+        TextStyle(fontSize: 23, fontWeight: FontWeight.w800, height: 1.2),
+    headlineMedium: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),
+    headlineSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
     //
-    titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+    titleLarge: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
     titleMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
     titleSmall: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
     //

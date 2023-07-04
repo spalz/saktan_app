@@ -49,7 +49,7 @@ class ArticleListItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(14),
                     child: Image.network(
-                      '${article.image}?format=webp&width=250&embed',
+                      '${article.image}?format=webp&width=200&embed',
                       fit: BoxFit.fitHeight,
                     ),
                   ),

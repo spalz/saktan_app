@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
@@ -57,16 +56,6 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    final textTheme = Theme.of(context).textTheme;
-
-    const String trailingUsefullinksSvg =
-        'assets/images/icons/leading_usefull_links.svg';
-    final Widget trailingUsefullinks = SvgPicture.asset(trailingUsefullinksSvg,
-        width: 32, alignment: Alignment.topLeft);
-
-    const String trailingHelpSvg = 'assets/images/icons/leading_help.svg';
-    final Widget trailingHelp = SvgPicture.asset(trailingHelpSvg,
-        width: 32, alignment: Alignment.topLeft);
 
     return Scaffold(
       appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
@@ -115,7 +104,7 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                             ),
                           ),
                           GlobalCard(
-                            trailing: trailingUsefullinks,
+                            trailing: const Icon(SaktanIcons.helpusefulllinks),
                             title: S.of(context).helpDidntFindUsefulllinks,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -124,7 +113,7 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                             },
                           ),
                           GlobalCard(
-                            trailing: trailingHelp,
+                            trailing: const Icon(SaktanIcons.help),
                             title: S.of(context).helpDidntFindHelp,
                             onTap: () {
                               launchInBrowser(

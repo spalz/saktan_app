@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/guides/guides.dart';
 import 'package:saktan_app/utils/utils.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class GuidesChaptersListItem extends StatelessWidget {
   const GuidesChaptersListItem({
@@ -21,10 +21,6 @@ class GuidesChaptersListItem extends StatelessWidget {
     final locale = Intl.getCurrentLocale();
     final theme = Theme.of(context);
 
-    const String trailingSvg = 'assets/images/icons/trailing_right.svg';
-    final Widget trailing =
-        SvgPicture.asset(trailingSvg, width: 32, alignment: Alignment.topLeft);
-
     return Container(
         margin: const EdgeInsets.only(bottom: 10),
         child: ListTile(
@@ -42,7 +38,11 @@ class GuidesChaptersListItem extends StatelessWidget {
                 fontSize: theme.textTheme.bodyMedium!.fontSize,
                 fontWeight: FontWeight.w600,
               )),
-          trailing: trailing,
+          trailing: Icon(
+            SaktanIcons.arrowright,
+            size: 30,
+            color: theme.primaryColor,
+          ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => GuideDetailPage(

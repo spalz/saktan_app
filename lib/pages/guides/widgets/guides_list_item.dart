@@ -26,12 +26,13 @@ class GuidesListItem extends StatelessWidget {
           focusColor: Colors.blue[100],
           splashColor: Colors.blue[100],
           minVerticalPadding: 22,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 22),
           leading: CachedNetworkImage(
-            width: 38,
-            height: 38,
+            width: 32,
+            height: 32,
             placeholder: (BuildContext context, String url) => Container(
-                width: 320,
-                height: 240,
+                width: 32,
+                height: 32,
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: const BorderRadius.all(

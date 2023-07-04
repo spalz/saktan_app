@@ -1,14 +1,12 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/utils/utils.dart';
 
 Future<List<Article>> fetchArticlesList(int page, int limit) async {
   try {
     final res = await getArticlesListRequest(page, limit);
-    final fetchedPosts = json.decode(res.body)['data'] as List<dynamic>;
+    final fetchedPosts = res.data['data'] as List<dynamic>;
     return fetchedPosts.map((dynamic json) {
       final map = json as Map<String, dynamic>;
       final imageMap = map['image'] as Map<String, dynamic>;
@@ -29,7 +27,7 @@ Future<List<Article>> fetchArticlesList(int page, int limit) async {
   }
 }
 
-Future<http.Response> getArticlesListRequest(int page, int limit) {
+Future<Response<dynamic>> getArticlesListRequest(int page, int limit) async {
   final url = "${Uri.parse("$baseUrl/api/articles")}";
   final params = {
     'sort': 'published:desc',
@@ -44,5 +42,8 @@ Future<http.Response> getArticlesListRequest(int page, int limit) {
     'pagination[pageSize]': limit.toString(),
   };
   final uri = Uri.parse(url).replace(queryParameters: params);
-  return http.get(uri);
+
+  final dio = Dio();
+  final response = await dio.getUri(uri);
+  return response;
 }

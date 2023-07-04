@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/main.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -19,12 +21,11 @@ class SettingsPageState extends State<SettingsPage> {
       print('languageCode: $languageCode');
     }
     setState(() {
-      // S.load(Locale(languageCode));
       _currentLanguage = languageCode;
-
       SaktanApp.setLocale(context, Locale(languageCode, ""));
     });
     // Здесь можно добавить логику для перевода приложения на выбранный язык
+    Navigator.pop(context); // Закрытие модального окна после выбора языка
   }
 
   @override
@@ -52,27 +53,55 @@ class SettingsPageState extends State<SettingsPage> {
           ),
           ListTile(
             title: Text(S.of(context).settingsLangTitle),
-            trailing: DropdownButton<String>(
-              value: _currentLanguage,
-              onChanged: (String? newValue) {
-                if (newValue != null) {
-                  _changeLanguage(newValue);
-                }
-              },
-              items: [
-                DropdownMenuItem(
-                  value: 'ru',
-                  child: Text(S.of(context).settingsLangTitleRu),
-                ),
-                DropdownMenuItem(
-                  value: 'ky',
-                  child: Text(S.of(context).settingsLangTitleKy),
-                ),
-              ],
-            ),
+            onTap:
+                _showLanguageModal, // Вызов метода для отображения модального окна выбора языка
           ),
         ],
       ),
+    );
+  }
+
+  // Метод для отображения модального окна выбора языка
+  void _showLanguageModal() {
+    showBarModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
+                child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ModalAppBar(title: S.of(context).settingsLangTitle),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 2,
+                  itemBuilder: (BuildContext context, int index) {
+                    final languageCode = index == 0 ? 'ru' : 'ky';
+                    final languageTitle = index == 0
+                        ? S.of(context).settingsLangTitleRu
+                        : S.of(context).settingsLangTitleKy;
+                    final isSelected = _currentLanguage == languageCode;
+
+                    return ListTile(
+                      title: Text(languageTitle),
+                      trailing: isSelected
+                          ? const Icon(SaktanIcons.settingscheck)
+                          : const Icon(SaktanIcons
+                              .settingsuncheck), // Пустой trailing для остальных языков
+                      onTap: () {
+                        setState(() {
+                          _changeLanguage(languageCode);
+                        });
+                      },
+                    );
+                  },
+                ),
+              ],
+            ));
+          },
+        );
+      },
     );
   }
 }

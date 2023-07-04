@@ -105,6 +105,9 @@ flutter:
         - asset: assets/fonts/Noto_Serif_Display/static/NotoSerifDisplay-BoldItalic.ttf
         - asset: assets/fonts/Noto_Serif_Display/static/NotoSerifDisplay-ExtraBoldItalic.ttf
         - asset: assets/fonts/Noto_Serif_Display/static/NotoSerifDisplay-SemiBoldItalic.ttf
+    - family:  SaktanIcons
+      fonts:
+        - asset: assets/fonts/SaktanIcons.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_native_splash:

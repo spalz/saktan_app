@@ -43,7 +43,8 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: theme.textTheme.titleSmall!.fontWeight,
                       fontSize: theme.textTheme.titleSmall!.fontSize),
-                  overflow: TextOverflow.visible,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                 ),
               ),
             ],
@@ -54,7 +55,9 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
         padding:
             const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
         child: EditorJSView(
-            editorJSData: getT(locale, chapter.bodyRu, chapter.bodyKy)),
+          editorJSData: getT(locale, chapter.bodyRu, chapter.bodyKy),
+          isGuide: true,
+        ),
       ),
     );
   }

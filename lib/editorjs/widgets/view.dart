@@ -10,8 +10,10 @@ import 'components/youtube_video_player.dart';
 
 class EditorJSView extends StatefulWidget {
   final String? editorJSData;
+  final bool? isGuide;
 
-  const EditorJSView({Key? key, this.editorJSData}) : super(key: key);
+  const EditorJSView({Key? key, this.editorJSData, this.isGuide})
+      : super(key: key);
 
   @override
   EditorJSViewState createState() => EditorJSViewState();
@@ -206,13 +208,22 @@ class EditorJSViewState extends State<EditorJSView> {
               children: [Expanded(child: Divider(color: Colors.grey))]));
           break;
         case "image":
-          items.add(
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              child: Image.network(
-                  '${globals.url}${element.data!.file!.url!}?format=webp&width=800&embed'),
-            ),
-          );
+          items.add(widget.isGuide != null
+              ? AspectRatio(
+                  aspectRatio: 1.0,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Image.network(
+                      '${globals.url}${element.data!.file!.url!}?format=webp&width=800&embed',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: Image.network(
+                      '${globals.url}${element.data!.file!.url!}?format=webp&width=800&embed'),
+                ));
           break;
         case "Embed":
           items.add(
