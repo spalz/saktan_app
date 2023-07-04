@@ -33,13 +33,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
-  cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
   flutter_html: ^3.0.0-beta.2
   url_launcher: ^6.1.11
   youtube_player_iframe: ^4.0.4
   flutter_native_splash: ^2.3.1
-  persistent_bottom_nav_bar: ^5.0.2
   sticky_headers: ^0.3.0+2
   scrollable_positioned_list: ^0.3.8
   flutter_launcher_icons: ^0.13.1
@@ -49,7 +47,6 @@ dependencies:
   maps_launcher: ^2.2.0
   auto_size_text: ^3.0.0
   equatable: ^2.0.5
-  http: ^1.1.0
   dio: ^5.2.1+1
   cached_network_image: ^3.2.3
 

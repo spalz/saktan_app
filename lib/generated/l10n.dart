@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Пользовательское соглашение`
+  /// `Privacy Policy`
   String get settingsPrivacyPolice {
     return Intl.message(
-      'Пользовательское соглашение',
+      'Privacy Policy',
       name: 'settingsPrivacyPolice',
       desc: '',
       args: [],

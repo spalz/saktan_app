@@ -20,7 +20,7 @@ class ModalAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         maxLines: 2,
       ),
-      backgroundColor: const Color.fromRGBO(240, 244, 255, 1),
+      backgroundColor: Colors.grey[100],
     );
   }
 

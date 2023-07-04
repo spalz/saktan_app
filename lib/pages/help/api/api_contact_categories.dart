@@ -1,14 +1,12 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
 
 Future<List<ContactCategoryList>> fetchContactsCategories() async {
   try {
     final res = await getContactsCategoriesRequest();
-    final fetchedCategories = json.decode(res.body)['data'] as List<dynamic>;
+    final fetchedCategories = res.data['data'] as List<dynamic>;
     return fetchedCategories.map((dynamic json) {
       final map = json as Map<String, dynamic>;
       return ContactCategoryList(
@@ -29,7 +27,7 @@ Future<List<ContactCategoryList>> fetchContactsCategories() async {
   }
 }
 
-Future<http.Response> getContactsCategoriesRequest() {
+Future<Response<dynamic>> getContactsCategoriesRequest() async {
   final url = "${Uri.parse("$baseUrl/api/saktan-contacts-categories")}";
   final params = {
     'sort': 'published:desc',
@@ -43,5 +41,6 @@ Future<http.Response> getContactsCategoriesRequest() {
     'pagination[pageSize]': '50',
   };
   final uri = Uri.parse(url).replace(queryParameters: params);
-  return http.get(uri);
+  final dio = Dio();
+  return dio.getUri(uri);
 }

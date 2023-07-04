@@ -1,14 +1,12 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
 
 Future<List<ContactList>> fetchContacts(String slug) async {
   try {
     final res = await getContactsRequest(slug);
-    final fetchedCategories = json.decode(res.body)['data'] as List<dynamic>;
+    final fetchedCategories = res.data['data'] as List<dynamic>;
     return fetchedCategories.map((dynamic json) {
       final map = json as Map<String, dynamic>;
       return ContactList(
@@ -24,7 +22,6 @@ Future<List<ContactList>> fetchContacts(String slug) async {
         descriptionKy: map['description__ky'] as String?,
         region: map['region'] as String,
         email: map['email'] as String?,
-        // phones:
       );
     }).toList();
   } catch (err) {
@@ -35,7 +32,7 @@ Future<List<ContactList>> fetchContacts(String slug) async {
   }
 }
 
-Future<http.Response> getContactsRequest(String slug) {
+Future<Response<dynamic>> getContactsRequest(String slug) async {
   final url = "${Uri.parse("$baseUrl/api/saktan-contacts")}";
   final params = {
     'sort': 'published:desc',
@@ -55,8 +52,6 @@ Future<http.Response> getContactsRequest(String slug) {
     'filters[category][slug][\$eq]': slug,
   };
   final uri = Uri.parse(url).replace(queryParameters: params);
-  return http.get(uri);
+  final dio = Dio();
+  return dio.getUri(uri);
 }
-
-// &filters[category][slug][0][$eq]=overnment-centers-and-hospitals
-// filters[category][slug][$eq]=government-centers-and-hospitals

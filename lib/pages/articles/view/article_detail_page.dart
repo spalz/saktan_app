@@ -77,9 +77,6 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.grey[100],
-                                  border: Border.all(
-                                    color: Colors.grey.shade200,
-                                  ),
                                 ),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),

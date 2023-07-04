@@ -6,59 +6,50 @@ class SettingsListItem extends StatelessWidget {
     this.leading,
     this.trailing,
     required this.title,
-    this.onTap,
+    this.value,
+    required this.icon,
+    required this.onTap,
   });
 
   final Widget? leading;
   final Widget? trailing;
   final String title;
-  final Null Function()? onTap;
+  final String? value;
+  final IconData icon;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      elevation: 0,
-      color: const Color.fromRGBO(240, 244, 255, 1),
-      shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(10), // Установите требуемый радиус скругления
+    return ListTile(
+      minVerticalPadding: 20,
+      splashColor: Colors.transparent,
+      leading: Icon(
+        icon,
+        size: 32,
       ),
-      child: Ink(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(
-              Radius.circular(10)), // Установите радиус скругления для Ink
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: textTheme.bodyMedium!.fontSize,
+          fontWeight: FontWeight.w500,
+          height: 1.4,
         ),
-        child: InkWell(
-          highlightColor: Colors.transparent,
-          splashColor: const Color.fromRGBO(215, 255, 246, 1),
-          borderRadius: BorderRadius.circular(
-              10), // Установите радиус скругления для InkWell
-          onTap: onTap,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: ListTile(
-                  leading: leading,
-                  trailing: trailing,
-                  contentPadding: const EdgeInsets.only(left: 20, right: 15),
-                  title: Text(
-                    title,
-                    style: TextStyle(
-                      fontFamily: textTheme.titleSmall!.fontFamily,
-                      fontSize: textTheme.titleSmall!.fontSize,
-                      fontWeight: FontWeight.w600,
-                      height: 1.4,
-                    ),
-                  ),
-                ),
+      ),
+      trailing: value != null
+          ? Text(
+              value!,
+              style: TextStyle(
+                fontSize: textTheme.bodyMedium!.fontSize,
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).primaryColor,
+                height: 1.4,
               ),
-            ],
-          ),
-        ),
-      ),
+            )
+          : null,
+      onTap: onTap,
+      contentPadding: const EdgeInsets.all(0),
     );
   }
 }

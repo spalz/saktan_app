@@ -17,6 +17,7 @@ class GlobalCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
+      margin: const EdgeInsets.only(bottom: 10),
       elevation: 0,
       color: const Color.fromRGBO(240, 244, 255, 1),
       shape: RoundedRectangleBorder(
@@ -30,7 +31,7 @@ class GlobalCard extends StatelessWidget {
         ),
         child: InkWell(
           highlightColor: Colors.transparent,
-          splashColor: const Color.fromRGBO(215, 255, 246, 1),
+          splashColor: const Color.fromARGB(255, 234, 239, 255),
           borderRadius: BorderRadius.circular(
               10), // Установите радиус скругления для InkWell
           onTap: onTap,

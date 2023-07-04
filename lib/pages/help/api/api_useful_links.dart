@@ -1,14 +1,12 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
 
 Future<List<UsefulLinksList>> fetchUsefulLinks() async {
   try {
     final res = await getUsefulLinksRequest();
-    final fetchedCategories = json.decode(res.body)['data'] as List<dynamic>;
+    final fetchedCategories = res.data['data'] as List<dynamic>;
     return fetchedCategories.map((dynamic json) {
       final map = json as Map<String, dynamic>;
       final usefulLinks = map['useful_link'] as List<dynamic>;
@@ -38,7 +36,7 @@ Future<List<UsefulLinksList>> fetchUsefulLinks() async {
   }
 }
 
-Future<http.Response> getUsefulLinksRequest() {
+Future<Response<dynamic>> getUsefulLinksRequest() async {
   final url = "${Uri.parse("$baseUrl/api/saktan-guides")}";
   final params = {
     'sort': 'published:desc',
@@ -50,5 +48,6 @@ Future<http.Response> getUsefulLinksRequest() {
     'pagination[pageSize]': '99',
   };
   final uri = Uri.parse(url).replace(queryParameters: params);
-  return http.get(uri);
+  final dio = Dio();
+  return dio.getUri(uri);
 }

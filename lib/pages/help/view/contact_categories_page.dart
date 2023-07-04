@@ -12,34 +12,29 @@ class ContactCategoriesPage extends StatefulWidget {
 }
 
 class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
-  bool _isLoadRunning = false;
+  bool _isLoadRunning = true;
   Future<void>? launched;
   List<ContactCategoryList> _categories = <ContactCategoryList>[];
 
   void _firstLoad() async {
     setState(() {
-      _isLoadRunning = false;
+      _isLoadRunning = true;
     });
 
     final fetchedContactsCategories = await fetchContactsCategories();
     if (mounted) {
-      // Check if the widget is still mounted
       setState(() {
         _categories = fetchedContactsCategories;
       });
     }
 
-    if (mounted) {
-      // Check if the widget is still mounted
-      Future.delayed(const Duration(seconds: 1), () {
-        if (mounted) {
-          // Check if the widget is still mounted
-          setState(() {
-            _isLoadRunning = false;
-          });
-        }
-      });
-    }
+    Future.delayed(const Duration(seconds: 1), () {
+      if (mounted) {
+        setState(() {
+          _isLoadRunning = false;
+        });
+      }
+    });
   }
 
   @override
@@ -60,24 +55,23 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
     return Scaffold(
       appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: _isLoadRunning
-              ? const ContactCategorySkeleton()
-              : Column(
+        child: _isLoadRunning
+            ? const ContactsCategoriesSkeleton()
+            : Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       color: Colors.white,
-                      padding: const EdgeInsets.only(
-                          top: 20, left: 0, right: 0, bottom: 20),
+                      padding: const EdgeInsets.only(bottom: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             S.of(context).helpCategoriesTitle,
                             textAlign: TextAlign.left,
-                            style: theme.textTheme.titleLarge,
+                            style: theme.textTheme.titleMedium,
                           ),
                         ],
                       ),
@@ -90,17 +84,15 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                           ContactCategoryItem(article: _categories[index]),
                     ),
                     Container(
-                      color: Colors.white,
-                      padding: const EdgeInsets.only(
-                          top: 20, left: 0, right: 0, bottom: 20),
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 15),
+                            padding: const EdgeInsets.only(bottom: 10),
                             child: Text(
                               S.of(context).helpDidntFindTitle,
-                              style: theme.textTheme.titleLarge,
+                              style: theme.textTheme.titleMedium,
                             ),
                           ),
                           GlobalCard(
@@ -125,7 +117,7 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                     )
                   ],
                 ),
-        ),
+              ),
       ),
     );
   }

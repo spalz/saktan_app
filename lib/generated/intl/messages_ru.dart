@@ -68,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Кыргызский"),
         "settingsLangTitleRu": MessageLookupByLibrary.simpleMessage("Русский"),
         "settingsPrivacyPolice":
-            MessageLookupByLibrary.simpleMessage("Пользовательское соглашение"),
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "titleLoading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
         "usefullLinksTitle":
             MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
