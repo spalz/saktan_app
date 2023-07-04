@@ -68,9 +68,11 @@ class ContactItemModalState extends State<ContactItemModal> {
 
     return Material(
       child: Scaffold(
-        appBar: ModalAppBar(title: widget.title),
+        appBar: ModalAppBar(
+          title: widget.title,
+          height: 80,
+        ),
         body: SafeArea(
-          bottom: false,
           child: Container(
             child: _isLoadRunning
                 ? Container(
@@ -82,7 +84,7 @@ class ContactItemModalState extends State<ContactItemModal> {
                       ),
                     ),
                   )
-                : Column(children: [
+                : Column(mainAxisSize: MainAxisSize.min, children: [
                     if (_contact!.descriptionRu != null)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),

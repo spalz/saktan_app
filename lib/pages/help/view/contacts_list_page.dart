@@ -13,22 +13,19 @@ class ContactsListPage extends StatefulWidget {
 }
 
 class ContacstPageState extends State<ContactsListPage> {
-  bool _isFirstLoadRunning = false;
+  bool _isFirstLoadRunning = true;
   List<ContactList> _contacts = <ContactList>[];
 
   late final String _slug = widget.slug;
 
   void _firstLoad() async {
     setState(() {
-      _isFirstLoadRunning = false;
+      _isFirstLoadRunning = true;
     });
 
     final fetchedContacts = await fetchContacts(_slug);
     setState(() {
       _contacts = fetchedContacts;
-    });
-
-    setState(() {
       _isFirstLoadRunning = false;
     });
   }

@@ -86,7 +86,10 @@ class SettingsPageState extends State<SettingsPage> {
                 child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ModalAppBar(title: S.of(context).settingsLangTitle),
+                ModalAppBar(
+                  title: S.of(context).settingsLangTitle,
+                  height: 80,
+                ),
                 ListView.separated(
                   shrinkWrap: true,
                   itemCount: 2,

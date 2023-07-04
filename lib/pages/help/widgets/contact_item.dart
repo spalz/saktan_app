@@ -53,7 +53,10 @@ class ContactItem extends StatelessWidget {
         ),
         trailing: trailing,
         onTap: () => showBarModalBottomSheet(
-              expand: false,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              expand: true,
               elevation: 0,
               clipBehavior: Clip.antiAlias,
               // barrierColor: Colors.transparent,
