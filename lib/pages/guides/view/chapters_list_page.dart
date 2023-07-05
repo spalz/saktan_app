@@ -14,27 +14,20 @@ class ChaptersListPage extends StatefulWidget {
 }
 
 class ChaptersListPageState extends State<ChaptersListPage> {
-  bool _isLoadRunning = false;
+  bool _isLoadRunning = true;
   GuideDetail? _guide;
 
   late final int id = widget.id;
   late final String title = widget.title;
 
-  void _firstLoad() async {
-    try {
-      setState(() {
-        _isLoadRunning = true;
-      });
+  Future<void> _fetchGuidesList() async {
+    final fetchedPost = await fetchGuideDetail(id);
 
-      final fetchedPost = await fetchGuideDetail(id);
-      if (mounted) {
-        setState(() {
-          _guide = fetchedPost;
-          _isLoadRunning = false;
-        });
-      }
-    } catch (err) {
-      // Handle the error, show an error message, etc.
+    if (mounted) {
+      setState(() {
+        _guide = fetchedPost;
+        _isLoadRunning = false;
+      });
     }
   }
 
@@ -44,34 +37,43 @@ class ChaptersListPageState extends State<ChaptersListPage> {
     _firstLoad();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  void _firstLoad() async {
+    await _fetchGuidesList();
+  }
+
+  Future<void> _handleRefresh() async {
+    setState(() {
+      _isLoadRunning = true;
+    });
+
+    await _fetchGuidesList();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: CustomAppBar(
-        title: title,
-        backgroundColor: theme.primaryColor,
-        iconTheme: const IconThemeData(color: Colors.white),
-        actionsIconTheme: Colors.white,
-        settings: false,
-      ),
-      body: _isLoadRunning
-          ? const GuidesChaptersListSkeleton()
-          : ListView.builder(
-              padding: const EdgeInsets.only(
-                  top: 30, left: 20, right: 20, bottom: 80),
-              itemCount: _guide?.chapters.length ?? 0,
-              itemBuilder: (context, index) {
-                return GuidesChaptersListItem(
-                    chapter: _guide!.chapters[index],
-                    index: index,
-                    guide: _guide!);
-              }),
-    );
+        appBar: CustomAppBar(
+          title: title,
+          backgroundColor: theme.primaryColor,
+          iconTheme: const IconThemeData(color: Colors.white),
+          actionsIconTheme: Colors.white,
+          settings: false,
+        ),
+        body: RefreshIndicator(
+          onRefresh: _handleRefresh,
+          child: _isLoadRunning
+              ? const GuidesChaptersListSkeleton()
+              : ListView.builder(
+                  padding: const EdgeInsets.only(
+                      top: 30, left: 20, right: 20, bottom: 80),
+                  itemCount: _guide?.chapters.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return GuidesChaptersListItem(
+                        chapter: _guide!.chapters[index],
+                        index: index,
+                        guide: _guide!);
+                  }),
+        ));
   }
 }

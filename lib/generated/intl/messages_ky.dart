@@ -78,7 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "usefullLinksTitle":
             MessageLookupByLibrary.simpleMessage("Полезные ссылки ky"),
         "guideTitle": MessageLookupByLibrary.simpleMessage(
-            "Справочник по репродуктивному и сексуальному здоровью KY"),
+            "Репродуктивдик жана сексуалдык ден соолук боюнча колдонмо"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки ky")
       };
 }
