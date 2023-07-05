@@ -83,37 +83,52 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                       itemBuilder: (_, index) =>
                           ContactCategoryItem(article: _categories[index]),
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 20, bottom: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              S.of(context).helpDidntFindTitle,
-                              style: theme.textTheme.titleMedium,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 10),
+                      child: Text(
+                        S.of(context).helpDidntFindTitle,
+                        style: theme.textTheme.titleMedium,
+                      ),
+                    ),
+                    ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(0),
+                      itemCount: 2,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Divider(
+                          height: 1,
+                          color: Colors.grey[200],
+                        );
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        if (index == 0) {
+                          return GlobalCard(
+                            leading: Icon(
+                              SaktanIcons.helpusefulllinks,
+                              color: Theme.of(context).primaryColor,
                             ),
-                          ),
-                          GlobalCard(
-                            trailing: const Icon(SaktanIcons.helpusefulllinks),
                             title: S.of(context).helpDidntFindUsefulllinks,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       const UsefulLinksPage()));
                             },
-                          ),
-                          GlobalCard(
-                            trailing: const Icon(SaktanIcons.help),
+                          );
+                        } else {
+                          return GlobalCard(
+                            leading: Icon(
+                              SaktanIcons.help,
+                              color: Theme.of(context).primaryColor,
+                            ),
                             title: S.of(context).helpDidntFindHelp,
                             onTap: () {
                               launchInBrowser(
                                   Uri.parse("https://indigo.kg/helps"));
                             },
-                          ),
-                        ],
-                      ),
+                          );
+                        }
+                      },
                     )
                   ],
                 ),

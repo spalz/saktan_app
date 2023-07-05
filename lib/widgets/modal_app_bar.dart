@@ -15,7 +15,7 @@ class ModalAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: height,
       titleSpacing: 20,
-      leading: Container(),
+      leading: const SizedBox(),
       leadingWidth: 0,
       centerTitle: false,
       title: Text(

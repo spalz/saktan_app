@@ -54,7 +54,7 @@ class ContacstPageState extends State<ContactsListPage> {
         settings: false,
       ),
       body: SingleChildScrollView(
-        child: Container(
+        child: Padding(
           padding: const EdgeInsets.only(top: 0, bottom: 80),
           child: _isFirstLoadRunning
               ? const ContactSkeleton()

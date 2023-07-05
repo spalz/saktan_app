@@ -54,7 +54,7 @@ class GuidesListPageState extends State<GuidesListPage> {
           : SingleChildScrollView(
               child: Stack(
                 children: [
-                  Container(
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 20),
                     child: Column(

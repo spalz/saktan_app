@@ -105,7 +105,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       globalFooter: SizedBox(
         width: double.infinity,
         height: 90,
-        child: Container(
+        child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
           child: ElevatedButton(
             style: Theme.of(context).elevatedButtonTheme.style,

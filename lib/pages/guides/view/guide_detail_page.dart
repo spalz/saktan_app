@@ -70,21 +70,17 @@ class _GuideDetailPageState extends State<GuideDetailPage> {
         centerTitle: true,
         settings: false,
       ),
-      body: SelectionArea(
-        child: ScrollablePositionedList.builder(
-          padding: const EdgeInsets.only(top: 10, bottom: 80),
-          itemCount: _guide.chapters.length,
-          itemScrollController: _scrollController,
-          itemBuilder: (context, index) {
-            final GlobalKey itemKey = GlobalKey();
-            itemKeys[index] = itemKey;
+      body: ScrollablePositionedList.builder(
+        padding: const EdgeInsets.only(top: 10, bottom: 80),
+        itemCount: _guide.chapters.length,
+        itemScrollController: _scrollController,
+        itemBuilder: (context, index) {
+          final GlobalKey itemKey = GlobalKey();
+          itemKeys[index] = itemKey;
 
-            return GuidesDetailChaptersListItem(
-                itemKey: itemKey,
-                index: index,
-                chapter: _guide.chapters[index]);
-          },
-        ),
+          return GuidesDetailChaptersListItem(
+              itemKey: itemKey, index: index, chapter: _guide.chapters[index]);
+        },
       ),
     );
   }

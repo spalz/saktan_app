@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:saktan_app/editorjs/editorjs.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
-import 'package:saktan_app/utils/app_bar.dart';
+import 'package:saktan_app/utils/utils.dart';
 
 class ArticleDetailPage extends StatefulWidget {
   final String slug;
@@ -14,6 +15,7 @@ class ArticleDetailPage extends StatefulWidget {
 }
 
 class _ArticleDetailPageState extends State<ArticleDetailPage> {
+  final String _currentLanguage = Intl.getCurrentLocale();
   bool _isLoadRunning = true;
   ArticleDetail? _post;
 
@@ -25,7 +27,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         _isLoadRunning = true;
       });
 
-      final fetchedPost = await fetchArticleDetail(_slug);
+      final fetchedPost = await fetchArticleDetail(_slug, _currentLanguage);
       setState(() {
         _post = fetchedPost;
         _isLoadRunning = false;
@@ -102,7 +104,9 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                           ),
                           const SizedBox(height: 10),
                           Text(_post!.description),
-                          EditorJSView(editorJSData: _post!.bodyRu),
+                          EditorJSView(
+                              editorJSData: getT(_currentLanguage,
+                                  _post!.bodyRu, _post!.bodyKy)),
                           const SizedBox(height: 80),
                         ],
                       )

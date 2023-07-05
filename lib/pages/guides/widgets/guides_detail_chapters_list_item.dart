@@ -22,36 +22,46 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
     final locale = Intl.getCurrentLocale();
     final theme = Theme.of(context);
 
-    return StickyHeader(
+    return SelectionArea(
+        child: StickyHeaderBuilder(
       key: itemKey,
-      header: Container(
-        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-        color: Colors.white,
-        child: Container(
-          height: 80.0,
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: theme.primaryColorLight,
-            borderRadius: BorderRadius.circular(20),
+      builder: (BuildContext context, double stuckAmount) {
+        stuckAmount = 1.0 - stuckAmount.clamp(0.0, 1.0);
+        return Padding(
+          padding: const EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: 0,
           ),
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            children: [
-              Flexible(
-                child: Text(
-                  getT(locale, chapter.titleRu, chapter.titleKy),
-                  style: TextStyle(
-                      fontWeight: theme.textTheme.titleSmall!.fontWeight,
-                      fontSize: theme.textTheme.titleSmall!.fontSize),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                ),
+          child: Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color.lerp(
+                    Colors.blue[50], theme.primaryColor, stuckAmount),
               ),
-            ],
+              padding: const EdgeInsets.only(
+                top: 8,
+                left: 15,
+                right: 15,
+                bottom: 8,
+              ),
+              child: Text(
+                getT(locale, chapter.titleRu, chapter.titleKy),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: theme.textTheme.titleSmall!.fontSize,
+                  color: Color.lerp(Colors.black87, Colors.white, stuckAmount),
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ),
           ),
-        ),
-      ),
-      content: Container(
+        );
+      },
+      content: Padding(
         padding:
             const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
         child: EditorJSView(
@@ -59,6 +69,6 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
           isGuide: true,
         ),
       ),
-    );
+    ));
   }
 }

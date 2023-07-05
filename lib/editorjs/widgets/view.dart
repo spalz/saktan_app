@@ -56,7 +56,9 @@ class EditorJSViewState extends State<EditorJSView> {
           break;
         case 3:
           levelFontSize =
-              FontSize(Theme.of(context).textTheme.headlineMedium!.fontSize!);
+              FontSize(Theme.of(context).textTheme.headlineSmall!.fontSize!);
+          levelHeight = 1.4;
+          levelColor = const Color.fromRGBO(60, 105, 220, 1);
           break;
         case 4:
           break;

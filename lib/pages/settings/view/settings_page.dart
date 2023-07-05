@@ -82,8 +82,7 @@ class SettingsPageState extends State<SettingsPage> {
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
-            return Container(
-                child: Column(
+            return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 ModalAppBar(
@@ -129,7 +128,7 @@ class SettingsPageState extends State<SettingsPage> {
                   },
                 ),
               ],
-            ));
+            );
           },
         );
       },

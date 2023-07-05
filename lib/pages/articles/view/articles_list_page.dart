@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/utils/utils.dart';
 
@@ -10,6 +11,7 @@ class ArticlesListPage extends StatefulWidget {
 }
 
 class _ArticlesListPageState extends State<ArticlesListPage> {
+  final String _currentLanguage = Intl.getCurrentLocale();
   int _page = 1;
   final int _limit = 10;
   bool _hasNextPage = true;
@@ -22,7 +24,8 @@ class _ArticlesListPageState extends State<ArticlesListPage> {
       _isFirstLoadRunning = true;
     });
 
-    final fetchedPosts = await fetchArticlesList(_page, _limit);
+    final fetchedPosts =
+        await fetchArticlesList(_page, _limit, _currentLanguage);
     if (mounted) {
       // Check if the widget is still mounted
       setState(() {
@@ -53,7 +56,8 @@ class _ArticlesListPageState extends State<ArticlesListPage> {
         _page += 1;
       });
 
-      final fetchedPosts = await fetchArticlesList(_page, _limit);
+      final fetchedPosts =
+          await fetchArticlesList(_page, _limit, _currentLanguage);
       if (fetchedPosts.isNotEmpty) {
         setState(() {
           _posts.addAll(fetchedPosts);

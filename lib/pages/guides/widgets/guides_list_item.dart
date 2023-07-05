@@ -16,44 +16,46 @@ class GuidesListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = Intl.getCurrentLocale();
     final textTheme = Theme.of(context).textTheme;
-    return Container(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: ListTile(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          tileColor: Colors.grey[100],
-          focusColor: Colors.blue[100],
-          splashColor: Colors.blue[100],
-          minVerticalPadding: 22,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 22),
-          leading: CachedNetworkImage(
-            width: 32,
-            height: 32,
-            placeholder: (BuildContext context, String url) => Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(8.0),
-                  ),
-                )),
-            fadeOutDuration: const Duration(milliseconds: 300),
-            fadeInDuration: const Duration(milliseconds: 300),
-            imageUrl: guide.icon,
-          ),
-          title: Text(
-            getT(locale, guide.titleRu, guide.titleKy),
-            style: textTheme.titleSmall,
-          ),
-          dense: true,
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ChaptersListPage(
-                    id: guide.id,
-                    title: getT(locale, guide.titleRu, guide.titleKy))));
-          },
-        ));
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        horizontalTitleGap: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        tileColor: Colors.grey[100],
+        focusColor: Colors.blue[100],
+        splashColor: Colors.blue[100],
+        minVerticalPadding: 22,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+        leading: CachedNetworkImage(
+          width: 32,
+          height: 32,
+          placeholder: (BuildContext context, String url) => Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(8.0),
+                ),
+              )),
+          fadeOutDuration: const Duration(milliseconds: 300),
+          fadeInDuration: const Duration(milliseconds: 300),
+          imageUrl: guide.icon,
+        ),
+        title: Text(
+          getT(locale, guide.titleRu, guide.titleKy),
+          style: textTheme.titleSmall,
+        ),
+        dense: true,
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ChaptersListPage(
+                  id: guide.id,
+                  title: getT(locale, guide.titleRu, guide.titleKy))));
+        },
+      ),
+    );
   }
 }

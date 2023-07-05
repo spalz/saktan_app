@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/utils/utils.dart';
 
-Future<ArticleDetail> fetchArticleDetail(String slug) async {
+Future<ArticleDetail> fetchArticleDetail(String slug, String lang) async {
   try {
-    final res = await _getArticleDetailRequest(slug);
+    final res = await _getArticleDetailRequest(slug, lang);
     final fetchedPost = res.data['data'];
 
     final map = fetchedPost as Map<String, dynamic>;
@@ -30,11 +30,11 @@ Future<ArticleDetail> fetchArticleDetail(String slug) async {
   }
 }
 
-Future<Response<dynamic>> _getArticleDetailRequest(String slug) {
+Future<Response<dynamic>> _getArticleDetailRequest(String slug, String lang) {
   final url = "${Uri.parse("$baseUrl/api/slugify/slugs/article/$slug")}";
   final params = {
     'populate[image][fields][0]': 'url',
-    'locale': 'ru',
+    'locale': lang,
   };
   final dio = Dio();
   return dio.get(url, queryParameters: params);

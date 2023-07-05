@@ -3,9 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:saktan_app/pages/articles/articles.dart';
 import 'package:saktan_app/utils/utils.dart';
 
-Future<List<Article>> fetchArticlesList(int page, int limit) async {
+Future<List<Article>> fetchArticlesList(
+    int page, int limit, String lang) async {
   try {
-    final res = await getArticlesListRequest(page, limit);
+    final res = await getArticlesListRequest(page, limit, lang);
     final fetchedPosts = res.data['data'] as List<dynamic>;
     return fetchedPosts.map((dynamic json) {
       final map = json as Map<String, dynamic>;
@@ -27,7 +28,8 @@ Future<List<Article>> fetchArticlesList(int page, int limit) async {
   }
 }
 
-Future<Response<dynamic>> getArticlesListRequest(int page, int limit) async {
+Future<Response<dynamic>> getArticlesListRequest(
+    int page, int limit, String lang) async {
   final url = "${Uri.parse("$baseUrl/api/articles")}";
   final params = {
     'sort': 'published:desc',
@@ -37,7 +39,7 @@ Future<Response<dynamic>> getArticlesListRequest(int page, int limit) async {
     'fields[1]': 'title',
     'fields[2]': 'published',
     'fields[3]': 'description',
-    'locale': 'ru',
+    'locale': lang,
     'pagination[page]': page.toString(),
     'pagination[pageSize]': limit.toString(),
   };

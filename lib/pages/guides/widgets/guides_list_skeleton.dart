@@ -13,7 +13,7 @@ class GuidesListSkeleton extends StatelessWidget {
     return Stack(
       children: [
         const TopProgressIndicator(),
-        Container(
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
