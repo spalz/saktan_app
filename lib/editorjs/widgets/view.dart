@@ -235,7 +235,6 @@ class EditorJSViewState extends State<EditorJSView> {
             ),
           );
           break;
-        // Другие случаи...
       }
     }
 

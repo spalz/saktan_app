@@ -27,20 +27,21 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
       key: itemKey,
       builder: (BuildContext context, double stuckAmount) {
         stuckAmount = 1.0 - stuckAmount.clamp(0.0, 1.0);
-        return Padding(
+        return Container(
           padding: const EdgeInsets.only(
             top: 10,
             left: 10,
             right: 10,
             bottom: 0,
           ),
-          child: Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color.lerp(
-                    Colors.blue[50], theme.primaryColor, stuckAmount),
-              ),
+          alignment: Alignment.centerLeft,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color:
+                  Color.lerp(Colors.blue[50], theme.primaryColor, stuckAmount),
+            ),
+            child: Padding(
               padding: const EdgeInsets.only(
                 top: 8,
                 left: 15,
@@ -61,7 +62,7 @@ class GuidesDetailChaptersListItem extends StatelessWidget {
           ),
         );
       },
-      content: Padding(
+      content: Container(
         padding:
             const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
         child: EditorJSView(
