@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:saktan_app/generated/l10n.dart';
@@ -32,6 +33,14 @@ class SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    const String indigoLogoSvg = 'assets/images/logo/indigo.svg';
+    final Widget indigoLogo = SvgPicture.asset(indigoLogoSvg,
+        width: 70, alignment: Alignment.topLeft);
+
+    const String dcLogoSvg = 'assets/images/logo/dc.svg';
+    final Widget dcLogo =
+        SvgPicture.asset(dcLogoSvg, width: 70, alignment: Alignment.topLeft);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).settingsTitle),
@@ -77,29 +86,58 @@ class SettingsPageState extends State<SettingsPage> {
               },
             ),
           ),
-          Container(
-            height: 50,
-            width: double.infinity,
-            color: Colors.grey[200],
-            child: Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Version 1.0.0",
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 14,
+          SafeArea(
+            bottom: true,
+            child: SizedBox(
+              width: double.infinity,
+              child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'support of',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[500],
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          indigoLogo,
+                        ],
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Version 1.0.0",
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 14,
-                    ),
-                  )
-                ]),
+                    Container(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          launchInBrowser(
+                              Uri.parse("https://dangercactus.io/"));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'developed',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            dcLogo,
+                          ],
+                        ),
+                      ),
+                    )
+                  ]),
+            ),
           ),
         ],
       ),

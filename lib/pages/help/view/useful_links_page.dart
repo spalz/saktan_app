@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
-import 'package:saktan_app/utils/app_bar.dart';
+import 'package:saktan_app/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UsefulLinksPage extends StatefulWidget {
@@ -56,6 +56,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Intl.getCurrentLocale();
     if (kDebugMode) {
       print("locale: ${Intl.getCurrentLocale()}");
     }
@@ -93,7 +94,7 @@ class _UsefulLinksPageState extends State<UsefulLinksPage> {
                     tabs: _links.map((link) {
                       return Tab(
                         height: 56,
-                        text: link.titleRu,
+                        text: getT(locale, link.titleRu, link.titleKy),
                       );
                     }).toList(),
                   ),

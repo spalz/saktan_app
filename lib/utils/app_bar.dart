@@ -38,16 +38,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String settingsIconSvg = 'assets/images/icons/action_settings.svg';
-    final Widget settingsIcon = SvgPicture.asset(
-      settingsIconSvg,
-      width: 28,
-      colorFilter: ColorFilter.mode(
-        actionsIconTheme ?? Colors.black,
-        BlendMode.srcIn,
-      ),
-    );
-
     Widget? logoWidget;
     if (logo != null) {
       if (logo == 'saktan') {

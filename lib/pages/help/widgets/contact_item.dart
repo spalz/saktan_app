@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
+import 'package:saktan_app/widgets/widgets.dart';
 
 class ContactItem extends StatelessWidget {
   const ContactItem({
@@ -16,10 +16,6 @@ class ContactItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = Intl.getCurrentLocale();
-
-    const String trailingSvg = 'assets/images/icons/trailing_contacts.svg';
-    final Widget trailing =
-        SvgPicture.asset(trailingSvg, width: 32, alignment: Alignment.topLeft);
 
     final textTheme = Theme.of(context).textTheme;
     return ListTile(
@@ -51,7 +47,8 @@ class ContactItem extends StatelessWidget {
                   ))
           ],
         ),
-        trailing: trailing,
+        trailing: Icon(SaktanIcons.helpcontact,
+            size: 32, color: Theme.of(context).primaryColor),
         onTap: () => showBarModalBottomSheet(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),

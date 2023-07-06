@@ -3,7 +3,7 @@
   "settingsTitle": "Настройки",
   "settingsAbout": "О приложении",
   "settingsAboutApp": "О приложении",
-  "settingsPrivacyPolice": "Privacy Policy",
+  "settingsPrivacyPolice": "Пользовательское соглашение",
   "settingsLangTitle": "Язык",
   "settingsLangTitleRu": "Русский",
   "settingsLangTitleKy": "Кыргызский",
@@ -29,5 +29,5 @@
   "contactItemModalLabelAddress": "Адрес",
   "contactItemModalLabelOpenMap": "Открыть карту",
   "contactItemModalLabelContacts": "Контакты",
-  "titleLoading": "Загрузка...",
+  "titleLoading": "Загрузка..."
 }

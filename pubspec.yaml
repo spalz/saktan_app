@@ -78,7 +78,6 @@ flutter:
     - assets/images/temp/
     - assets/images/launcher/
     - assets/images/on_boarding/
-    - assets/images/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -249,12 +248,12 @@ flutter_launcher_icons:
     image_path: "assets/images/launcher/icon-1024x1024.png"
     background_color: "#3C69DC"
     theme_color: "#3C69DC"
-  windows:
-    generate: true
-    image_path: "assets/images/launcher/icon-1024x1024.png"
-    icon_size: 48 # min:48, max:256, default: 48
-  macos:
-    generate: true
-    image_path: "assets/images/launcher/icon-1024x1024.png"
+  # windows:
+  #   generate: true
+  #   image_path: "assets/images/launcher/icon-1024x1024.png"
+  #   icon_size: 48 # min:48, max:256, default: 48
+  # macos:
+  #   generate: true
+  #   image_path: "assets/images/launcher/icon-1024x1024.png"
 flutter_intl:
   enabled: true

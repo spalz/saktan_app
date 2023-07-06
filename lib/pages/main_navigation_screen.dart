@@ -77,6 +77,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
                 ? Theme.of(context).primaryColor
                 : Colors.black87,
             fontWeight: FontWeight.w500,
+            overflow: TextOverflow.ellipsis,
             fontSize: 14,
           ),
         ),

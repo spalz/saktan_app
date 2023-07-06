@@ -23,62 +23,59 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "contactItemModalLabelAddress":
-            MessageLookupByLibrary.simpleMessage("Адрес  ky"),
+            MessageLookupByLibrary.simpleMessage("Дареги"),
         "contactItemModalLabelContacts":
-            MessageLookupByLibrary.simpleMessage("Контакты  ky"),
+            MessageLookupByLibrary.simpleMessage("Байланыштар"),
         "contactItemModalLabelDescription":
-            MessageLookupByLibrary.simpleMessage("Помогает с  ky"),
+            MessageLookupByLibrary.simpleMessage(
+                "Кандай учурда жардам көрсөтөт?"),
         "contactItemModalLabelOpenMap":
-            MessageLookupByLibrary.simpleMessage("Открыть карту  ky"),
-        "helpCategoriesTitle":
-            MessageLookupByLibrary.simpleMessage("Контакты ky"),
-        "helpDidntFindHelp":
-            MessageLookupByLibrary.simpleMessage("Запросить помощь ky"),
-        "helpDidntFindTitle":
-            MessageLookupByLibrary.simpleMessage("Не нашли что что искали? ky"),
-        "helpDidntFindUsefulllinks":
-            MessageLookupByLibrary.simpleMessage("Полезные ссылки ky"),
-        "navigationArticles":
-            MessageLookupByLibrary.simpleMessage("Новости ky"),
-        "navigationGuides":
-            MessageLookupByLibrary.simpleMessage("О здоровье ky"),
-        "navigationHelp": MessageLookupByLibrary.simpleMessage("Помощь ky"),
-        "onBoardingButtonToBegin":
-            MessageLookupByLibrary.simpleMessage("Начать ky"),
-        "onBoardingOneDesc": MessageLookupByLibrary.simpleMessage(
-            "Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере. ky"),
-        "onBoardingOneTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Здоровье ky"),
-        "onBoardingOneTtitlePart2": MessageLookupByLibrary.simpleMessage(
-            ": ВИЧ, сексуальность, права ky"),
-        "onBoardingThreeDesc": MessageLookupByLibrary.simpleMessage(
-            "Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений. ky"),
-        "onBoardingThreeTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Новости ky"),
-        "onBoardingThreeTtitlePart2":
-            MessageLookupByLibrary.simpleMessage(": события и не только ky"),
-        "onBoardingTwoDesc": MessageLookupByLibrary.simpleMessage(
-            "В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки. ky"),
-        "onBoardingTwoTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Помощь ky"),
-        "onBoardingTwoTtitlePart2": MessageLookupByLibrary.simpleMessage(
-            ": кризисные центры, ссылки ky"),
-        "settingsAbout":
-            MessageLookupByLibrary.simpleMessage("О приложении ky"),
-        "settingsAboutApp":
-            MessageLookupByLibrary.simpleMessage("О приложении ky"),
-        "settingsLangTitle": MessageLookupByLibrary.simpleMessage("Язык ky"),
-        "settingsLangTitleKy":
-            MessageLookupByLibrary.simpleMessage("Кыргызский ky"),
-        "settingsLangTitleRu":
-            MessageLookupByLibrary.simpleMessage("Русский ky"),
-        "settingsPrivacyPolice":
-            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-        "titleLoading": MessageLookupByLibrary.simpleMessage("Загрузка...  ky"),
-        "usefullLinksTitle":
-            MessageLookupByLibrary.simpleMessage("Полезные ссылки ky"),
+            MessageLookupByLibrary.simpleMessage("Картаны ачуу"),
         "guideTitle": MessageLookupByLibrary.simpleMessage(
             "Репродуктивдик жана сексуалдык ден соолук боюнча колдонмо"),
-        "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки ky")
+        "helpCategoriesTitle":
+            MessageLookupByLibrary.simpleMessage("Байланыштар"),
+        "helpDidntFindHelp":
+            MessageLookupByLibrary.simpleMessage("Жардам алуу"),
+        "helpDidntFindTitle":
+            MessageLookupByLibrary.simpleMessage("Издегениңер табылган жокпу?"),
+        "helpDidntFindUsefulllinks":
+            MessageLookupByLibrary.simpleMessage("Пайдалуу шилтемелер"),
+        "navigationArticles":
+            MessageLookupByLibrary.simpleMessage("Жаңылыктар"),
+        "navigationGuides": MessageLookupByLibrary.simpleMessage("Ден соолук"),
+        "navigationHelp": MessageLookupByLibrary.simpleMessage("Жардам"),
+        "onBoardingButtonToBegin":
+            MessageLookupByLibrary.simpleMessage("Баштоо"),
+        "onBoardingOneDesc": MessageLookupByLibrary.simpleMessage(
+            "Ден соолуктун маанилүүлүгү, анын ичинде АИВ-инфекциясы, сексуалдык мамилелердин ар кандай аспектилери жана бул чөйрөдөгү укуктарыңар жөнүндө билип алгыла."),
+        "onBoardingOneTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Ден соолук"),
+        "onBoardingOneTtitlePart2":
+            MessageLookupByLibrary.simpleMessage(": АИВ, сексуалдуулук, укук"),
+        "onBoardingThreeDesc": MessageLookupByLibrary.simpleMessage(
+            "Репродуктивдик жана сексуалдык ден соолук жөнүндө сергитүүчү жаңылыктар. Үйрөнгүлө, жаңылангыла жана өз жашооңордо ийгиликтүү болгула!"),
+        "onBoardingThreeTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Жаңылыктар"),
+        "onBoardingThreeTtitlePart2":
+            MessageLookupByLibrary.simpleMessage(": окуялар жана башкалар"),
+        "onBoardingTwoDesc": MessageLookupByLibrary.simpleMessage(
+            "Жардам керек болсо, биз колдоо көрсөтүүгө даярбыз. Биздин кризистик борборлорубуз менен байланышып, пайдалуу шилтемелерди тапкыла."),
+        "onBoardingTwoTtitlePart1":
+            MessageLookupByLibrary.simpleMessage("Жардам"),
+        "onBoardingTwoTtitlePart2": MessageLookupByLibrary.simpleMessage(
+            ": кризистик борборлор, шилтемелер"),
+        "settingsAbout":
+            MessageLookupByLibrary.simpleMessage("О Тиркеме жөнүндө"),
+        "settingsLangTitle": MessageLookupByLibrary.simpleMessage("Тил"),
+        "settingsLangTitleKy":
+            MessageLookupByLibrary.simpleMessage("Кыргыз тили"),
+        "settingsLangTitleRu": MessageLookupByLibrary.simpleMessage("Русский"),
+        "settingsPrivacyPolice":
+            MessageLookupByLibrary.simpleMessage("Колдонуучунун макулдугу"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Орнотуулар"),
+        "titleLoading": MessageLookupByLibrary.simpleMessage("Жүктөлүүдө..."),
+        "usefullLinksTitle":
+            MessageLookupByLibrary.simpleMessage("Пайдалуу шилтемелер")
       };
 }

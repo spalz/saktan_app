@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:saktan_app/generated/l10n.dart';
 import 'package:saktan_app/pages/help/help.dart';
 import 'package:saktan_app/utils/utils.dart';
@@ -51,6 +52,7 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    final locale = Intl.getCurrentLocale();
 
     return Scaffold(
       appBar: const CustomAppBar(logo: "saktan", centerTitle: false),
@@ -87,7 +89,10 @@ class ContacsCategoriesPageState extends State<ContactCategoriesPage> {
                       padding: const EdgeInsets.only(top: 30, bottom: 10),
                       child: Text(
                         S.of(context).helpDidntFindTitle,
-                        style: theme.textTheme.titleMedium,
+                        style: TextStyle(
+                          fontSize: locale == "ru" ? 22 : 19,
+                          fontWeight: theme.textTheme.titleMedium!.fontWeight,
+                        ),
                       ),
                     ),
                     ListView.separated(

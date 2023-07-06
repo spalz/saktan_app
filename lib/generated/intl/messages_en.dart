@@ -30,11 +30,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Помогает с"),
         "contactItemModalLabelOpenMap":
             MessageLookupByLibrary.simpleMessage("Открыть карту"),
+        "guideTitle": MessageLookupByLibrary.simpleMessage(
+            "Справочник по репродуктивному и сексуальному здоровью EN"),
         "helpCategoriesTitle": MessageLookupByLibrary.simpleMessage("Контакты"),
         "helpDidntFindHelp":
-            MessageLookupByLibrary.simpleMessage("Запросить помощь"),
+            MessageLookupByLibrary.simpleMessage("Получение помощи"),
         "helpDidntFindTitle":
-            MessageLookupByLibrary.simpleMessage("Не нашли что что искали?"),
+            MessageLookupByLibrary.simpleMessage("Не нашли то что искали?"),
         "helpDidntFindUsefulllinks":
             MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
         "navigationArticles": MessageLookupByLibrary.simpleMessage("Новости"),
@@ -69,11 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsLangTitleRu": MessageLookupByLibrary.simpleMessage("Русский"),
         "settingsPrivacyPolice":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки en"),
         "titleLoading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
         "usefullLinksTitle":
-            MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
-        "guideTitle": MessageLookupByLibrary.simpleMessage(
-            "Справочник по репродуктивному и сексуальному здоровью EN"),
-        "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки en")
+            MessageLookupByLibrary.simpleMessage("Полезные ссылки")
       };
 }
