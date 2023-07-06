@@ -50,140 +50,140 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Справочник по репродуктивному и сексуальному здоровью EN`
+  /// `Handbook of Reproductive and Sexual Health`
   String get guideTitle {
     return Intl.message(
-      'Справочник по репродуктивному и сексуальному здоровью EN',
+      'Handbook of Reproductive and Sexual Health',
       name: 'guideTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Настройки en`
+  /// `Settings`
   String get settingsTitle {
     return Intl.message(
-      'Настройки en',
+      'Settings',
       name: 'settingsTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Здоровье`
+  /// `Health`
   String get onBoardingOneTtitlePart1 {
     return Intl.message(
-      'Здоровье',
+      'Health',
       name: 'onBoardingOneTtitlePart1',
       desc: '',
       args: [],
     );
   }
 
-  /// `: ВИЧ, сексуальность, права`
+  /// `: HIV, sexuality, rights`
   String get onBoardingOneTtitlePart2 {
     return Intl.message(
-      ': ВИЧ, сексуальность, права',
+      ': HIV, sexuality, rights',
       name: 'onBoardingOneTtitlePart2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере.`
+  /// `Learn about the importance of health, including HIV infection, various aspects of sexuality and your rights in this area.`
   String get onBoardingOneDesc {
     return Intl.message(
-      'Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере.',
+      'Learn about the importance of health, including HIV infection, various aspects of sexuality and your rights in this area.',
       name: 'onBoardingOneDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Помощь`
+  /// `Help`
   String get onBoardingTwoTtitlePart1 {
     return Intl.message(
-      'Помощь',
+      'Help',
       name: 'onBoardingTwoTtitlePart1',
       desc: '',
       args: [],
     );
   }
 
-  /// `: кризисные центры, ссылки`
+  /// `: crisis centers, links`
   String get onBoardingTwoTtitlePart2 {
     return Intl.message(
-      ': кризисные центры, ссылки',
+      ': crisis centers, links',
       name: 'onBoardingTwoTtitlePart2',
       desc: '',
       args: [],
     );
   }
 
-  /// `В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки.`
+  /// `If necessary, we are ready to provide you with assistance and support. Contact our crisis centers and find useful links.`
   String get onBoardingTwoDesc {
     return Intl.message(
-      'В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки.',
+      'If necessary, we are ready to provide you with assistance and support. Contact our crisis centers and find useful links.',
       name: 'onBoardingTwoDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Новости`
+  /// `News`
   String get onBoardingThreeTtitlePart1 {
     return Intl.message(
-      'Новости',
+      'News',
       name: 'onBoardingThreeTtitlePart1',
       desc: '',
       args: [],
     );
   }
 
-  /// `: события и не только`
+  /// `: events and not only`
   String get onBoardingThreeTtitlePart2 {
     return Intl.message(
-      ': события и не только',
+      ': events and not only',
       name: 'onBoardingThreeTtitlePart2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений.`
+  /// `Refreshing news about reproductive and sexual health. Learn, upgrade and succeed in your life!`
   String get onBoardingThreeDesc {
     return Intl.message(
-      'Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений.',
+      'Refreshing news about reproductive and sexual health. Learn, upgrade and succeed in your life!',
       name: 'onBoardingThreeDesc',
       desc: '',
       args: [],
     );
   }
 
-  /// `Начать`
+  /// `To begin`
   String get onBoardingButtonToBegin {
     return Intl.message(
-      'Начать',
+      'To begin',
       name: 'onBoardingButtonToBegin',
       desc: '',
       args: [],
     );
   }
 
-  /// `О приложении`
+  /// `About the app`
   String get settingsAbout {
     return Intl.message(
-      'О приложении',
+      'About the app',
       name: 'settingsAbout',
       desc: '',
       args: [],
     );
   }
 
-  /// `О приложении`
+  /// `About the app`
   String get settingsAboutApp {
     return Intl.message(
-      'О приложении',
+      'About the app',
       name: 'settingsAboutApp',
       desc: '',
       args: [],
@@ -200,90 +200,90 @@ class S {
     );
   }
 
-  /// `О здоровье`
+  /// `On health`
   String get navigationGuides {
     return Intl.message(
-      'О здоровье',
+      'On health',
       name: 'navigationGuides',
       desc: '',
       args: [],
     );
   }
 
-  /// `Помощь`
+  /// `Help`
   String get navigationHelp {
     return Intl.message(
-      'Помощь',
+      'Help',
       name: 'navigationHelp',
       desc: '',
       args: [],
     );
   }
 
-  /// `Новости`
+  /// `News`
   String get navigationArticles {
     return Intl.message(
-      'Новости',
+      'News',
       name: 'navigationArticles',
       desc: '',
       args: [],
     );
   }
 
-  /// `Контакты`
+  /// `Contacts`
   String get helpCategoriesTitle {
     return Intl.message(
-      'Контакты',
+      'Contacts',
       name: 'helpCategoriesTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Не нашли то что искали?`
+  /// `Didn't find what you were looking for?`
   String get helpDidntFindTitle {
     return Intl.message(
-      'Не нашли то что искали?',
+      'Didn\'t find what you were looking for?',
       name: 'helpDidntFindTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Полезные ссылки`
+  /// `Useful links`
   String get helpDidntFindUsefulllinks {
     return Intl.message(
-      'Полезные ссылки',
+      'Useful links',
       name: 'helpDidntFindUsefulllinks',
       desc: '',
       args: [],
     );
   }
 
-  /// `Получение помощи`
+  /// `Getting help`
   String get helpDidntFindHelp {
     return Intl.message(
-      'Получение помощи',
+      'Getting help',
       name: 'helpDidntFindHelp',
       desc: '',
       args: [],
     );
   }
 
-  /// `Полезные ссылки`
+  /// `Useful links`
   String get usefullLinksTitle {
     return Intl.message(
-      'Полезные ссылки',
+      'Useful links',
       name: 'usefullLinksTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Язык`
+  /// `Language`
   String get settingsLangTitle {
     return Intl.message(
-      'Язык',
+      'Language',
       name: 'settingsLangTitle',
       desc: '',
       args: [],
@@ -310,50 +310,50 @@ class S {
     );
   }
 
-  /// `Загрузка...`
+  /// `Loading...`
   String get titleLoading {
     return Intl.message(
-      'Загрузка...',
+      'Loading...',
       name: 'titleLoading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Помогает с`
+  /// `Helps with`
   String get contactItemModalLabelDescription {
     return Intl.message(
-      'Помогает с',
+      'Helps with',
       name: 'contactItemModalLabelDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `Адрес`
+  /// `Address`
   String get contactItemModalLabelAddress {
     return Intl.message(
-      'Адрес',
+      'Address',
       name: 'contactItemModalLabelAddress',
       desc: '',
       args: [],
     );
   }
 
-  /// `Открыть карту`
+  /// `Open the map`
   String get contactItemModalLabelOpenMap {
     return Intl.message(
-      'Открыть карту',
+      'Open the map',
       name: 'contactItemModalLabelOpenMap',
       desc: '',
       args: [],
     );
   }
 
-  /// `Контакты`
+  /// `Contacts`
   String get contactItemModalLabelContacts {
     return Intl.message(
-      'Контакты',
+      'Contacts',
       name: 'contactItemModalLabelContacts',
       desc: '',
       args: [],

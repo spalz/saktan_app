@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingOneTtitlePart2":
             MessageLookupByLibrary.simpleMessage(": ВИЧ, сексуальность, права"),
         "onBoardingThreeDesc": MessageLookupByLibrary.simpleMessage(
-            "Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений."),
+            "Освежающие новости о репродуктивном и сексуальном здоровье. Познавайте, обновляйтесь и преуспевайте в своей жизни!"),
         "onBoardingThreeTtitlePart1":
             MessageLookupByLibrary.simpleMessage("Новости"),
         "onBoardingThreeTtitlePart2":

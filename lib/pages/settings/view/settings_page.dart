@@ -62,7 +62,10 @@ class SettingsPageState extends State<SettingsPage> {
                   return SettingsListItem(
                     title: S.of(context).settingsAbout,
                     icon: SaktanIcons.settingsabout,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SettingsAboutPage()));
+                    },
                   );
                 } else if (index == 1) {
                   return SettingsListItem(

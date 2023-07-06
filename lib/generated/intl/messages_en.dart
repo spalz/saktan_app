@@ -23,57 +23,57 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "contactItemModalLabelAddress":
-            MessageLookupByLibrary.simpleMessage("Адрес"),
+            MessageLookupByLibrary.simpleMessage("Address"),
         "contactItemModalLabelContacts":
-            MessageLookupByLibrary.simpleMessage("Контакты"),
+            MessageLookupByLibrary.simpleMessage("Contacts"),
         "contactItemModalLabelDescription":
-            MessageLookupByLibrary.simpleMessage("Помогает с"),
+            MessageLookupByLibrary.simpleMessage("Helps with"),
         "contactItemModalLabelOpenMap":
-            MessageLookupByLibrary.simpleMessage("Открыть карту"),
+            MessageLookupByLibrary.simpleMessage("Open the map"),
         "guideTitle": MessageLookupByLibrary.simpleMessage(
-            "Справочник по репродуктивному и сексуальному здоровью EN"),
-        "helpCategoriesTitle": MessageLookupByLibrary.simpleMessage("Контакты"),
+            "Handbook of Reproductive and Sexual Health"),
+        "helpCategoriesTitle": MessageLookupByLibrary.simpleMessage("Contacts"),
         "helpDidntFindHelp":
-            MessageLookupByLibrary.simpleMessage("Получение помощи"),
-        "helpDidntFindTitle":
-            MessageLookupByLibrary.simpleMessage("Не нашли то что искали?"),
+            MessageLookupByLibrary.simpleMessage("Getting help"),
+        "helpDidntFindTitle": MessageLookupByLibrary.simpleMessage(
+            "Didn\'t find what you were looking for?"),
         "helpDidntFindUsefulllinks":
-            MessageLookupByLibrary.simpleMessage("Полезные ссылки"),
-        "navigationArticles": MessageLookupByLibrary.simpleMessage("Новости"),
-        "navigationGuides": MessageLookupByLibrary.simpleMessage("О здоровье"),
-        "navigationHelp": MessageLookupByLibrary.simpleMessage("Помощь"),
+            MessageLookupByLibrary.simpleMessage("Useful links"),
+        "navigationArticles": MessageLookupByLibrary.simpleMessage("News"),
+        "navigationGuides": MessageLookupByLibrary.simpleMessage("On health"),
+        "navigationHelp": MessageLookupByLibrary.simpleMessage("Help"),
         "onBoardingButtonToBegin":
-            MessageLookupByLibrary.simpleMessage("Начать"),
+            MessageLookupByLibrary.simpleMessage("To begin"),
         "onBoardingOneDesc": MessageLookupByLibrary.simpleMessage(
-            "Узнайте о важности здоровья, включая ВИЧ-инфекцию, различные аспекты сексуальности и ваши права в этой сфере."),
+            "Learn about the importance of health, including HIV infection, various aspects of sexuality and your rights in this area."),
         "onBoardingOneTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Здоровье"),
+            MessageLookupByLibrary.simpleMessage("Health"),
         "onBoardingOneTtitlePart2":
-            MessageLookupByLibrary.simpleMessage(": ВИЧ, сексуальность, права"),
+            MessageLookupByLibrary.simpleMessage(": HIV, sexuality, rights"),
         "onBoardingThreeDesc": MessageLookupByLibrary.simpleMessage(
-            "Будьте в курсе последних событий и новостей, связанных с движением ЛГБТ. От улучшения прав ЛГБТ-сообщества до важных моментов и достижений."),
+            "Refreshing news about reproductive and sexual health. Learn, upgrade and succeed in your life!"),
         "onBoardingThreeTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Новости"),
+            MessageLookupByLibrary.simpleMessage("News"),
         "onBoardingThreeTtitlePart2":
-            MessageLookupByLibrary.simpleMessage(": события и не только"),
+            MessageLookupByLibrary.simpleMessage(": events and not only"),
         "onBoardingTwoDesc": MessageLookupByLibrary.simpleMessage(
-            "В случае необходимости мы готовы предоставить вам помощь и поддержку. Обратитесь к нашим кризисным центрам и найдите полезные ссылки."),
+            "If necessary, we are ready to provide you with assistance and support. Contact our crisis centers and find useful links."),
         "onBoardingTwoTtitlePart1":
-            MessageLookupByLibrary.simpleMessage("Помощь"),
+            MessageLookupByLibrary.simpleMessage("Help"),
         "onBoardingTwoTtitlePart2":
-            MessageLookupByLibrary.simpleMessage(": кризисные центры, ссылки"),
-        "settingsAbout": MessageLookupByLibrary.simpleMessage("О приложении"),
+            MessageLookupByLibrary.simpleMessage(": crisis centers, links"),
+        "settingsAbout": MessageLookupByLibrary.simpleMessage("About the app"),
         "settingsAboutApp":
-            MessageLookupByLibrary.simpleMessage("О приложении"),
-        "settingsLangTitle": MessageLookupByLibrary.simpleMessage("Язык"),
+            MessageLookupByLibrary.simpleMessage("About the app"),
+        "settingsLangTitle": MessageLookupByLibrary.simpleMessage("Language"),
         "settingsLangTitleKy":
             MessageLookupByLibrary.simpleMessage("Кыргызский"),
         "settingsLangTitleRu": MessageLookupByLibrary.simpleMessage("Русский"),
         "settingsPrivacyPolice":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-        "settingsTitle": MessageLookupByLibrary.simpleMessage("Настройки en"),
-        "titleLoading": MessageLookupByLibrary.simpleMessage("Загрузка..."),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings"),
+        "titleLoading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "usefullLinksTitle":
-            MessageLookupByLibrary.simpleMessage("Полезные ссылки")
+            MessageLookupByLibrary.simpleMessage("Useful links")
       };
 }
