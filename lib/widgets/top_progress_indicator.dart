@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TopProgressIndicator extends StatelessWidget {
-  const TopProgressIndicator({
-    super.key,
-  });
+  const TopProgressIndicator({Key? key})
+      : super(key: key); // Add the key parameter here
 
   @override
   Widget build(BuildContext context) {

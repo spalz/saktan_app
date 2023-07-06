@@ -36,42 +36,72 @@ class SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Text(S.of(context).settingsTitle),
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(20),
-        itemCount: 3,
-        separatorBuilder: (BuildContext context, int index) {
-          return Divider(
-            height: 1,
-            color: Colors.grey[200],
-          );
-        },
-        itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            return SettingsListItem(
-              title: S.of(context).settingsAbout,
-              icon: SaktanIcons.settingsabout,
-              onTap: () {},
-            );
-          } else if (index == 1) {
-            return SettingsListItem(
-              title: S.of(context).settingsPrivacyPolice,
-              icon: SaktanIcons.settingsprivacypolice,
-              onTap: () {
-                launchInBrowser(
-                    Uri.parse("https://indigo.kg/page/privacy-policy"));
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(20),
+              itemCount: 3,
+              separatorBuilder: (BuildContext context, int index) {
+                return Divider(
+                  height: 1,
+                  color: Colors.grey[200],
+                );
               },
-            );
-          } else {
-            return SettingsListItem(
-              title: S.of(context).settingsLangTitle,
-              icon: SaktanIcons.settingslang,
-              value: _currentLanguage == "ru"
-                  ? S.of(context).settingsLangTitleRu
-                  : S.of(context).settingsLangTitleKy,
-              onTap: _showLanguageModal,
-            );
-          }
-        },
+              itemBuilder: (BuildContext context, int index) {
+                if (index == 0) {
+                  return SettingsListItem(
+                    title: S.of(context).settingsAbout,
+                    icon: SaktanIcons.settingsabout,
+                    onTap: () {},
+                  );
+                } else if (index == 1) {
+                  return SettingsListItem(
+                    title: S.of(context).settingsPrivacyPolice,
+                    icon: SaktanIcons.settingsprivacypolice,
+                    onTap: () {
+                      launchInBrowser(
+                          Uri.parse("https://indigo.kg/page/privacy-policy"));
+                    },
+                  );
+                } else {
+                  return SettingsListItem(
+                    title: S.of(context).settingsLangTitle,
+                    icon: SaktanIcons.settingslang,
+                    value: _currentLanguage == "ru"
+                        ? S.of(context).settingsLangTitleRu
+                        : S.of(context).settingsLangTitleKy,
+                    onTap: _showLanguageModal,
+                  );
+                }
+              },
+            ),
+          ),
+          Container(
+            height: 50,
+            width: double.infinity,
+            color: Colors.grey[200],
+            child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Version 1.0.0",
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    "Version 1.0.0",
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 14,
+                    ),
+                  )
+                ]),
+          ),
+        ],
       ),
     );
   }

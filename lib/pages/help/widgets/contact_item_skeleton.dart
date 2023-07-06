@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:saktan_app/widgets/widgets.dart';
 
 class ContactSkeleton extends StatelessWidget {
   const ContactSkeleton({
@@ -8,6 +7,11 @@ class ContactSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TopProgressIndicator();
+    return const LinearProgressIndicator(
+      backgroundColor: Color.fromRGBO(90, 220, 190, 1),
+      valueColor: AlwaysStoppedAnimation<Color>(
+        Color.fromRGBO(240, 244, 255, 1),
+      ),
+    );
   }
 }

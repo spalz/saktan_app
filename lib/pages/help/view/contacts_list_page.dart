@@ -53,30 +53,19 @@ class ContacstPageState extends State<ContactsListPage> {
         actionsIconTheme: Colors.white,
         settings: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 80),
-          child: _isFirstLoadRunning
-              ? const ContactSkeleton()
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListView.separated(
-                      separatorBuilder: (context, index) => const Divider(
-                        color: Color.fromRGBO(231, 239, 255, 1),
-                        height: 1,
-                      ),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _contacts.length,
-                      itemBuilder: (_, index) => ContactItem(
-                        article: _contacts[index],
-                      ),
-                    ),
-                  ],
-                ),
-        ),
-      ),
+      body: _isFirstLoadRunning
+          ? const ContactSkeleton()
+          : ListView.separated(
+              padding: const EdgeInsets.only(top: 0, bottom: 80),
+              separatorBuilder: (context, index) => const Divider(
+                color: Color.fromRGBO(231, 239, 255, 1),
+                height: 1,
+              ),
+              itemCount: _contacts.length,
+              itemBuilder: (_, index) => ContactItem(
+                article: _contacts[index],
+              ),
+            ),
     );
   }
 }

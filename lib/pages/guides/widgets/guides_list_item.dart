@@ -16,7 +16,7 @@ class GuidesListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = Intl.getCurrentLocale();
     final textTheme = Theme.of(context).textTheme;
-    return Padding(
+    return Container(
       padding: const EdgeInsets.only(bottom: 10),
       child: ListTile(
         horizontalTitleGap: 10,
